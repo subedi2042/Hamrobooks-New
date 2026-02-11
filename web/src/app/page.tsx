@@ -79,7 +79,7 @@ export default function Home() {
                                 <motion.h2
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="text-lg md:text-2xl font-black text-white mb-2 md:mb-4 leading-tight tracking-tighter"
+                                    className="text-2xl md:text-5xl font-black text-white mb-3 md:mb-6 leading-none tracking-tighter"
                                 >
                                     {activeBanner.title} <br />
                                     <span className="text-primary italic">{activeBanner.subtitle}</span>
@@ -101,7 +101,7 @@ export default function Home() {
                                 <motion.p
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="text-slate-300 text-[11px] md:text-sm mb-8 md:mb-12 max-w-[240px] md:max-w-md leading-relaxed font-medium line-clamp-2 md:line-clamp-none"
+                                    className="text-slate-300 text-sm md:text-lg mb-8 md:mb-12 max-w-[240px] md:max-w-md leading-relaxed font-medium line-clamp-2 md:line-clamp-none"
                                 >
                                     {activeBanner.description}
                                 </motion.p>
@@ -144,7 +144,7 @@ export default function Home() {
                                 <motion.h2
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="text-lg md:text-2xl font-black text-white mb-3 md:mb-6 leading-none tracking-tighter"
+                                    className="text-2xl md:text-5xl font-black text-white mb-4 md:mb-8 leading-none tracking-tighter"
                                 >
                                     Authentic <span className="text-primary italic">Nepali Literature</span>
                                 </motion.h2>
