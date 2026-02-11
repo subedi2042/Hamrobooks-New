@@ -88,12 +88,12 @@ export default function Home() {
                                 <motion.div
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="mb-8 md:mb-10 space-y-3 bg-white/5 backdrop-blur-sm p-4 md:p-6 rounded-3xl border border-white/10 w-fit"
+                                    className="mb-8 md:mb-10 space-y-2 bg-white/5 backdrop-blur-sm p-4 md:p-6 rounded-3xl border border-white/10 w-fit"
                                 >
-                                    <p className="text-white text-sm md:text-2xl font-black tracking-tight leading-tight">
+                                    <p className="text-white text-sm md:text-lg font-bold tracking-tight leading-tight">
                                         "Bringing Nepali stories home, <br className="md:hidden" /> wherever home is."
                                     </p>
-                                    <p className="text-primary text-xs md:text-lg font-bold">
+                                    <p className="text-primary text-[10px] md:text-sm font-bold">
                                         "नेपाली कथाहरूलाई घर ल्याउँदै, जहाँ पनि घर होस्।"
                                     </p>
                                 </motion.div>
@@ -150,12 +150,12 @@ export default function Home() {
                                 <motion.div
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="mb-8 md:mb-12 space-y-4 bg-white/5 backdrop-blur-md p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/10 w-fit shadow-2xl"
+                                    className="mb-8 md:mb-12 space-y-3 bg-white/5 backdrop-blur-md p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border border-white/10 w-fit shadow-2xl"
                                 >
-                                    <p className="text-white text-lg md:text-3xl font-black tracking-tight leading-tight">
+                                    <p className="text-white text-lg md:text-2xl font-bold tracking-tight leading-tight">
                                         "Bringing Nepali stories home, <br className="md:hidden" /> wherever home is."
                                     </p>
-                                    <p className="text-primary text-sm md:text-xl font-bold">
+                                    <p className="text-primary text-sm md:text-lg font-bold">
                                         "नेपाली कथाहरूलाई घर ल्याउँदै, जहाँ पनि घर होस्।"
                                     </p>
                                 </motion.div>
