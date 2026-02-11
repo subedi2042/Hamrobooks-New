@@ -68,8 +68,11 @@ To facilitate seamless testing and demonstrations without requiring a live Fireb
 
 ### UI/UX Optimizations
 
+- **Hero Banner System**: Unified top and bottom banners with synchronized heights and synchronized typographic scales for a cohesive visual flow.
+- **Dynamic Mobile Layouts**: Optimized hero sections for small screens by increasing vertical headroom and adjusting text alignment to prevent content clipping on mobile devices.
+- **Functional Interactivity**: Hero banner call-to-action buttons are fully functional, providing deep-linking to specific site sections (e.g., Featured Collection).
 - **Two-Column Desktop Layout**: A persistent order summary remains visible on the right side during shipping and payment stages.
-- **Mobile-Responsive Fixed Footers**: Critical action buttons are pinned to the bottom of the screen on mobile devices for improved ergonomics.
+- **Low-Friction Entry**: Integrated "Continue as Guest" pathways into login and registration flows to reduce user friction.
 - **Material Design Icons**: Integrated via Google Fonts for a clean, consistent visual language.
 
 ### Prerequisites
