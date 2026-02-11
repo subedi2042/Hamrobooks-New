@@ -34,6 +34,7 @@ export default function AdminLayout({
         { name: "Dashboard", href: "/admin", icon: "dashboard" },
         { name: "Inventory", href: "/admin/products", icon: "inventory_2" },
         { name: "Orders", href: "/admin/orders", icon: "shopping_cart" },
+        { name: "Reviews Hub", href: "/admin/reviews", icon: "rate_review" },
         { name: "Promotions", href: "/admin/promotions", icon: "campaign" },
         { name: "Customers", href: "/admin/customers", icon: "people" },
         { name: "Settings", href: "/admin/settings", icon: "settings" },

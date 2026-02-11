@@ -3,6 +3,8 @@
 import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { books } from "@/data/books";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import BookCard from "@/components/BookCard";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
@@ -52,57 +54,73 @@ export default function Home() {
         <div className="min-h-screen bg-bg-light selection:bg-primary/30 pb-24">
             <Header onSearch={setSearchQuery} />
 
-            <main>
+            <main className="max-w-7xl mx-auto">
                 {!searchQuery && activeBanner && (
-                    <section className="px-4 py-5">
+                    <section className="px-4 py-6 md:py-10">
                         <motion.div
                             key={activeBanner.id}
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="relative h-60 rounded-3xl overflow-hidden group shadow-2xl border border-slate-200"
+                            className="relative h-64 md:h-[450px] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden group shadow-2xl border border-slate-200"
                         >
                             <img
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2s]"
                                 alt={activeBanner.title}
                                 src={activeBanner.image}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent flex flex-col justify-center px-8">
-                                <span className="text-primary font-black text-[9px] tracking-[0.2em] uppercase mb-1.5 antialiased">
+                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent flex flex-col justify-center px-8 md:px-20">
+                                <motion.span
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="text-primary font-black text-[9px] md:text-[11px] tracking-[0.2em] uppercase mb-2 md:mb-4 antialiased"
+                                >
                                     {activeBanner.badge}
-                                </span>
-                                <h2 className="text-3xl font-black text-white mb-2 leading-none tracking-tighter">
+                                </motion.span>
+                                <motion.h2
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="text-3xl md:text-6xl font-black text-white mb-3 md:mb-6 leading-none tracking-tighter"
+                                >
                                     {activeBanner.title} <br />
-                                    <span className="text-primary">{activeBanner.subtitle}</span>
-                                </h2>
-                                <p className="text-slate-300 text-[11px] mb-6 max-w-[240px] leading-relaxed font-medium">
+                                    <span className="text-primary italic">{activeBanner.subtitle}</span>
+                                </motion.h2>
+                                <motion.p
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="text-slate-300 text-[11px] md:text-sm mb-8 md:mb-12 max-w-[240px] md:max-w-md leading-relaxed font-medium"
+                                >
                                     {activeBanner.description}
-                                </p>
-                                <button className="bg-primary hover:bg-[#e68a00] text-white text-[10px] font-black tracking-widest px-8 py-3 rounded-xl w-fit shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase">
+                                </motion.p>
+                                <motion.button
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="bg-primary hover:bg-[#e68a00] text-white text-[10px] md:text-xs font-black tracking-widest px-8 md:px-12 py-3.5 md:py-5 rounded-2xl md:rounded-3xl w-fit shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase"
+                                >
                                     {activeBanner.buttonText}
-                                </button>
+                                </motion.button>
                             </div>
                         </motion.div>
                     </section>
                 )}
 
-                <section className="py-2">
+                <section className="py-2 md:py-8">
                     {!searchQuery && (
-                        <div className="flex items-center justify-between px-4 mb-3">
-                            <h3 className="font-bold text-lg text-slate-dark">Popular Genres</h3>
-                            <span className="text-primary text-xs font-bold uppercase tracking-wider cursor-pointer">
-                                View All
-                            </span>
+                        <div className="flex items-center justify-between px-4 mb-4 md:mb-8">
+                            <h3 className="font-black text-xl md:text-3xl text-slate-dark tracking-tighter">Popular Genres</h3>
+                            <button className="text-primary text-[10px] md:text-xs font-black uppercase tracking-widest hover:underline decoration-2 underline-offset-4">
+                                Explore All
+                            </button>
                         </div>
                     )}
 
-                    <div className="flex items-center gap-2 overflow-x-auto px-4 pb-4 hide-scrollbar">
+                    <div className="flex items-center gap-3 overflow-x-auto px-4 pb-4 hide-scrollbar md:flex-wrap md:justify-start">
                         {genres.map((genre) => (
                             <button
                                 key={genre}
                                 onClick={() => setSelectedGenre(genre)}
-                                className={`px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${selectedGenre === genre
-                                    ? "bg-primary text-white shadow-lg shadow-primary/25 scale-105"
-                                    : "bg-white text-slate-500 border border-slate-100 hover:border-primary/30"
+                                className={`px-6 md:px-8 py-3 md:py-4 rounded-2xl md:rounded-[1.25rem] text-[10px] md:text-xs font-black tracking-widest uppercase transition-all whitespace-nowrap ${selectedGenre === genre
+                                    ? "bg-[#1a1a5a] text-white shadow-xl shadow-blue-900/20 scale-105"
+                                    : "bg-white text-slate-500 border border-slate-100 hover:border-primary/30 hover:shadow-lg"
                                     }`}
                             >
                                 {genre}
@@ -111,20 +129,26 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className="px-4 py-4">
-                    <div className="flex items-center justify-between mb-5">
-                        <h3 className="font-bold text-lg text-slate-dark decoration-primary decoration-4 underline-offset-8">
-                            {searchQuery ? `Search Results for "${searchQuery}"` : "Featured Collection"}
-                        </h3>
+                <section className="px-4 py-8 md:py-16">
+                    <div className="flex items-center justify-between mb-8 md:mb-12">
+                        <div className="flex flex-col gap-1">
+                            <h3 className="font-black text-xl md:text-4xl text-[#1a1a5a] tracking-tighter">
+                                {searchQuery ? `Search Results for "${searchQuery}"` : "Featured Collection"}
+                            </h3>
+                            {!searchQuery && <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-widest">Handpicked for you this week</p>}
+                        </div>
                         {filteredBooks.length > 0 && (
-                            <span className="text-[10px] font-black text-slate-400 bg-slate-100 px-2 py-1 rounded-md uppercase tracking-widest">
-                                {filteredBooks.length} Books
-                            </span>
+                            <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-full">
+                                <span className="text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-widest">
+                                    {filteredBooks.length}
+                                </span>
+                                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Books</span>
+                            </div>
                         )}
                     </div>
 
                     {filteredBooks.length > 0 ? (
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-8">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 md:gap-x-8 gap-y-10 md:gap-y-16">
                             {filteredBooks.map((book) => (
                                 <BookCard key={book.id} book={book} />
                             ))}
@@ -138,21 +162,70 @@ export default function Home() {
                 </section>
 
                 {!searchQuery && (
-                    <section className="py-8 bg-slate-50 mt-8">
-                        <div className="px-4 mb-6">
-                            <h3 className="font-bold text-lg text-slate-dark">Renowned Authors</h3>
-                            <p className="text-xs text-slate-500">Discover masters of Nepali literature</p>
+                    <section className="py-12 md:py-24 bg-slate-50/50 mt-12 md:mt-24 rounded-[3rem] md:rounded-[5rem] mx-4 border border-slate-100">
+                        <div className="px-4 mb-8 md:mb-16 text-center">
+                            <h3 className="font-black text-xl md:text-5xl text-[#1a1a5a] tracking-tighter mb-2">Heritage <span className="text-primary italic">Authors</span></h3>
+                            <p className="text-[10px] md:text-sm text-slate-500 font-bold uppercase tracking-[0.2em]">Curating the giants of Nepali literature</p>
                         </div>
-                        <div className="flex gap-4 overflow-x-auto px-4 pb-4 hide-scrollbar">
+                        <div className="flex gap-6 md:gap-12 overflow-x-auto px-8 pb-8 hide-scrollbar md:justify-center">
                             {authors.map((author, idx) => (
-                                <div key={idx} className="flex flex-col items-center gap-3 min-w-[80px]">
-                                    <div className={`w-16 h-16 rounded-2xl overflow-hidden shadow-md ring-2 ${author.highlighted ? 'ring-primary' : 'ring-white'}`}>
-                                        <img src={author.img} alt={author.name} className="w-full h-full object-cover" />
+                                <motion.div
+                                    key={idx}
+                                    whileHover={{ y: -10 }}
+                                    className="flex flex-col items-center gap-4 min-w-[100px] md:min-w-[180px] group"
+                                >
+                                    <div className={`w-20 h-20 md:w-32 md:h-32 rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl transition-all ${author.highlighted ? 'ring-4 ring-primary shadow-primary/20' : 'ring-4 ring-white shadow-slate-200'}`}>
+                                        <img
+                                            src={author.img}
+                                            alt={author.name}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        />
                                     </div>
-                                    <span className="text-[10px] font-bold text-slate-700 text-center leading-tight">{author.name}</span>
-                                </div>
+                                    <div className="text-center">
+                                        <span className="text-xs md:text-lg font-black text-[#1a1a5a] block mb-1">{author.name}</span>
+                                        <span className="text-[9px] md:text-[10px] font-black text-primary uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity italic">View Collections</span>
+                                    </div>
+                                </motion.div>
                             ))}
                         </div>
+                    </section>
+                )}
+
+                {/* New Author Success Promotion */}
+                {!searchQuery && (
+                    <section className="px-4 py-16 md:py-32">
+                        <Link href="/authors-success">
+                            <motion.div
+                                whileHover={{ scale: 1.01 }}
+                                whileTap={{ scale: 0.99 }}
+                                className="relative h-64 md:h-[500px] rounded-[3rem] md:rounded-[4.5rem] overflow-hidden group shadow-3xl cursor-pointer border border-white"
+                            >
+                                <img
+                                    src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1000&auto=format&fit=crop"
+                                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[3s]"
+                                    alt="Authors"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a5a] via-[#1a1a5a]/80 to-transparent p-10 md:p-24 flex flex-col justify-center">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        className="space-y-4 md:space-y-8"
+                                    >
+                                        <span className="bg-primary text-white font-black text-[9px] md:text-[11px] tracking-[0.2em] uppercase px-4 py-1.5 rounded-full w-fit">Impact Story</span>
+                                        <h3 className="text-3xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter">Empowering Writers <br /><span className="text-primary italic">Across the USA</span></h3>
+                                        <p className="text-slate-300 text-sm md:text-lg font-medium max-w-[280px] md:max-w-xl leading-relaxed">
+                                            We've bridged the gap for over 100+ authors, bringing authentic Nepali literature to bookshelves in all 50 states. Discover how our platform is changing lives.
+                                        </p>
+                                        <div className="flex items-center gap-4 group/btn">
+                                            <span className="text-white font-black text-sm uppercase tracking-widest border-b-2 border-primary pb-1 group-hover/btn:pr-4 transition-all">Read Success Stories</span>
+                                            <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover/btn:rotate-[-45deg] transition-transform">
+                                                <ArrowRight className="text-white" size={20} />
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                </div>
+                            </motion.div>
+                        </Link>
                     </section>
                 )}
             </main>
