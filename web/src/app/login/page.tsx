@@ -129,12 +129,19 @@ export default function LoginPage() {
                         Sign in with Google
                     </button>
 
-                    <p className="mt-10 text-center text-sm font-medium text-slate-500">
-                        Don't have an account?{" "}
-                        <Link href="/register" className="text-primary font-bold hover:underline">
-                            Create one free
+                    <div className="mt-10 flex flex-col items-center gap-4">
+                        <p className="text-center text-sm font-medium text-slate-500">
+                            Don't have an account?{" "}
+                            <Link href="/register" className="text-primary font-bold hover:underline">
+                                Create one free
+                            </Link>
+                        </p>
+                        <div className="w-10 h-0.5 bg-slate-50 rounded-full" />
+                        <Link href="/" className="flex items-center gap-2 text-slate-400 hover:text-primary transition-colors text-xs font-black uppercase tracking-widest group">
+                            <span>Continue as Guest</span>
+                            <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </Link>
-                    </p>
+                    </div>
                 </div>
             </motion.div>
         </div>
