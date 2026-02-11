@@ -90,10 +90,10 @@ export default function Home() {
                                     animate={{ opacity: 1, x: 0 }}
                                     className="mb-8 md:mb-10 space-y-2 bg-white/5 backdrop-blur-sm p-4 md:p-6 rounded-3xl border border-white/10 w-fit"
                                 >
-                                    <p className="text-white text-sm md:text-lg font-bold tracking-tight leading-tight">
+                                    <p className="text-white text-base md:text-xl font-bold tracking-tight leading-tight">
                                         "Bringing Nepali stories home, <br className="md:hidden" /> wherever home is."
                                     </p>
-                                    <p className="text-primary text-[10px] md:text-sm font-bold">
+                                    <p className="text-primary text-[13px] md:text-lg font-bold">
                                         "नेपाली कथाहरूलाई घर ल्याउँदै, जहाँ पनि घर होस्।"
                                     </p>
                                 </motion.div>
@@ -154,10 +154,10 @@ export default function Home() {
                                     animate={{ opacity: 1, x: 0 }}
                                     className="mb-4 md:mb-6 space-y-1 bg-white/5 backdrop-blur-md p-3 md:p-5 rounded-[1.25rem] md:rounded-[1.75rem] border border-white/10 w-fit shadow-2xl"
                                 >
-                                    <p className="text-white text-xs md:text-sm font-bold tracking-tight leading-tight">
+                                    <p className="text-white text-sm md:text-lg font-bold tracking-tight leading-tight">
                                         "Bringing Nepali stories home, <br className="md:hidden" /> wherever home is."
                                     </p>
-                                    <p className="text-primary text-[8px] md:text-[10px] font-bold">
+                                    <p className="text-primary text-[11px] md:text-sm font-bold">
                                         "नेपाली कथाहरूलाई घर ल्याउँदै, जहाँ पनि घर होस्।"
                                     </p>
                                 </motion.div>
@@ -306,7 +306,7 @@ export default function Home() {
                                         className="space-y-4 md:space-y-8"
                                     >
                                         <span className="bg-primary text-white font-black text-[9px] md:text-[11px] tracking-[0.2em] uppercase px-4 py-1.5 rounded-full w-fit">Impact Story</span>
-                                        <h3 className="text-3xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter">Empowering Writers <br /><span className="text-primary italic">Across the USA</span></h3>
+                                        <h3 className="text-2xl md:text-5xl font-black text-white leading-[0.9] tracking-tighter">Empowering Writers <br /><span className="text-primary italic">Across the USA</span></h3>
                                         <p className="text-slate-300 text-sm md:text-lg font-medium max-w-[280px] md:max-w-xl leading-relaxed">
                                             We've bridged the gap for over 100+ authors, bringing authentic Nepali literature to bookshelves in all 50 states. Discover how our platform is changing lives.
                                         </p>
