@@ -29,27 +29,28 @@ Hamrobooks is designed to be more than just an online bookstore. It is a communi
 - `src/`: Core application logic, components, and context.
 - `lib/`: Utility functions and library initializations (Firebase).
 
-## 📋 Roadmap
+## 📋 Features & Roadmap
 
-### Phase 1: MVP (Current)
+### Phase 1: Core Experience (Complete)
 
-- [x] Product catalog with search and filters.
-- [x] Shopping cart and secure checkout.
-- [x] Admin dashboard for product and order management.
-- [x] Basic SEO and performance optimization.
+- [x] **Premium Product Catalog**: Modern grid layout with advanced search and genre filtering.
+- [x] **Optimized Checkout**: Secure, mobile-responsive, and desktop-optimized shipping and payment flows.
+- [x] **Admin Ecosystem**: Full dashboard for managing products, orders, and system reviews.
+- [x] **Next-Gen Aesthetics**: Vibrant design with glassmorphism, smooth animations, and a cohesive design system.
 
-### Phase 2: Enhanced Features
+### Phase 2: Community & Growth (Work in Progress)
 
-- [ ] Blog and author spotlights.
-- [ ] Customer reviews and ratings.
-- [ ] User accounts and order tracking.
-- [ ] Promotions and discount codes.
+- [x] **Reader Voices**: Real-time review and rating system with Firebase-backed admin moderation.
+- [x] **Author Empowerment**: Dedicated "Success Stories" and writer application system.
+- [x] **Desktop Optimization**: Site-wide layout refinements for large screen viewing.
+- [ ] Order tracking and user accounts.
+- [ ] Promotions and automated discount scheduling.
 
 ### Phase 3: Future Scale
 
-- [ ] Community memberships and subscriptions.
-- [ ] Events calendar and RSVP system.
-- [ ] Mobile applications (iOS/Android) using React Native.
+- [ ] Community memberships and membership-only exclusive content.
+- [ ] Events calendar and RSVP system for book launches.
+- [ ] Native Mobile applications (iOS/Android).
 
 ## 🛠 Getting Started
 
