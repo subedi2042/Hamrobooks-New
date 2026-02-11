@@ -24,7 +24,13 @@ export default function PromotionsPage() {
     // Promo Code State
     const [editingPromo, setEditingPromo] = useState<PromoCode | null>(null);
     const [isAddingPromo, setIsAddingPromo] = useState(false);
-    const [promoFormData, setPromoFormData] = useState({ code: "", discount: "", status: "Active" as "Active" | "Expired" });
+    const [promoFormData, setPromoFormData] = useState({
+        code: "",
+        discount: "",
+        status: "Active" as "Active" | "Expired",
+        startDate: "",
+        endDate: ""
+    });
 
     // Handle Banner Actions
     const openEditBanner = (banner: HeroBanner) => {
@@ -52,7 +58,13 @@ export default function PromotionsPage() {
     // Handle Promo Actions
     const openEditPromo = (promo: PromoCode) => {
         setEditingPromo(promo);
-        setPromoFormData({ code: promo.code, discount: promo.discount, status: promo.status });
+        setPromoFormData({
+            code: promo.code,
+            discount: promo.discount,
+            status: promo.status,
+            startDate: promo.startDate || "",
+            endDate: promo.endDate || ""
+        });
     };
 
     const handlePromoSave = async (e: React.FormEvent) => {
@@ -62,7 +74,7 @@ export default function PromotionsPage() {
             else if (isAddingPromo) await addPromoCode(promoFormData);
             setEditingPromo(null);
             setIsAddingPromo(false);
-            setPromoFormData({ code: "", discount: "", status: "Active" });
+            setPromoFormData({ code: "", discount: "", status: "Active", startDate: "", endDate: "" });
         } catch (error) {
             alert("Failed to save promo code.");
         }
@@ -251,6 +263,16 @@ export default function PromotionsPage() {
                                     <input required value={promoFormData.discount} onChange={e => setPromoFormData({ ...promoFormData, discount: e.target.value })} placeholder="20%" className="w-full bg-slate-50 p-4 rounded-2xl border border-slate-100 font-black outline-none" /></div>
                                 <div className="space-y-1"><label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Status</label>
                                     <select value={promoFormData.status} onChange={e => setPromoFormData({ ...promoFormData, status: e.target.value as any })} className="w-full bg-slate-50 p-4 rounded-2xl border border-slate-100 font-black outline-none" title="Status"><option value="Active">Active</option><option value="Expired">Expired</option></select></div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-1">
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Start Date</label>
+                                    <input type="date" title="Start Date" placeholder="YYYY-MM-DD" value={promoFormData.startDate} onChange={e => setPromoFormData({ ...promoFormData, startDate: e.target.value })} className="w-full bg-slate-50 p-4 rounded-2xl border border-slate-100 font-bold outline-none" />
+                                </div>
+                                <div className="space-y-1">
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">End Date</label>
+                                    <input type="date" title="End Date" placeholder="YYYY-MM-DD" value={promoFormData.endDate} onChange={e => setPromoFormData({ ...promoFormData, endDate: e.target.value })} className="w-full bg-slate-50 p-4 rounded-2xl border border-slate-100 font-bold outline-none" />
+                                </div>
                             </div>
                             <div className="flex gap-4 pt-6">
                                 {editingPromo && <button type="button" onClick={() => { deletePromoCode(editingPromo.id); setEditingPromo(null); }} className="flex-1 bg-red-50 text-red-500 font-black py-4 rounded-2xl text-[10px] uppercase tracking-widest">Delete</button>}

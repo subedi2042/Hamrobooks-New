@@ -35,6 +35,8 @@ interface CartContextType {
     setShippingInfo: React.Dispatch<React.SetStateAction<ShippingInfo>>;
     paymentInfo: PaymentInfo;
     setPaymentInfo: React.Dispatch<React.SetStateAction<PaymentInfo>>;
+    appliedDiscount: { code: string; amount: number } | null;
+    setAppliedDiscount: React.Dispatch<React.SetStateAction<{ code: string; amount: number } | null>>;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -55,6 +57,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         expiryDate: "",
         cvv: "",
     });
+    const [appliedDiscount, setAppliedDiscount] = useState<{ code: string; amount: number } | null>(null);
 
     // Load cart from localStorage on mount
     useEffect(() => {
@@ -120,6 +123,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                 setShippingInfo,
                 paymentInfo,
                 setPaymentInfo,
+                appliedDiscount,
+                setAppliedDiscount
             }}
         >
             {children}

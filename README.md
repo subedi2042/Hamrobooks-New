@@ -13,6 +13,7 @@ Hamrobooks is designed to be more than just an online bookstore. It is a communi
 - **Framework**: [Next.js](https://nextjs.org/) (React)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Auth**: [Firebase Authentication](https://firebase.google.com/docs/auth) (Email/Google)
 - **State Management**: React Context API
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
@@ -38,13 +39,15 @@ Hamrobooks is designed to be more than just an online bookstore. It is a communi
 - [x] **Admin Ecosystem**: Full dashboard for managing products, orders, and system reviews.
 - [x] **Next-Gen Aesthetics**: Vibrant design with glassmorphism, smooth animations, and a cohesive design system.
 
-### Phase 2: Community & Growth (Work in Progress)
+### Phase 2: Community & Growth (Complete)
 
+- [x] **Reader Profiles**: User registration/login (Email & Google) with personalized order history.
+- [x] **Dynamic Order Tracking**: Real-time fulfillment tracking for customers.
+- [x] **Automated Promotions**: Scheduled discount codes with date-based activation and usage tracking.
+- [x] **Admin Insights**: Multi-status order management and CSV reporting tools.
 - [x] **Reader Voices**: Real-time review and rating system with Firebase-backed admin moderation.
 - [x] **Author Empowerment**: Dedicated "Success Stories" and writer application system.
 - [x] **Desktop Optimization**: Site-wide layout refinements for large screen viewing.
-- [ ] Order tracking and user accounts.
-- [ ] Promotions and automated discount scheduling.
 
 ### Phase 3: Future Scale
 

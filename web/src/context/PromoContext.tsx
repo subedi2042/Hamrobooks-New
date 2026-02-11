@@ -28,6 +28,8 @@ export interface PromoCode {
     discount: string;
     usage: number;
     status: "Active" | "Expired";
+    startDate?: string;
+    endDate?: string;
 }
 
 interface PromoContextType {

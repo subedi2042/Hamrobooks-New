@@ -1,27 +1,124 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { usePromos } from "@/context/PromoContext";
+import { useAuth } from "@/context/AuthContext";
 import CheckoutSteps from "@/components/CheckoutSteps";
 import { motion } from "framer-motion";
+import { collection, addDoc, doc, updateDoc, increment } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 export default function PaymentPage() {
     const router = useRouter();
-    const { paymentInfo, setPaymentInfo, totalPrice, clearCart } = useCart();
+    const { cart, paymentInfo, setPaymentInfo, totalPrice, clearCart, shippingInfo, appliedDiscount, setAppliedDiscount } = useCart();
+    const { promoCodes } = usePromos();
+    const { user } = useAuth();
+
+    const [promoInput, setPromoInput] = useState("");
+    const [promoError, setPromoError] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setPaymentInfo({ ...paymentInfo, [name]: value });
     };
 
-    const handlePlaceOrder = (e: React.FormEvent) => {
-        e.preventDefault();
-        // In a real app, we'd process payment here
-        router.push("/checkout/success");
+    const handleApplyPromo = () => {
+        setPromoError("");
+        const promo = promoCodes.find(p => p.code === promoInput.toUpperCase());
+
+        if (!promo) {
+            setPromoError("Invalid discount code.");
+            return;
+        }
+
+        if (promo.status === "Expired") {
+            setPromoError("This code has expired.");
+            return;
+        }
+
+        // Check scheduling
+        const now = new Date();
+        if (promo.startDate && new Date(promo.startDate) > now) {
+            setPromoError("This promotion has not started yet.");
+            return;
+        }
+        if (promo.endDate && new Date(promo.endDate) < now) {
+            setPromoError("This promotion has ended.");
+            return;
+        }
+
+        // Calculate discount
+        let discountAmount = 0;
+        if (promo.discount.includes("%")) {
+            const percentage = parseFloat(promo.discount.replace("%", ""));
+            discountAmount = (totalPrice * percentage) / 100;
+        } else {
+            discountAmount = parseFloat(promo.discount.replace("$", ""));
+        }
+
+        setAppliedDiscount({ code: promo.code, amount: discountAmount });
+        setPromoInput("");
     };
 
-    const finalPrice = totalPrice * 1.08;
+    const handlePlaceOrder = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            const tax = totalPrice * 0.08;
+            const finalTotal = totalPrice + tax - (appliedDiscount?.amount || 0);
+
+            const orderData = {
+                customerId: user?.uid || "guest",
+                customerEmail: user?.email || "guest@example.com",
+                customerName: shippingInfo.fullName,
+                items: cart.map(item => ({
+                    id: item.id,
+                    title: item.title,
+                    price: item.price,
+                    quantity: item.quantity,
+                    image: item.image
+                })),
+                shippingAddress: shippingInfo,
+                subtotal: totalPrice,
+                tax: tax,
+                discount: appliedDiscount?.amount || 0,
+                discountCode: appliedDiscount?.code || null,
+                total: finalTotal,
+                status: "Processing",
+                createdAt: new Date().toISOString(),
+                paymentMethod: "Credit Card",
+                orderNumber: `HB-${Math.floor(1000 + Math.random() * 9000)}`
+            };
+
+            const docRef = await addDoc(collection(db, "orders"), orderData);
+
+            // Increment promo usage if applied
+            if (appliedDiscount) {
+                const promo = promoCodes.find(p => p.code === appliedDiscount.code);
+                if (promo) {
+                    const promoRef = doc(db, "promos", promo.id);
+                    await updateDoc(promoRef, { usage: increment(1) });
+                }
+            }
+
+            clearCart();
+            setAppliedDiscount(null);
+            router.push(`/checkout/success?orderId=${docRef.id}`);
+        } catch (error) {
+            console.error("Error placing order:", error);
+            alert("Failed to place order. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const taxAmount = totalPrice * 0.08;
+    const discountAmount = appliedDiscount?.amount || 0;
+    const finalPrice = totalPrice + taxAmount - discountAmount;
 
     return (
         <div className="bg-slate-50 min-h-screen flex flex-col items-center">
@@ -34,7 +131,7 @@ export default function PaymentPage() {
                         <span className="material-icons text-primary text-xl group-hover:-translate-x-1 transition-transform">arrow_back_ios_new</span>
                         <span className="text-sm font-bold text-slate-600 hidden md:block">Back to Shipping</span>
                     </button>
-                    <h1 className="text-lg md:text-xl font-black text-[#1a1a5a] tracking-tight text-slate-800">Secure Payment</h1>
+                    <h1 className="text-lg md:text-xl font-black text-[#1a1a5a] tracking-tight">Secure Payment</h1>
                     <div className="w-10"></div>
                 </div>
             </header>
@@ -51,9 +148,8 @@ export default function PaymentPage() {
                         <div className="space-y-6">
                             <h2 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4">Express Checkout</h2>
 
-                            {/* Payment Method Options (Simplified for demo) */}
                             <div className="space-y-4">
-                                <button className="w-full flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white">
+                                <button className="w-full flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white opacity-50 cursor-not-allowed">
                                     <div className="flex items-center gap-3">
                                         <span className="material-icons text-slate-400">payments</span>
                                         <span className="font-bold text-slate-700">Apple Pay</span>
@@ -76,69 +172,16 @@ export default function PaymentPage() {
                                         className="bg-slate-50 rounded-xl p-4 space-y-4 border border-slate-200"
                                     >
                                         <div className="space-y-1.5">
-                                            <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">
-                                                Cardholder Name
-                                            </label>
-                                            <input
-                                                required
-                                                name="cardHolder"
-                                                value={paymentInfo.cardHolder}
-                                                onChange={handleChange}
-                                                className="w-full bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm text-slate-900 placeholder-slate-400 outline-none"
-                                                placeholder="e.g. Biraj Mahato"
-                                                type="text"
-                                            />
+                                            <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">Cardholder Name</label>
+                                            <input required name="cardHolder" value={paymentInfo.cardHolder} onChange={handleChange} className="w-full bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm font-medium" placeholder="Full Name on Card" />
                                         </div>
-
                                         <div className="space-y-1.5">
-                                            <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">
-                                                Card Number
-                                            </label>
-                                            <div className="relative">
-                                                <input
-                                                    required
-                                                    name="cardNumber"
-                                                    value={paymentInfo.cardNumber}
-                                                    onChange={handleChange}
-                                                    className="w-full bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm pr-12 text-slate-900 placeholder-slate-400 outline-none"
-                                                    placeholder="xxxx xxxx xxxx xxxx"
-                                                    type="text"
-                                                />
-                                                <div className="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1 items-center opacity-50">
-                                                    <span className="material-icons text-slate-400 text-lg">credit_card</span>
-                                                </div>
-                                            </div>
+                                            <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">Card Number</label>
+                                            <input required name="cardNumber" value={paymentInfo.cardNumber} onChange={handleChange} className="w-full bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm font-medium" placeholder="0000 0000 0000 0000" />
                                         </div>
-
                                         <div className="grid grid-cols-2 gap-4">
-                                            <div className="space-y-1.5">
-                                                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">
-                                                    Expiry Date
-                                                </label>
-                                                <input
-                                                    required
-                                                    name="expiryDate"
-                                                    value={paymentInfo.expiryDate}
-                                                    onChange={handleChange}
-                                                    className="w-full bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm text-center text-slate-900 outline-none"
-                                                    placeholder="MM/YY"
-                                                    type="text"
-                                                />
-                                            </div>
-                                            <div className="space-y-1.5">
-                                                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">
-                                                    CVV
-                                                </label>
-                                                <input
-                                                    required
-                                                    name="cvv"
-                                                    value={paymentInfo.cvv}
-                                                    onChange={handleChange}
-                                                    className="w-full bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm text-center text-slate-900 outline-none"
-                                                    placeholder="***"
-                                                    type="password"
-                                                />
-                                            </div>
+                                            <input required name="expiryDate" value={paymentInfo.expiryDate} onChange={handleChange} className="bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm font-medium text-center" placeholder="MM / YY" />
+                                            <input required name="cvv" type="password" value={paymentInfo.cvv} onChange={handleChange} className="bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm font-medium text-center" placeholder="CVV" />
                                         </div>
                                     </motion.div>
                                 </div>
@@ -156,18 +199,45 @@ export default function PaymentPage() {
                                     <span className="text-[9px] font-black uppercase tracking-widest">PCI Level 1</span>
                                 </div>
                             </div>
-                            <p className="text-[10px] text-slate-400 font-medium tracking-wide">
-                                Your payment details are encrypted and never stored on our servers.
-                            </p>
                         </div>
                     </div>
                 </div>
 
-                {/* Sidebar Summary for Desktop */}
                 <aside className="hidden lg:block lg:col-span-5 relative">
                     <div className="sticky top-28 space-y-6">
                         <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/50 p-8">
                             <h3 className="text-xl font-black text-[#1a1a5a] mb-6 tracking-tight">Payment Summary</h3>
+
+                            {/* Discount Code Input */}
+                            <div className="mb-6 space-y-2">
+                                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Discount Code</label>
+                                <div className="flex gap-2">
+                                    <input
+                                        type="text"
+                                        value={promoInput}
+                                        onChange={(e) => setPromoInput(e.target.value)}
+                                        placeholder="Enter code"
+                                        className="flex-1 bg-slate-50 border border-slate-100 rounded-xl px-4 py-2 text-sm font-bold uppercase tracking-wider outline-none focus:border-primary"
+                                    />
+                                    <button
+                                        onClick={handleApplyPromo}
+                                        className="bg-[#1a1a5a] text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-black transition-colors"
+                                    >
+                                        Apply
+                                    </button>
+                                </div>
+                                {promoError && <p className="text-[10px] font-bold text-red-500 ml-1">{promoError}</p>}
+                                {appliedDiscount && (
+                                    <div className="flex items-center justify-between bg-green-50 p-3 rounded-xl border border-green-100">
+                                        <div className="flex items-center gap-2">
+                                            <span className="material-icons text-green-600 text-sm">sell</span>
+                                            <span className="text-[10px] font-black text-green-600 uppercase tracking-widest">{appliedDiscount.code} applied</span>
+                                        </div>
+                                        <button onClick={() => setAppliedDiscount(null)} className="material-icons text-green-400 text-sm hover:text-green-600">close</button>
+                                    </div>
+                                )}
+                            </div>
+
                             <div className="space-y-4 mb-8">
                                 <div className="flex justify-between text-slate-500 font-medium">
                                     <span>Subtotal</span>
@@ -179,8 +249,14 @@ export default function PaymentPage() {
                                 </div>
                                 <div className="flex justify-between text-slate-500 font-medium">
                                     <span>Taxes (8%)</span>
-                                    <span>${(totalPrice * 0.08).toFixed(2)}</span>
+                                    <span>${taxAmount.toFixed(2)}</span>
                                 </div>
+                                {appliedDiscount && (
+                                    <div className="flex justify-between text-green-600 font-bold">
+                                        <span>Discount ({appliedDiscount.code})</span>
+                                        <span>-${appliedDiscount.amount.toFixed(2)}</span>
+                                    </div>
+                                )}
                                 <div className="pt-4 border-t border-slate-100 flex justify-between items-baseline">
                                     <span className="text-lg font-black text-[#1a1a5a]">Amount Due</span>
                                     <span className="text-3xl font-black text-primary tracking-tighter">${finalPrice.toFixed(2)}</span>
@@ -189,20 +265,12 @@ export default function PaymentPage() {
 
                             <button
                                 onClick={handlePlaceOrder}
-                                className="w-full bg-primary hover:bg-[#e68a00] text-white font-black py-5 rounded-2xl shadow-xl shadow-primary/30 transition-all active:scale-95 flex items-center justify-center gap-3 group"
+                                disabled={isSubmitting}
+                                className="w-full bg-primary hover:bg-[#e68a00] text-white font-black py-5 rounded-2xl shadow-xl shadow-primary/30 transition-all active:scale-95 flex items-center justify-center gap-3 disabled:opacity-50 group"
                             >
-                                <span className="uppercase tracking-widest text-sm">Confirm Purchase</span>
+                                <span className="uppercase tracking-widest text-sm">{isSubmitting ? "Processing..." : "Confirm Purchase"}</span>
                                 <span className="material-icons group-hover:translate-x-1 transition-transform">lock</span>
                             </button>
-                        </div>
-
-                        <div className="bg-white rounded-2xl p-6 border border-slate-100 text-center">
-                            <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mb-4">We Accept</p>
-                            <div className="flex justify-center gap-4 opacity-40">
-                                <span className="material-icons">credit_card</span>
-                                <span className="material-icons">account_balance_wallet</span>
-                                <span className="material-icons">payments</span>
-                            </div>
                         </div>
                     </div>
                 </aside>
@@ -210,9 +278,10 @@ export default function PaymentPage() {
                 <div className="lg:hidden fixed bottom-0 left-0 right-0 p-6 bg-white/95 backdrop-blur-md border-t border-slate-100 z-10 flex justify-center">
                     <button
                         onClick={handlePlaceOrder}
-                        className="w-full max-w-md bg-primary hover:bg-[#e68a00] text-white font-black py-4 rounded-xl flex items-center justify-center gap-2 shadow-xl shadow-primary/30 transition-all active:scale-[0.98]"
+                        disabled={isSubmitting}
+                        className="w-full max-w-md bg-primary hover:bg-[#e68a00] text-white font-black py-4 rounded-xl flex items-center justify-center gap-2 shadow-xl shadow-primary/30 transition-all active:scale-[0.98] disabled:opacity-50"
                     >
-                        <span className="uppercase tracking-widest text-sm">Place Order • ${finalPrice.toFixed(2)}</span>
+                        <span className="uppercase tracking-widest text-sm">{isSubmitting ? "Processing..." : `Place Order • $${finalPrice.toFixed(2)}`}</span>
                         <span className="material-icons">lock</span>
                     </button>
                 </div>

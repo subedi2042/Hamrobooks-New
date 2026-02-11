@@ -9,7 +9,7 @@ export default function AdminLoginPage() {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const { login } = useAuth();
+    const { loginAdmin } = useAuth();
     const router = useRouter();
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -18,7 +18,7 @@ export default function AdminLoginPage() {
             setError("Please enter both full name and password.");
             return;
         }
-        const success = login(name, password);
+        const success = loginAdmin(name, password);
         if (success) {
             router.push("/admin");
         } else {
