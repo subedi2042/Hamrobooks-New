@@ -55,7 +55,22 @@ Hamrobooks is designed to be more than just an online bookstore. It is a communi
 - [ ] Events calendar and RSVP system for book launches.
 - [ ] Native Mobile applications (iOS/Android).
 
-## 🛠 Getting Started
+## 🛠 Technical Implementation Notes
+
+### Placeholder Checkout System
+
+To facilitate seamless testing and demonstrations without requiring a live Firebase backend for every environment, the checkout flow currently utilizes a **Placeholder Success Path**:
+
+- **Simulated Latency**: Uses `setTimeout` to mimic real-world payment processing for a premium UX.
+- **Mock Order Generation**: Automatically generates a unique `HB-XXXXXX` order number upon confirmation.
+- **State Preservation**: Intelligently handles cart state so that order details are visible on the success page before the session is cleared.
+- **Firebase Independence**: The flow is decoupled from Firestore writes in the placeholder mode, allowing for instant feedback during the prototype phase.
+
+### UI/UX Optimizations
+
+- **Two-Column Desktop Layout**: A persistent order summary remains visible on the right side during shipping and payment stages.
+- **Mobile-Responsive Fixed Footers**: Critical action buttons are pinned to the bottom of the screen on mobile devices for improved ergonomics.
+- **Material Design Icons**: Integrated via Google Fonts for a clean, consistent visual language.
 
 ### Prerequisites
 
