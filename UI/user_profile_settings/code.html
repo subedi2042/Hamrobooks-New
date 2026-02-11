@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Profile Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec7f13",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-shadow {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .ios-divider {
+            border-bottom: 0.5px solid rgba(0,0,0,0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center p-4">
+<!-- iPhone Mockup Container -->
+<div class="w-full max-w-[390px] h-[844px] bg-white dark:bg-background-dark rounded-[3rem] shadow-2xl border-[8px] border-slate-800 relative overflow-hidden flex flex-col">
+<!-- Status Bar -->
+<div class="h-11 w-full px-8 flex justify-between items-end pb-1 bg-white dark:bg-background-dark sticky top-0 z-20">
+<span class="text-xs font-bold">9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons text-[14px]">signal_cellular_alt</span>
+<span class="material-icons text-[14px]">wifi</span>
+<span class="material-icons text-[14px]">battery_full</span>
+</div>
+</div>
+<!-- Navigation Header -->
+<header class="px-6 py-4 flex items-center justify-between bg-white dark:bg-background-dark sticky top-11 z-20">
+<h1 class="text-3xl font-bold tracking-tight">Profile</h1>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-icons text-primary">edit</span>
+</button>
+</header>
+<!-- Main Content (Scrollable) -->
+<main class="flex-1 overflow-y-auto pb-20">
+<!-- Profile Hero Section -->
+<section class="flex flex-col items-center py-8 px-6 text-center">
+<div class="relative mb-4 group">
+<div class="w-28 h-28 rounded-full border-4 border-primary/10 overflow-hidden bg-primary/5">
+<img alt="User Profile Picture" class="w-full h-full object-cover" data-alt="Modern professional portrait of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdEkyjvRlGuxK8iZyQ_2-U_Q-Vm74kivz4h-b82r4n0Ogb5x7V5iFyaka1e2v0YBw9SeZNo81CSlFRwuaXgQRVE17EbH_4HL9r4bL2aCiYe2qSIe74vqv6Li6l3cPgSxeN75bFQrP3UoPNO2lXMsa8aLSDnPrdewwmIJ1DkpFY39gz6DOmsGzCWHFTe5hPy51OZDScdQzybfvtWiOP4dL86cayvGjSbQFXjjVTALnurZ5CSBoMtmvWxHQaQJx7bjzldMD-WPv2u4E"/>
+</div>
+<div class="absolute bottom-1 right-1 bg-primary text-white rounded-full p-1.5 border-2 border-white dark:border-background-dark ios-shadow">
+<span class="material-icons text-[16px]">camera_alt</span>
+</div>
+</div>
+<h2 class="text-xl font-bold">Sandeep Sharma</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">sandeep.sharma@thuprai.com</p>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[11px] font-bold rounded-full uppercase tracking-wider">Premium Member</span>
+</div>
+</section>
+<!-- Menu Sections -->
+<div class="px-4 space-y-6">
+<!-- Account Group -->
+<div class="bg-white dark:bg-slate-900/50 rounded-xl ios-shadow overflow-hidden">
+<!-- My Orders -->
+<button class="w-full flex items-center px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mr-4 group-active:scale-95 transition-transform">
+<span class="material-icons text-[22px]">shopping_bag</span>
+</div>
+<span class="flex-1 text-left font-medium">My Orders</span>
+<span class="material-icons text-slate-300 dark:text-slate-600">chevron_right</span>
+</button>
+<div class="mx-4 ios-divider"></div>
+<!-- Address Book -->
+<button class="w-full flex items-center px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mr-4 group-active:scale-95 transition-transform">
+<span class="material-icons text-[22px]">location_on</span>
+</div>
+<span class="flex-1 text-left font-medium">Address Book</span>
+<span class="material-icons text-slate-300 dark:text-slate-600">chevron_right</span>
+</button>
+<div class="mx-4 ios-divider"></div>
+<!-- Payment Methods -->
+<button class="w-full flex items-center px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mr-4 group-active:scale-95 transition-transform">
+<span class="material-icons text-[22px]">payments</span>
+</div>
+<span class="flex-1 text-left font-medium">Payment Methods</span>
+<span class="material-icons text-slate-300 dark:text-slate-600">chevron_right</span>
+</button>
+</div>
+<!-- Settings Group -->
+<div class="bg-white dark:bg-slate-900/50 rounded-xl ios-shadow overflow-hidden">
+<!-- Notification Settings -->
+<button class="w-full flex items-center px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mr-4 group-active:scale-95 transition-transform">
+<span class="material-icons text-[22px]">notifications</span>
+</div>
+<span class="flex-1 text-left font-medium">Notification Settings</span>
+<span class="material-icons text-slate-300 dark:text-slate-600">chevron_right</span>
+</button>
+<div class="mx-4 ios-divider"></div>
+<!-- Help & Support -->
+<button class="w-full flex items-center px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mr-4 group-active:scale-95 transition-transform">
+<span class="material-icons text-[22px]">help_center</span>
+</div>
+<span class="flex-1 text-left font-medium">Help &amp; Support</span>
+<span class="material-icons text-slate-300 dark:text-slate-600">chevron_right</span>
+</button>
+</div>
+<!-- Logout Button -->
+<button class="w-full mt-4 flex items-center justify-center px-4 py-4 bg-white dark:bg-slate-900/50 rounded-xl ios-shadow border border-slate-100 dark:border-slate-800 active:bg-slate-50 transition-colors">
+<span class="material-icons text-red-500 mr-2">logout</span>
+<span class="font-semibold text-red-500">Log Out</span>
+</button>
+<div class="text-center pb-8 pt-4">
+<p class="text-slate-400 dark:text-slate-500 text-xs font-medium">Thuprai v4.2.0 (USA)</p>
+</div>
+</div>
+</main>
+<!-- iOS Home Indicator -->
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-slate-900/10 dark:bg-white/20 rounded-full"></div>
+<!-- Tab Bar Mockup -->
+<nav class="h-20 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 flex justify-around items-start pt-3 absolute bottom-0 w-full px-6">
+<div class="flex flex-col items-center gap-0.5 text-slate-400">
+<span class="material-icons">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center gap-0.5 text-slate-400">
+<span class="material-icons">search</span>
+<span class="text-[10px] font-medium">Browse</span>
+</div>
+<div class="flex flex-col items-center gap-0.5 text-slate-400">
+<span class="material-icons">auto_stories</span>
+<span class="text-[10px] font-medium">My Books</span>
+</div>
+<div class="flex flex-col items-center gap-0.5 text-primary">
+<span class="material-icons">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</div>
+</nav>
+</div>
+</body></html>

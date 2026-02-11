@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Confirmation - Nepali Bookstore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f27f0d",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221910",
+                        "charcoal": "#333333",
+                        "slate-neutral": "#4a443f"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-charcoal dark:text-gray-100 min-h-screen flex justify-center">
+<!-- Mobile Container (iPhone Form Factor) -->
+<div class="w-full max-w-md bg-white dark:bg-zinc-900 min-h-screen shadow-2xl flex flex-col relative">
+<!-- Status Bar Placeholder (iOS Style) -->
+<div class="h-11 flex justify-between items-center px-6 pt-2">
+<span class="text-xs font-semibold">9:41</span>
+<div class="flex space-x-1">
+<span class="material-icons text-sm">signal_cellular_alt</span>
+<span class="material-icons text-sm">wifi</span>
+<span class="material-icons text-sm rotate-90">battery_full</span>
+</div>
+</div>
+<!-- Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Success Header -->
+<div class="flex flex-col items-center pt-8 pb-10 px-6 text-center">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-icons text-primary text-5xl">check_circle</span>
+</div>
+<h1 class="text-2xl font-bold text-charcoal dark:text-white mb-2">Thank you for your order!</h1>
+<p class="text-slate-neutral dark:text-gray-400 text-sm">We've received your request and we're getting it ready for shipment.</p>
+</div>
+<!-- Order Basic Info Card -->
+<div class="mx-6 p-5 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/10 mb-8">
+<div class="flex justify-between items-center mb-4">
+<div>
+<p class="text-[10px] uppercase tracking-wider font-semibold text-primary">Order Number</p>
+<p class="text-lg font-bold">#TH-7729415</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider font-semibold text-primary">Est. Arrival</p>
+<p class="text-sm font-semibold">Oct 24 - 27, 2023</p>
+</div>
+</div>
+<div class="flex items-center text-xs text-slate-neutral dark:text-gray-400">
+<span class="material-icons text-xs mr-1">local_shipping</span>
+<span>Shipping via USPS Priority Mail (USA)</span>
+</div>
+</div>
+<!-- Item Summary -->
+<div class="px-6 mb-8">
+<h2 class="text-sm font-bold uppercase tracking-widest text-slate-neutral dark:text-gray-400 mb-4 flex justify-between items-center">
+<span>Order Summary</span>
+<span class="text-xs font-normal lowercase">(3 items)</span>
+</h2>
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="flex gap-4">
+<div class="w-16 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-100 dark:border-zinc-800">
+<img class="w-full h-full object-cover" data-alt="Cover of a Nepali literature book" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU1H-3hn6Q3gQHIEiKg7pdXhOAHWOYcSIjVYHRKRPaBFiG-hz8pBmaOS-0NEnwNN5xbEHwF0Z-stYHzgAQn1ErpzjsE43aPZmhR9lb6vTQVjadODqGMaiY27W3Y1wwi6pc2Heberyi2qszSrqinUP1pInY3y3yX7oFBzLVA7NAjFkC7VxVJHhTtXBEpb05dSyxxt-LF3MGttZPTpiGJEAsosJO6e-PDzizomitr_7nVu-7QO2B9zT6AelAIO5bdtOM3EFjUjZ9B3I"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="text-sm font-semibold leading-tight mb-1">Palpasa Café</h3>
+<p class="text-xs text-slate-neutral dark:text-gray-400 mb-1">Narayan Wagle</p>
+<div class="flex justify-between items-center w-full">
+<span class="text-xs font-medium text-primary">Qty: 1</span>
+<span class="text-sm font-bold ml-4">$18.50</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4">
+<div class="w-16 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-100 dark:border-zinc-800">
+<img class="w-full h-full object-cover" data-alt="Cover of a Nepali history book" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOuO23waSjzv85O5NqaBbkgFUPcIo5nwpcvjKd2L7bRmGgGmUbj4saqq1jCGlLplIAlcISQ7qg18oXLzEJk21-hLddIExEPDt7SLsIIme2l8_5QPu4l5nxzGuVE0BMkxdlpBg8vUNk1P0aveRrIeiAdaotOqHiHlk4h4EyPMIjM4ayPn9RGBLMOXuKvfKL6AiUhnAfGhpjDagXJS_pgvvDni96_OxxEx1mqYXkOu8obBJXSdy6NYi17P35ipOTS1AuzMPWz6g0xHI"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="text-sm font-semibold leading-tight mb-1">Sumnima</h3>
+<p class="text-xs text-slate-neutral dark:text-gray-400 mb-1">B.P. Koirala</p>
+<div class="flex justify-between items-center w-full">
+<span class="text-xs font-medium text-primary">Qty: 1</span>
+<span class="text-sm font-bold ml-4">$14.00</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex gap-4">
+<div class="w-16 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-100 dark:border-zinc-800">
+<img class="w-full h-full object-cover" data-alt="Nepali poetry collection book cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2C4ze6Y0AT28RraNOZ6Jj_EyFWBRsCd5o90XyKAKp_vdkdg9X3Jb2-Q_zsmDob6J0TU2YfAPjEvarbDH_7Wi7utltTIZPGDuRFFDtjOplzBfoESjpHl-qUTMFsh08XZZeUn3UIwOmDJXZoC90ganYYOLe6hVLAsQiW6qXGOIW9fNxxKtnqyrwvXTamMza3fnBXA7qADt27EAqJA-rlf_72CnMLLTKUSTVoXYGnDKu1cabcRPxis9Cw4BZ6oMThpqZdY_h02EnYvk"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="text-sm font-semibold leading-tight mb-1">Muna Madan</h3>
+<p class="text-xs text-slate-neutral dark:text-gray-400 mb-1">Laxmi Prasad Devkota</p>
+<div class="flex justify-between items-center w-full">
+<span class="text-xs font-medium text-primary">Qty: 1</span>
+<span class="text-sm font-bold ml-4">$12.50</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Shipping Information -->
+<div class="px-6 mb-8">
+<div class="p-4 bg-gray-50 dark:bg-zinc-800/50 rounded-xl">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-neutral dark:text-gray-400 mb-3">Shipping Address</h3>
+<div class="flex items-start gap-3">
+<span class="material-icons text-primary text-lg">location_on</span>
+<div class="text-sm leading-relaxed">
+<p class="font-semibold">Abhishek Sharma</p>
+<p>123 Everest Way, Apt 4B</p>
+<p>Queens, NY 11101</p>
+<p>United States</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Pricing Calculation -->
+<div class="px-6 space-y-2 mb-10">
+<div class="flex justify-between text-sm text-slate-neutral dark:text-gray-400">
+<span>Subtotal</span>
+<span>$45.00</span>
+</div>
+<div class="flex justify-between text-sm text-slate-neutral dark:text-gray-400">
+<span>Shipping (USA Flat Rate)</span>
+<span>$5.99</span>
+</div>
+<div class="flex justify-between text-sm text-slate-neutral dark:text-gray-400">
+<span>Estimated Tax</span>
+<span>$3.82</span>
+</div>
+<div class="pt-2 border-t border-dashed border-gray-200 dark:border-zinc-700 flex justify-between items-center">
+<span class="font-bold text-lg">Total</span>
+<span class="font-bold text-lg text-primary">$54.81</span>
+</div>
+</div>
+</main>
+<!-- Fixed Footer Actions -->
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-white dark:bg-zinc-900 border-t border-gray-100 dark:border-zinc-800">
+<button class="w-full bg-primary hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] mb-4">
+                Track My Order
+            </button>
+<div class="text-center">
+<a class="text-sm font-semibold text-primary hover:underline" href="#">Continue Shopping</a>
+</div>
+</div>
+<!-- Home Indicator (iOS Style) -->
+<div class="h-1.5 w-32 bg-gray-300 dark:bg-zinc-700 rounded-full mx-auto mb-2 absolute bottom-1 left-1/2 -translate-x-1/2"></div>
+</div>
+</body></html>

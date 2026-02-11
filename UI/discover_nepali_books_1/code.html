@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Discover Nepali Books</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF6B00", // Thuprai Bright Orange
+                        "charcoal": "#2D2D2D", // Typography Charcoal
+                        "thuprai-bg": "#FFFFFF",
+                        "light-gray": "#F4F4F4",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-white text-charcoal font-display;
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen">
+<div class="h-11 w-full bg-white sticky top-0 z-50 flex items-center justify-between px-6">
+<span class="text-xs font-semibold text-charcoal">9:41</span>
+<div class="flex items-center space-x-1.5 text-charcoal">
+<span class="material-icons text-[14px]">signal_cellular_alt</span>
+<span class="material-icons text-[14px]">wifi</span>
+<span class="material-icons text-[14px]">battery_full</span>
+</div>
+</div>
+<nav class="sticky top-11 z-40 bg-white/95 backdrop-blur-md px-4 py-3 border-b border-gray-100">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h1 class="text-2xl font-bold tracking-tight text-charcoal">Discover</h1>
+<p class="text-[10px] uppercase tracking-widest text-primary font-bold">Nepali Bookstore</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="p-2 text-charcoal">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="relative">
+<button class="p-2 text-charcoal">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full border-2 border-white"></span>
+</div>
+</div>
+</div>
+</nav>
+<div class="sticky top-[112px] z-30 bg-white pt-4 pb-2">
+<div class="flex items-center space-x-2 overflow-x-auto px-4 hide-scrollbar">
+<button class="flex items-center space-x-1 px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold whitespace-nowrap shadow-sm shadow-orange-200">
+<span class="material-icons text-sm">tune</span>
+<span>Filters</span>
+</button>
+<button class="px-4 py-2 bg-light-gray border border-gray-100 rounded-lg text-sm font-medium text-charcoal whitespace-nowrap">
+                Genre
+            </button>
+<button class="px-4 py-2 bg-light-gray border border-gray-100 rounded-lg text-sm font-medium text-charcoal whitespace-nowrap">
+                Price
+            </button>
+<button class="px-4 py-2 bg-light-gray border border-gray-100 rounded-lg text-sm font-medium text-charcoal whitespace-nowrap">
+                Language
+            </button>
+<button class="p-2 bg-light-gray border border-gray-100 rounded-lg aspect-square flex items-center justify-center text-charcoal">
+<span class="material-icons text-sm">swap_vert</span>
+</button>
+</div>
+<div class="px-4 mt-4 mb-2">
+<p class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">42 Books Found in USA</p>
+</div>
+</div>
+<main class="px-4 pb-28">
+<div class="grid grid-cols-2 gap-x-4 gap-y-8">
+<div class="flex flex-col group">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-gray-50 border border-gray-100 shadow-sm mb-3">
+<img class="w-full h-full object-cover" data-alt="Modern book cover with minimal red and white design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxTnb3POuAiGQANPxkKxG1M08RmzcoYuPk9t-1VMp9Aj5tNhRN23gZLk01MgTDoueRLezud2lGJYSjflXpEUlTNhmBv4Bva_tvogrlXSeCkoH5EJIn1r5_QEVgkbZg57pCGrEcmLsBBGTX7ZkFJ6zBHBjAYN1X_hCGWtVlaTsM79M2VRpw07JU6fMrrsrewptmdCYrO65XJBSoet_xukLGsOyirhP2eOBvuY3eC120qslnH_jZFXqs2CvlKz-zZ7nSuD_hv6Wwxes"/>
+<button class="absolute bottom-2 right-2 w-9 h-9 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-icons text-xl">add</span>
+</button>
+</div>
+<div class="space-y-0.5">
+<h3 class="text-[15px] font-bold leading-tight text-charcoal">शिरीषको फूल</h3>
+<h4 class="text-xs text-gray-500 font-medium italic">The Blue Mimosa</h4>
+<p class="text-[11px] text-gray-400 font-medium">Parijat</p>
+<p class="text-sm font-bold text-primary mt-1">$18.99</p>
+</div>
+</div>
+<div class="flex flex-col group">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-gray-50 border border-gray-100 shadow-sm mb-3">
+<img class="w-full h-full object-cover" data-alt="Classic leather bound book cover on wooden background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgMxmEE6mH7imXvUUrCHP2YTh5Qbero-zF-KfUbwyPgtdCIRJ8lAaLilILJHvix_9hguQHERsK_bSxfpH0dgwDhrKNV3sdFCLlKYTVsTp_-9253uGFZNB0KjxpxGHMiKz5xFbt-aDdAKBKe-W7-cyY9BhiMKMrnxnHDqh-eWhHqH-VmecafgLdHnWxzjFKcj1iTvlMuML9_e0GGCh4v4n3c0lYqPb15h1hhXGT1-5L0kW1JTzyru1RNPSGqM6cuDCjAKQilpldhLM"/>
+<button class="absolute bottom-2 right-2 w-9 h-9 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-icons text-xl">add</span>
+</button>
+</div>
+<div class="space-y-0.5">
+<h3 class="text-[15px] font-bold leading-tight text-charcoal">सेतो बाघ</h3>
+<h4 class="text-xs text-gray-500 font-medium italic">The White Tiger</h4>
+<p class="text-[11px] text-gray-400 font-medium">Diamond Shumsher</p>
+<p class="text-sm font-bold text-primary mt-1">$22.50</p>
+</div>
+</div>
+<div class="flex flex-col group">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-gray-50 border border-gray-100 shadow-sm mb-3">
+<img class="w-full h-full object-cover" data-alt="A stacked set of colorful poetry books" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv3NTD1yoa_uKhomkyTZJ6vZyD6nP-r2U-wclkdAfBaI4he_OXIn8oQtStaPTv7EnIfqGV2SBFJW7d13l3_1PVsLRvs31q1SxcxR3lBaymkOa7FQbj5Rw6lmyr7C2cQVENr2BUzdUQX0UqMs40EIvY8s3pHSeIIMLpJ2E1W3bSvo3LmLNUNQxMK1lRSz-JOm8Zgz4H_NuYM7ZR7pXr1XRWrSwJoKtER1RoBV5XADzlBNROg7LXQgUV3vcxvU0CAwlUi2fYZbqFovA"/>
+<button class="absolute bottom-2 right-2 w-9 h-9 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-icons text-xl">add</span>
+</button>
+</div>
+<div class="space-y-0.5">
+<h3 class="text-[15px] font-bold leading-tight text-charcoal">मुनामदन</h3>
+<h4 class="text-xs text-gray-500 font-medium italic">Muna Madan</h4>
+<p class="text-[11px] text-gray-400 font-medium">Laxmi Prasad Devkota</p>
+<p class="text-sm font-bold text-primary mt-1">$15.00</p>
+</div>
+</div>
+<div class="flex flex-col group">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-gray-50 border border-gray-100 shadow-sm mb-3">
+<img class="w-full h-full object-cover" data-alt="Vibrant orange and yellow book cover layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUEw8ppCfwhPtQ3vHJWUDLtIjPHyIKgUL9cd0vqZsOEzk6-EyAYCgIMRq7ZCvwa83EX5v3hldoWp1KwqUiUK1HD8Xhcrlw7vWqcBBqPev2EfPoib5xTh_PrjWJD6g4H6Mt_p96rV3f0Kb6OGisqe2BEhKAI-ooZ9EjYVBjd2mEcKAjZaE0-EQpun1g1Fu7QY9Ez_5lbEjmadekrOV_eVDq35RKlGpCCv_nj93ZLqr1QQT5zYov1EP-fNR7CXqEqmM2AAVkka8s3mE"/>
+<button class="absolute bottom-2 right-2 w-9 h-9 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-icons text-xl">add</span>
+</button>
+</div>
+<div class="space-y-0.5">
+<h3 class="text-[15px] font-bold leading-tight text-charcoal">पल्पसा क्याफे</h3>
+<h4 class="text-xs text-gray-500 font-medium italic">Palpasa Cafe</h4>
+<p class="text-[11px] text-gray-400 font-medium">Narayan Wagle</p>
+<p class="text-sm font-bold text-primary mt-1">$19.99</p>
+</div>
+</div>
+<div class="flex flex-col group">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-gray-50 border border-gray-100 shadow-sm mb-3">
+<img class="w-full h-full object-cover" data-alt="Minimalist abstract blue and white book cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSv-g9jgVMyafgLd4VlKx1Qp8OUcibRKvGbhmur_Kylm_g9X61eSsyKEccfh0E3B5Elk29qnSK35SSXri2Gyk-jcxNi6bbXZonPfbgGFjP2Kx7UhktdXfGDtk8Y6JVPoYyljpuWUlT8wd8x4yc1jaka6oRqdHiUw5b64PNd86AFbKZQXPyWI9fHEsZttnKoFv4_IDZxKHEqpt_plo5W0G956g4aY02CaAKi_DA-EWYfF4--1dYf8UYnz1A_Pi0M0QbfEEu8PNRr0I"/>
+<button class="absolute bottom-2 right-2 w-9 h-9 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-icons text-xl">add</span>
+</button>
+</div>
+<div class="space-y-0.5">
+<h3 class="text-[15px] font-bold leading-tight text-charcoal">बसाइँ</h3>
+<h4 class="text-xs text-gray-500 font-medium italic">Basain</h4>
+<p class="text-[11px] text-gray-400 font-medium">Lil Bahadur Chhetri</p>
+<p class="text-sm font-bold text-primary mt-1">$16.45</p>
+</div>
+</div>
+<div class="flex flex-col group">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-gray-50 border border-gray-100 shadow-sm mb-3">
+<img class="w-full h-full object-cover" data-alt="Dark dramatic artistic book cover design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2366YKg1CqnGNGjBGpL_cCzfhBLmK1JnfhVyKJyqc8oB2kKttPRn-XdAkkDv70AehR460AHGObMJpzVJG0VwUdNU0xxcY3sDpeB9C8p2UBK0kv9svPFEOvQzSYv8MuRTSr2nnACn_B593tWtuwg4NKL1evNZM4t5amk9IV3EsKChnlqc9148Fqn4sRU6TKX9NtxDEVsEcy8z9N7yV6LdskcPPuhm2tl25wMnaOHpnKHkiY9QvyzrM7hyAMSWuhSqub-VP4d8GFSo"/>
+<button class="absolute bottom-2 right-2 w-9 h-9 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-icons text-xl">add</span>
+</button>
+</div>
+<div class="space-y-0.5">
+<h3 class="text-[15px] font-bold leading-tight text-charcoal">फातसुङ</h3>
+<h4 class="text-xs text-gray-500 font-medium italic">Phatsung</h4>
+<p class="text-[11px] text-gray-400 font-medium">Chuden Kabimo</p>
+<p class="text-sm font-bold text-primary mt-1">$21.00</p>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-0 w-full bg-white/95 backdrop-blur-lg border-t border-gray-100 px-6 pt-3 pb-8 z-50">
+<div class="flex items-center justify-between max-w-md mx-auto">
+<button class="flex flex-col items-center space-y-1 text-primary">
+<span class="material-symbols-outlined fill-1">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Discover</span>
+</button>
+<button class="flex flex-col items-center space-y-1 text-gray-400">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Library</span>
+</button>
+<button class="flex flex-col items-center space-y-1 text-gray-400">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Wishlist</span>
+</button>
+<button class="flex flex-col items-center space-y-1 text-gray-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Profile</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-gray-200 rounded-full"></div>
+</div>
+
+</body></html>

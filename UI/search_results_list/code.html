@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search Results - Nepali Bookstore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec7f13",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex justify-center">
+<!-- Mobile Container -->
+<div class="w-full max-w-[430px] bg-white dark:bg-background-dark min-h-screen shadow-2xl flex flex-col relative">
+<!-- Header / Search Bar -->
+<header class="sticky top-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md pt-12 pb-4 px-4 border-b border-slate-100 dark:border-white/10">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 text-slate-600 dark:text-slate-400">
+<span class="material-icons">arrow_back_ios</span>
+</button>
+<div class="flex-1 relative">
+<input class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-xl py-3 pl-11 pr-4 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all dark:text-white" placeholder="Search books, authors..." type="text" value="Muna Madan"/>
+<span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+</div>
+</div>
+<!-- Active Filters Scroll -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar mt-4 -mx-1 px-1">
+<div class="flex items-center gap-1.5 bg-primary text-white px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap shadow-sm shadow-primary/20">
+                    In Stock
+                    <span class="material-icons text-sm">close</span>
+</div>
+<div class="flex items-center gap-1.5 bg-primary/10 text-primary border border-primary/20 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap">
+                    Hardcover
+                    <span class="material-icons text-sm">close</span>
+</div>
+<div class="flex items-center gap-1.5 bg-primary/10 text-primary border border-primary/20 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap">
+                    Nepali
+                    <span class="material-icons text-sm">close</span>
+</div>
+<div class="flex items-center gap-1.5 bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-400 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap">
+                    New Arrivals
+                </div>
+</div>
+</header>
+<!-- Filter & Sort Action Bar -->
+<div class="px-4 py-3 flex items-center justify-between border-b border-slate-50 dark:border-white/5 bg-white dark:bg-background-dark">
+<span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">24 Results found</span>
+<button class="flex items-center gap-1.5 text-sm font-semibold text-primary">
+<span class="material-icons text-lg">tune</span>
+                Filter &amp; Sort
+            </button>
+</div>
+<!-- Book List Results -->
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Result Item 1 -->
+<div class="p-4 flex gap-4 border-b border-slate-50 dark:border-white/5">
+<div class="w-24 h-36 flex-shrink-0 bg-slate-200 dark:bg-white/10 rounded-lg overflow-hidden shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Classic Nepali book cover with traditional illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4FI8tLjFdwTvf3mkLYlvFrxsK63O2MboMLyKkt9EH7C0I6w_2awLTtLJzIExD3P5g-Zd7QewYKi2u6NXN5wjvaE55mrfP_l_xZMfaQJSQBiDiWIGUT6VIjLkMUOA9poeK-qE7KFoRvpCyo9x0ft-NzYtEy8BSV0lMTC2VPf_umdp28xLg2Q2MbOiFxLK4KYnyb8Okpz7FjbPz4AZh-Cr1dTNylkjxXHqeMOp73wEzlVK4f8PFP-dzZNjguQ-8lnb5YxdcXdnohA8"/>
+<div class="absolute top-1 left-1 bg-green-500 text-[10px] font-bold text-white px-1.5 py-0.5 rounded-sm">USA STOCK</div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight">Muna Madan (मुनामदन)</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Laxmi Prasad Devkota</p>
+<div class="flex items-center gap-1 mt-1.5">
+<div class="flex text-primary">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star_half</span>
+</div>
+<span class="text-[11px] text-slate-400 font-medium">(120)</span>
+</div>
+<p class="text-[11px] text-green-600 font-medium mt-1 flex items-center gap-1">
+<span class="material-icons text-[14px]">bolt</span>
+                            Ships from New York
+                        </p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="text-lg font-bold text-slate-900 dark:text-white">$12.99</span>
+<button class="bg-primary hover:bg-orange-600 text-white w-9 h-9 rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-icons text-xl">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Result Item 2 -->
+<div class="p-4 flex gap-4 border-b border-slate-50 dark:border-white/5 opacity-90">
+<div class="w-24 h-36 flex-shrink-0 bg-slate-200 dark:bg-white/10 rounded-lg overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Modern Nepali literature book cover design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsAJJRYMguJl_LtqIZrNqszJlgUZU64T72CsdgMheSLbuKi0Z2ZR29u2fB4RD1fZVlUDKVbtUsL1uant-yK3zyHYd_-QkUhKF5k94QZ6Kn_U0boPE-5qmKGzJRa0HFT8Ya4e7Qo4hXoUx6d1vtzAPCIdz5wDxZQZlm5qznhILRU3NHNnk1SiHw7jWLZk8ECAjpsFkGzvoIhNZvsx7tFXJzHWkAMaXfDOKefnjL3avHTd1B1MWjeEauMpeij_Rjbn1x3StLFHK2PMo"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight">Muna Madan: English Edition</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Tr. by Anand Shrestha</p>
+<div class="flex items-center gap-1 mt-1.5">
+<div class="flex text-primary">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm text-slate-300">star</span>
+</div>
+<span class="text-[11px] text-slate-400 font-medium">(45)</span>
+</div>
+<p class="text-[11px] text-slate-400 mt-1 italic">Delivers by Fri, Oct 20</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="text-lg font-bold text-slate-900 dark:text-white">$14.50</span>
+<button class="bg-primary/10 text-primary w-9 h-9 rounded-lg flex items-center justify-center">
+<span class="material-icons text-xl">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Result Item 3 -->
+<div class="p-4 flex gap-4 border-b border-slate-50 dark:border-white/5">
+<div class="w-24 h-36 flex-shrink-0 bg-slate-200 dark:bg-white/10 rounded-lg overflow-hidden shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Collection of Nepali poetry book spine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvzYUpCwI-8DFFzoJOfHzrXgKAJlLuFonKwpYbTrBkQFV_Xx5kQ7PdMthe13zQxihdAXELbqopdKRB9RMBlSCcdtAcwzV6qsxdo4Nd-aK78vctRlpkZxYeyVnppezhz75nhRBYYhq3vta6tmgVv3Pp_flJTkqLrLU5ZEppZeoe02gy1eiaBMGbjYWWvYo8e2kcCQkE1365PGHqKXim4wAtqSTlsZRzQo68nIxXS_kDokUJ74M3oHnVYDLGjsczSUxldFM4wbZVBQQ"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<span class="bg-white/90 text-slate-900 text-[10px] font-bold px-2 py-1 rounded">OUT OF STOCK</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-between opacity-60">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight">Muna Madan (Audiobook CD)</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Classic Audio Series</p>
+<div class="flex items-center gap-1 mt-1.5">
+<div class="flex text-primary">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm text-slate-300">star</span>
+<span class="material-icons text-sm text-slate-300">star</span>
+</div>
+<span class="text-[11px] text-slate-400 font-medium">(12)</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="text-lg font-bold text-slate-900 dark:text-white">$8.99</span>
+<button class="bg-slate-200 dark:bg-white/10 text-slate-400 w-9 h-9 rounded-lg flex items-center justify-center cursor-not-allowed">
+<span class="material-icons text-xl">notifications</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Result Item 4 -->
+<div class="p-4 flex gap-4 border-b border-slate-50 dark:border-white/5">
+<div class="w-24 h-36 flex-shrink-0 bg-slate-200 dark:bg-white/10 rounded-lg overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Bilingual Nepali and English literature anthology" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBM3Nm6eVHos_Mn_XIkecgMVBJnl0wr5CANg-QfIStdH6oE_8qkuqrWfkCcCa-TnvaufzDQaEzBRUMRV3-6Y-PLQJW9BzOcbI21Xx4h6twnHhWrPDOUmvLYGYcnT4Fbzz6EW1ZvQ2RRDc0_xdEGF6hGxXcn1-kIMUM3PJgLbz_jvhOyMImiCCCGZ7rWSLHa4sXWjMM427dqJmugNWmj2I5mT80qyHGNBqbolCBmajcsI5gkL2ZOg5C75J7B3lSp-XvuVMuO7WFd8E"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight">Devkota’s Greatest Works</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Includes Muna Madan</p>
+<div class="flex items-center gap-1 mt-1.5">
+<div class="flex text-primary">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+<span class="text-[11px] text-slate-400 font-medium">(32)</span>
+</div>
+<p class="text-[11px] text-green-600 font-medium mt-1">Free Shipping to USA</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 line-through">$24.00</span>
+<span class="text-lg font-bold text-slate-900 dark:text-white">$19.99</span>
+</div>
+<button class="bg-primary hover:bg-orange-600 text-white w-9 h-9 rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-icons text-xl">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- iOS Bottom Tab Bar -->
+<nav class="absolute bottom-0 left-0 right-0 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-slate-100 dark:border-white/10 px-8 pt-3 pb-8 flex items-center justify-between">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-icons">search</span>
+<span class="text-[10px] font-medium">Search</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 relative">
+<span class="material-icons">shopping_bag</span>
+<span class="text-[10px] font-medium">Cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-white dark:border-background-dark">2</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons">person_outline</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</nav>
+<!-- Filter Tray (Bottom Sheet) - Mockup State (Hidden visually but prepared) -->
+<!-- Normally toggled via JS, we keep it as a design element -->
+<div class="hidden absolute inset-0 bg-black/40 z-[60] flex items-end">
+<div class="bg-white dark:bg-background-dark w-full rounded-t-[2rem] p-6 pb-12 animate-slide-up">
+<div class="w-12 h-1.5 bg-slate-200 dark:bg-white/10 rounded-full mx-auto mb-6"></div>
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-xl font-bold">Filter &amp; Sort</h2>
+<button class="text-primary font-semibold">Reset</button>
+</div>
+<div class="space-y-6">
+<div>
+<h3 class="text-sm font-bold text-slate-400 uppercase mb-3">Sort By</h3>
+<div class="grid grid-cols-2 gap-3">
+<button class="p-3 border-2 border-primary rounded-xl text-primary font-semibold text-sm">Best Selling</button>
+<button class="p-3 border-2 border-slate-100 dark:border-white/5 rounded-xl text-slate-600 dark:text-slate-400 text-sm">Price: Low to High</button>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl mt-8 shadow-xl shadow-primary/30">Apply Filters</button>
+</div>
+</div>
+</div>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        @keyframes slide-up {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        .animate-slide-up {
+            animation: slide-up 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</body></html>

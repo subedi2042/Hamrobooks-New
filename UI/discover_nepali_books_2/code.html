@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thuprai Home - Discover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF9900", // Strictly Thuprai Bright Orange
+                        "charcoal": "#2D2D2D", // Dark Charcoal Typography
+                        "thuprai-white": "#FFFFFF",
+                        "thuprai-gray": "#F4F4F4", // Light gray dividers/chips
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-white text-charcoal font-display;
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen">
+<div class="h-11 w-full bg-white sticky top-0 z-50 flex items-center justify-between px-6">
+<span class="text-xs font-semibold text-charcoal">9:41</span>
+<div class="flex items-center space-x-1.5 text-charcoal">
+<span class="material-icons text-[14px]">signal_cellular_alt</span>
+<span class="material-icons text-[14px]">wifi</span>
+<span class="material-icons text-[14px]">battery_full</span>
+</div>
+</div>
+<nav class="sticky top-11 z-40 bg-white/95 backdrop-blur-md px-4 py-3 border-b border-thuprai-gray">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h1 class="text-2xl font-bold tracking-tight text-charcoal">Discover</h1>
+<p class="text-[10px] uppercase tracking-widest text-primary font-bold">USA Store</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="p-2 text-charcoal">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="relative">
+<button class="p-2 text-charcoal">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full border-2 border-white"></span>
+</div>
+</div>
+</div>
+</nav>
+<div class="sticky top-[112px] z-30 bg-white pt-4 pb-2">
+<div class="flex items-center space-x-2 overflow-x-auto px-4 hide-scrollbar">
+<button class="flex items-center space-x-1 px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold whitespace-nowrap shadow-sm">
+<span class="material-icons text-sm">tune</span>
+<span>Filters</span>
+</button>
+<button class="px-4 py-2 bg-thuprai-gray border border-transparent rounded-lg text-sm font-medium text-charcoal whitespace-nowrap">
+                Bestsellers
+            </button>
+<button class="px-4 py-2 bg-thuprai-gray border border-transparent rounded-lg text-sm font-medium text-charcoal whitespace-nowrap">
+                New Releases
+            </button>
+<button class="px-4 py-2 bg-thuprai-gray border border-transparent rounded-lg text-sm font-medium text-charcoal whitespace-nowrap">
+                Literature
+            </button>
+<button class="p-2 bg-thuprai-gray border border-transparent rounded-lg aspect-square flex items-center justify-center text-charcoal">
+<span class="material-icons text-sm">swap_vert</span>
+</button>
+</div>
+<div class="px-4 mt-4 mb-2">
+<p class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Showing 42 Books</p>
+</div>
+</div>
+<main class="px-4 pb-32">
+<div class="grid grid-cols-2 gap-x-4 gap-y-8">
+<div class="flex flex-col">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-thuprai-gray border border-thuprai-gray shadow-sm mb-3">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxTnb3POuAiGQANPxkKxG1M08RmzcoYuPk9t-1VMp9Aj5tNhRN23gZLk01MgTDoueRLezud2lGJYSjflXpEUlTNhmBv4Bva_tvogrlXSeCkoH5EJIn1r5_QEVgkbZg57pCGrEcmLsBBGTX7ZkFJ6zBHBjAYN1X_hCGWtVlaTsM79M2VRpw07JU6fMrrsrewptmdCYrO65XJBSoet_xukLGsOyirhP2eOBvuY3eC120qslnH_jZFXqs2CvlKz-zZ7nSuD_hv6Wwxes"/>
+<button class="absolute bottom-2 right-2 w-10 h-10 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-icons text-2xl">add</span>
+</button>
+</div>
+<div class="space-y-0.5">
+<h3 class="text-[15px] font-bold leading-tight text-charcoal">शिरीषको फूल</h3>
+<h4 class="text-xs text-gray-500 font-medium italic">The Blue Mimosa</h4>
+<p class="text-[11px] text-gray-400 font-medium">Parijat</p>
+<p class="text-sm font-bold text-primary mt-1">$18.99</p>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-thuprai-gray border border-thuprai-gray shadow-sm mb-3">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgMxmEE6mH7imXvUUrCHP2YTh5Qbero-zF-KfUbwyPgtdCIRJ8lAaLilILJHvix_9hguQHERsK_bSxfpH0dgwDhrKNV3sdFCLlKYTVsTp_-9253uGFZNB0KjxpxGHMiKz5xFbt-aDdAKBKe-W7-cyY9BhiMKMrnxnHDqh-eWhHqH-VmecafgLdHnWxzjFKcj1iTvlMuML9_e0GGCh4v4n3c0lYqPb15h1hhXGT1-5L0kW1JTzyru1RNPSGqM6cuDCjAKQilpldhLM"/>
+<button class="absolute bottom-2 right-2 w-10 h-10 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-icons text-2xl">add</span>
+</button>
+</div>
+<div class="space-y-0.5">
+<h3 class="text-[15px] font-bold leading-tight text-charcoal">सेतो बाघ</h3>
+<h4 class="text-xs text-gray-500 font-medium italic">The White Tiger</h4>
+<p class="text-[11px] text-gray-400 font-medium">Diamond Shumsher</p>
+<p class="text-sm font-bold text-primary mt-1">$22.50</p>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-thuprai-gray border border-thuprai-gray shadow-sm mb-3">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv3NTD1yoa_uKhomkyTZJ6vZyD6nP-r2U-wclkdAfBaI4he_OXIn8oQtStaPTv7EnIfqGV2SBFJW7d13l3_1PVsLRvs31q1SxcxR3lBaymkOa7FQbj5Rw6lmyr7C2cQVENr2BUzdUQX0UqMs40EIvY8s3pHSeIIMLpJ2E1W3bSvo3LmLNUNQxMK1lRSz-JOm8Zgz4H_NuYM7ZR7pXr1XRWrSwJoKtER1RoBV5XADzlBNROg7LXQgUV3vcxvU0CAwlUi2fYZbqFovA"/>
+<button class="absolute bottom-2 right-2 w-10 h-10 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-icons text-2xl">add</span>
+</button>
+</div>
+<div class="space-y-0.5">
+<h3 class="text-[15px] font-bold leading-tight text-charcoal">मुनामदन</h3>
+<h4 class="text-xs text-gray-500 font-medium italic">Muna Madan</h4>
+<p class="text-[11px] text-gray-400 font-medium">Laxmi Prasad Devkota</p>
+<p class="text-sm font-bold text-primary mt-1">$15.00</p>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-thuprai-gray border border-thuprai-gray shadow-sm mb-3">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUEw8ppCfwhPtQ3vHJWUDLtIjPHyIKgUL9cd0vqZsOEzk6-EyAYCgIMRq7ZCvwa83EX5v3hldoWp1KwqUiUK1HD8Xhcrlw7vWqcBBqPev2EfPoib5xTh_PrjWJD6g4H6Mt_p96rV3f0Kb6OGisqe2BEhKAI-ooZ9EjYVBjd2mEcKAjZaE0-EQpun1g1Fu7QY9Ez_5lbEjmadekrOV_eVDq35RKlGpCCv_nj93ZLqr1QQT5zYov1EP-fNR7CXqEqmM2AAVkka8s3mE"/>
+<button class="absolute bottom-2 right-2 w-10 h-10 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-icons text-2xl">add</span>
+</button>
+</div>
+<div class="space-y-0.5">
+<h3 class="text-[15px] font-bold leading-tight text-charcoal">पल्पसा क्याफे</h3>
+<h4 class="text-xs text-gray-500 font-medium italic">Palpasa Cafe</h4>
+<p class="text-[11px] text-gray-400 font-medium">Narayan Wagle</p>
+<p class="text-sm font-bold text-primary mt-1">$19.99</p>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-0 w-full bg-white/95 backdrop-blur-lg border-t border-thuprai-gray px-6 pt-3 pb-8 z-50">
+<div class="flex items-center justify-between max-w-md mx-auto">
+<button class="flex flex-col items-center space-y-1 text-primary">
+<span class="material-symbols-outlined fill-1">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Explore</span>
+</button>
+<button class="flex flex-col items-center space-y-1 text-gray-400">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-charcoal/50">Library</span>
+</button>
+<button class="flex flex-col items-center space-y-1 text-gray-400">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-charcoal/50">Wishlist</span>
+</button>
+<button class="flex flex-col items-center space-y-1 text-gray-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-charcoal/50">Profile</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-thuprai-gray rounded-full"></div>
+</div>
+
+</body></html>

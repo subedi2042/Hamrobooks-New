@@ -1,0 +1,3 @@
+title,nepaliTitle,author,genre,price,originalPrice,isbn,pages,language,format,synopsis,main_image_url,additional_image_urls
+"Muna Madan","मुनामदन","Laxmi Prasad Devkota","Classics",18.99,24.00,"978-9937...",120,"Nepali","Paperback","Classic Nepali epic poem...","https://example.com/cover.jpg","https://example.com/page1.jpg,https://example.com/back.jpg"
+"Karnali Blues","कर्नाली ब्लुज","Buddhisagar","Fiction",18.99,24.00,"978-9937...",416,"Nepali","Paperback","A son's love for his father...","https://example.com/cover2.jpg",""

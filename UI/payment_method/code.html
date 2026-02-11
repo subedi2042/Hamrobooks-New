@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Method - Thuprai USA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF9900",
+                        "charcoal": "#333333",
+                        "background-light": "#FFFFFF",
+                        "border-light": "#E5E7EB",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-slate-100 font-display text-charcoal min-h-screen flex justify-center">
+<div class="w-full max-w-[430px] min-h-screen bg-background-light relative flex flex-col shadow-2xl">
+<div class="h-12 flex justify-between items-center px-8 pt-4">
+<span class="text-sm font-semibold">9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-[18px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[18px]">wifi</span>
+<span class="material-icons-round text-[18px]">battery_full</span>
+</div>
+</div>
+<header class="px-6 py-4 flex items-center justify-between">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-icons-round">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight text-charcoal">Payment Method</h1>
+<div class="w-10"></div>
+</header>
+<div class="px-6 py-2 flex items-center justify-center gap-2">
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-border-light rounded-full"></div>
+</div>
+<div class="px-6 pb-4 flex justify-between text-[10px] uppercase tracking-widest font-semibold">
+<span class="text-primary">Shipping</span>
+<span class="text-primary">Payment</span>
+<span class="text-slate-400">Review</span>
+</div>
+<div class="flex-1 overflow-y-auto px-6 pb-32">
+<div class="bg-slate-50 rounded-xl border border-border-light p-4 mb-8">
+<div class="flex justify-between items-center cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary/20 flex items-center justify-center">
+<span class="material-icons-round text-primary text-sm">shopping_basket</span>
+</div>
+<div>
+<p class="text-xs text-slate-500">Order Total</p>
+<p class="text-lg font-bold text-charcoal">$142.50 <span class="text-xs font-normal text-slate-500 ml-1">USD</span></p>
+</div>
+</div>
+<span class="material-icons-round text-slate-400">expand_more</span>
+</div>
+</div>
+<div class="space-y-4">
+<h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4">Select Method</h2>
+<button class="w-full flex items-center justify-between p-4 rounded-xl border border-border-light bg-white hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-3">
+<img alt="Apple Pay" class="h-6" data-alt="Apple Pay official logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO1Dh7QK8q2RzDPzez_7HPqC_MBiy7zQ9DZDbTsDXU38jEdVao7yQ7WHx0-vF3U5axfvDAfQZJH563-G7yMsoHsdVuJYbNClT36L9XHhmLlokP5bRmp-fEnyNQtHqjb8i-Fo57gwZLei4GFRHIfPWzWChMvGOlLYTVvVsSmDeuVPwDRJ9hmrc9CptfJDzhY1wZnA6MSKFe8VER0GLeMIsiOgbXnsOH1-AdpTKGW2oYbxtjl6BVZMZ3FcYQaW9HE6anOKhdmqZJsu8"/>
+<span class="font-medium text-charcoal">Apple Pay</span>
+</div>
+<span class="material-icons-round text-primary">check_circle</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 rounded-xl border border-border-light bg-white hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-3">
+<img alt="Google Pay" class="h-5" data-alt="Google Pay official logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9XW0qOj0JN7Jk180BS-4iNC3-0tetnkVwsPA8ZXPi9hPtzIYT4UYmoDIvaggds-0opaHD4QaSLFp_i0-EWnqIq35PCp4Lw6uWnOORxmIreLfMuNF6RJpZekabwKrCv1jsegilogfpgzSa23XVVYtPuXBmiERX0i7xbTJ9IZ7poPkPdwqK2yzhKPwe7aA_qDcQNhBHVxjny9ii6hKlrnTWQnqpN7dC1Od4oCBqVmJlkVLPjW4SKD_I1b5RUms8P3KuEfgCosTsTvs"/>
+<span class="font-medium text-charcoal">Google Pay</span>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-border-light"></div>
+</button>
+<div class="space-y-4">
+<div class="w-full flex items-center justify-between p-4 rounded-xl border-2 border-primary bg-primary/5">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-icons-round">credit_card</span>
+<span class="font-bold">Credit or Debit Card</span>
+</div>
+<span class="material-icons-round text-primary">radio_button_checked</span>
+</div>
+<div class="bg-slate-50 rounded-xl p-4 space-y-4 border border-border-light">
+<div class="space-y-1.5">
+<label class="text-[11px] font-bold uppercase tracking-wider text-slate-500 ml-1">Cardholder Name</label>
+<input class="w-full bg-white border-border-light rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm text-charcoal placeholder-slate-400" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-bold uppercase tracking-wider text-slate-500 ml-1">Card Number</label>
+<div class="relative">
+<input class="w-full bg-white border-border-light rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm pr-12 text-charcoal placeholder-slate-400" placeholder="xxxx xxxx xxxx xxxx" type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1">
+<img class="h-4" data-alt="Visa card icon small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxLg5N5flaALTgkfH5L6Bp5C-Fktpma7GHoXI531cZ-7cDVkXljJHXwV4hQKg_NDBzS4GKquDDAvwPUvY2PO6trYkJc0TNP8PSXGo92hTvKrsszHuGFPA_2LEaYdm9olJrpJK2xAFHPtFA26SDD31sp6932CjpuV-9fUFtuhXEzKd5sPyyRrD8sXE5NFhbFiag3txuDs-Jn9R1U1qB9_xOX5JOPzjmnwOuSSwrKgCK06ZWOA_pxY-fyCV1ju6RAfAMruWOPZ-dYhQ"/>
+<img class="h-4" data-alt="Mastercard icon small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA03NsBBIYO5hIIGIwGryY0qXDBhE8kLaossCEA340J-z1j0RgVBM0iHtO8oDjczGOPAeJzsyh0sbJncIgw7lENcObsrrXZglT4dWgfMrHfLi4Yr3Sn3xu3dVSD1up5YN_0v1IDE0BXv-Bm5vU-znfBzhmOqT4CtYh9Aveu3Ej0SKbU6VipnoJK07tD0oY9j9VeG6ZprqzvjkBvWVvXZLKxRXo-cSjp9FCWSLKu52KiiZyFUcUM_EVLCyP6rm_H0dOcNzfaWvpMEak"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-[11px] font-bold uppercase tracking-wider text-slate-500 ml-1">Expiry Date</label>
+<input class="w-full bg-white border-border-light rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm text-center text-charcoal placeholder-slate-400" placeholder="MM/YY" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-bold uppercase tracking-wider text-slate-500 ml-1">CVV</label>
+<div class="relative">
+<input class="w-full bg-white border-border-light rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm text-center text-charcoal placeholder-slate-400" placeholder="***" type="password"/>
+<span class="material-icons-round absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">help_outline</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<input class="rounded text-primary focus:ring-primary bg-white border-border-light" id="save-card" type="checkbox"/>
+<label class="text-xs text-slate-500" for="save-card">Save card details for future purchases</label>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-10 mb-6 flex flex-col items-center gap-4">
+<div class="flex items-center gap-6 text-charcoal/40">
+<div class="flex items-center gap-1">
+<span class="material-icons-round text-[16px]">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Secure SSL</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">PCI Compliant</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-icons-round text-sm">lock</span>
+<p class="text-[10px]">Your transaction is 256-bit encrypted.</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white to-transparent pt-10">
+<button class="w-full bg-primary hover:bg-[#e68a00] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/30 transition-all active:scale-[0.98]">
+<span>Place Order</span>
+<span class="material-icons-round">arrow_forward</span>
+</button>
+<div class="w-32 h-1 bg-slate-200 rounded-full mx-auto mt-6"></div>
+</div>
+</div>
+
+</body></html>

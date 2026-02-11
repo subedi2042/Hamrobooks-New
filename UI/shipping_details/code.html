@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shipping Details - Thuprai USA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF9900",
+                        "charcoal": "#333333",
+                        "light-gray": "#E5E7EB",
+                        "background-pure": "#FFFFFF",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            min-height: max(884px, 100dvh);
+            color: #333333;
+        }
+        input::placeholder {
+            color: #9CA3AF;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-pure font-display text-charcoal min-h-screen flex flex-col items-center justify-start overflow-x-hidden">
+<div class="w-full h-12 flex items-center justify-between px-6 bg-background-pure sticky top-0 z-50">
+<span class="text-sm font-semibold">9:41</span>
+<div class="flex space-x-2">
+<span class="material-icons text-sm">signal_cellular_alt</span>
+<span class="material-icons text-sm">wifi</span>
+<span class="material-icons text-sm">battery_full</span>
+</div>
+</div>
+<header class="w-full max-w-md px-4 py-2 flex items-center justify-between">
+<button class="p-2 hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-icons text-primary">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold">Shipping Details</h1>
+<div class="w-10"></div> 
+</header>
+<div class="w-full max-w-md px-6 py-4">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Step 1: Shipping</span>
+<span class="text-xs font-medium text-gray-400">1 of 3</span>
+</div>
+<div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden flex">
+<div class="h-full bg-primary w-1/3 rounded-full"></div>
+<div class="h-full bg-transparent w-2/3"></div>
+</div>
+<div class="flex justify-between mt-2 px-1">
+<span class="text-[10px] font-bold text-primary">SHIPPING</span>
+<span class="text-[10px] font-medium text-gray-400">PAYMENT</span>
+<span class="text-[10px] font-medium text-gray-400">REVIEW</span>
+</div>
+</div>
+<main class="w-full max-w-md flex-1 px-6 pb-32">
+<div class="mb-6">
+<h2 class="text-2xl font-bold mb-1">Where should we send your books?</h2>
+<p class="text-gray-500 text-sm">We currently ship to all 50 US states via USPS and UPS.</p>
+</div>
+<form class="space-y-5">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-gray-500 uppercase tracking-tight ml-1">Full Name</label>
+<div class="relative group">
+<input class="w-full bg-white border border-light-gray rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-charcoal" placeholder="e.g. Biraj Mahato" type="text"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-gray-500 uppercase tracking-tight ml-1">Street Address</label>
+<div class="relative group">
+<input class="w-full bg-white border border-light-gray rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-charcoal" placeholder="123 Nepali Way, Apt 4B" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-gray-500 uppercase tracking-tight ml-1">City</label>
+<input class="w-full bg-white border border-light-gray rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-charcoal" placeholder="New York" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-gray-500 uppercase tracking-tight ml-1">State</label>
+<div class="relative">
+<select class="w-full appearance-none bg-white border border-light-gray rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-charcoal">
+<option value="">Select</option>
+<option value="NY">NY - New York</option>
+<option value="CA">CA - California</option>
+<option value="TX">TX - Texas</option>
+<option value="MA">MA - Massachusetts</option>
+<option value="CO">CO - Colorado</option>
+</select>
+<span class="material-icons absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-gray-500 uppercase tracking-tight ml-1">Zip Code</label>
+<input class="w-full bg-white border border-light-gray rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-charcoal" placeholder="10001" type="number"/>
+</div>
+<div class="mt-8 p-4 bg-primary/5 rounded-xl border border-primary/20 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-icons text-white text-sm">local_shipping</span>
+</div>
+<div>
+<p class="text-sm font-bold text-charcoal">Standard Shipping</p>
+<p class="text-xs text-gray-500">Estimated delivery: 3-5 days</p>
+</div>
+</div>
+<span class="text-sm font-bold text-primary">FREE</span>
+</div>
+</form>
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="text-[10px] text-gray-400 font-bold uppercase w-full mb-1">Quick Add Saved</span>
+<button class="px-3 py-1.5 bg-gray-50 rounded-full text-xs font-medium border border-light-gray text-charcoal flex items-center space-x-1">
+<span class="material-icons text-[12px]">home</span>
+<span>Home</span>
+</button>
+<button class="px-3 py-1.5 bg-gray-50 rounded-full text-xs font-medium border border-light-gray text-charcoal flex items-center space-x-1">
+<span class="material-icons text-[12px]">work</span>
+<span>Work</span>
+</button>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-100 px-6 py-4 flex flex-col items-center">
+<div class="w-full max-w-md flex items-center justify-between mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Order Total</span>
+<span class="text-xl font-bold text-charcoal">$124.50</span>
+</div>
+<div class="flex items-center space-x-1 text-xs font-medium text-primary">
+<span>View items</span>
+<span class="material-icons text-sm">keyboard_arrow_right</span>
+</div>
+</div>
+<button class="w-full max-w-md bg-primary hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-transform active:scale-[0.98] flex items-center justify-center space-x-2">
+<span>Continue to Payment</span>
+<span class="material-icons">arrow_forward</span>
+</button>
+<div class="w-32 h-1 bg-gray-200 rounded-full mt-6 mb-2"></div>
+</footer>
+<div class="fixed bottom-32 -right-8 opacity-[0.04] pointer-events-none rotate-12">
+<span class="material-icons text-[240px] text-primary">auto_stories</span>
+</div>
+
+</body></html>

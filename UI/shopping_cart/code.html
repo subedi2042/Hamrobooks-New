@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopping Cart - Thuprai USA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#ec7f13",
+                "charcoal": "#1a1a1a",
+                "light-gray": "#f3f4f6",
+                "divider": "#e5e7eb",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            min-height: max(884px, 100dvh);
+            -webkit-font-smoothing: antialiased;
+        }
+        .ios-shadow {
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-white font-display text-charcoal min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-divider px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="p-1 hover:bg-gray-100 rounded-full transition-colors">
+<span class="material-icons text-charcoal">arrow_back_ios_new</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight text-charcoal">Shopping Cart</h1>
+</div>
+<button class="text-sm font-semibold text-primary hover:text-orange-600 transition-colors">
+            Clear All
+        </button>
+</header>
+<main class="flex-grow p-4 pb-48">
+<div class="space-y-0">
+<div class="py-5 border-b border-divider flex gap-4 first:pt-0">
+<div class="w-24 h-32 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-divider">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8lLsWv4Nzjt1xkny1myFvblYmDcPYy_Z1yNag2-tqk1SR5cyxIdcndAwfTrouq2xPEZoXsv93-HMNsIqB7c9RsGlf14dhCP7iSdxkqplcC-pPUGqWb5j24yeECjDrAGGIn6E-XeW6hAzq4-b8B_4oKyy0_Y6HCt8hJmA301mSXIl0JOWhIxV06c6ERyoB_2HE6qTOlf4F9kTcdMZxHLa7M8PS2tdN_LYH7w7zSzVf9-XRrp3HVjs2o3eQE8p-pXF127e03qbYHH8"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-lg leading-tight text-charcoal">Palpasa Café</h3>
+<button class="text-gray-400 hover:text-red-500 transition-colors">
+<span class="material-icons text-sm">delete_outline</span>
+</button>
+</div>
+<p class="text-sm text-gray-500">Narayan Wagle</p>
+<p class="text-charcoal font-bold mt-1">$18.99</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-gray-50 rounded-lg p-1 border border-divider">
+<button class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-gray-200 transition-colors">
+<span class="material-icons text-sm text-charcoal">remove</span>
+</button>
+<span class="w-8 text-center font-bold text-charcoal">1</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-md bg-primary text-white shadow-sm transition-colors">
+<span class="material-icons text-sm">add</span>
+</button>
+</div>
+<p class="text-xs font-medium text-green-600">In Stock</p>
+</div>
+</div>
+</div>
+<div class="py-5 border-b border-divider flex gap-4">
+<div class="w-24 h-32 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-divider">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArkUgS-sBnvtkjzccIWL9QWBd9o6Sit_lnF0u3G5VeloKg-Afum8EZFEo03aDpw29ptVFVGWpRoyw3wS85Gyk_4m3uadgXK-0TUDIoQnTgYMPWpagHTVcKHmdOWiKjPz43elTu1GpOOOze0utNVRm_-74q8eA3P5uAyvGw9j-K3ix7Z0GQI1JgqB_cMjXbs_-1AnKzXlaj7TzorCmESExkDx1il2Gn7fVTCPIsEnVYaFvHcGBe9mzGqyBuaHUx2nZ7Ly11fbyfOzM"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-lg leading-tight text-charcoal">Summer Love</h3>
+<button class="text-gray-400 hover:text-red-500 transition-colors">
+<span class="material-icons text-sm">delete_outline</span>
+</button>
+</div>
+<p class="text-sm text-gray-500">Subin Bhattarai</p>
+<p class="text-charcoal font-bold mt-1">$14.50</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-gray-50 rounded-lg p-1 border border-divider">
+<button class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-gray-200 transition-colors">
+<span class="material-icons text-sm text-charcoal">remove</span>
+</button>
+<span class="w-8 text-center font-bold text-charcoal">2</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-md bg-primary text-white shadow-sm transition-colors">
+<span class="material-icons text-sm">add</span>
+</button>
+</div>
+<p class="text-xs font-medium text-green-600">In Stock</p>
+</div>
+</div>
+</div>
+</div>
+<section class="mt-8 bg-gray-50 border border-divider rounded-xl p-4">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-icons text-primary">local_shipping</span>
+<h4 class="font-bold text-xs uppercase tracking-widest text-charcoal">Shipping to USA</h4>
+</div>
+<button class="text-xs text-primary font-bold">Edit Zip</button>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex flex-col">
+<span class="text-gray-500">Standard Delivery (3-5 days)</span>
+<span class="font-semibold text-charcoal">New York, NY 10001</span>
+</div>
+<span class="font-bold text-charcoal">+$4.99</span>
+</div>
+</section>
+<section class="mt-8 space-y-3 px-1">
+<div class="flex justify-between text-gray-500 text-sm">
+<span>Subtotal (3 items)</span>
+<span class="text-charcoal font-medium">$47.99</span>
+</div>
+<div class="flex justify-between text-gray-500 text-sm">
+<span>Estimated Tax</span>
+<span class="text-charcoal font-medium">$3.84</span>
+</div>
+<div class="flex justify-between text-gray-500 text-sm">
+<span>Shipping</span>
+<span class="text-charcoal font-medium">$4.99</span>
+</div>
+<div class="h-px bg-divider my-4"></div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-lg font-bold text-charcoal">Total Amount</span>
+<span class="text-2xl font-black text-charcoal">$56.82</span>
+</div>
+</section>
+<div class="hidden flex-col items-center justify-center py-20 text-center">
+<div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+<span class="material-icons text-gray-400 text-5xl">auto_stories</span>
+</div>
+<h2 class="text-2xl font-bold mb-2 text-charcoal">Your cart is empty</h2>
+<p class="text-gray-500 max-w-[240px] mb-8 text-sm">It looks like you haven't added any books to your cart yet.</p>
+<button class="bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg shadow-primary/20">
+                Start Shopping
+            </button>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 bg-white ios-shadow p-4 pb-8 border-t border-divider">
+<button class="w-full bg-primary hover:bg-orange-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-primary/10 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
+<span>Proceed to Checkout</span>
+<span class="material-icons">arrow_forward</span>
+</button>
+<div class="flex justify-center mt-4">
+<div class="w-36 h-1 bg-gray-200 rounded-full"></div>
+</div>
+</footer>
+
+</body></html>

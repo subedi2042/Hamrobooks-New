@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book Detail Page - Nepali Bookstore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f27f0d",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen pb-24">
+<!-- iOS Top Navigation -->
+<nav class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-3 flex justify-between items-center border-b border-primary/10">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 shadow-sm">
+<span class="material-icons text-slate-700 dark:text-slate-200">arrow_back_ios_new</span>
+</button>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 shadow-sm">
+<span class="material-icons text-slate-700 dark:text-slate-200">share</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 shadow-sm">
+<span class="material-icons text-slate-700 dark:text-slate-200">favorite_border</span>
+</button>
+</div>
+</nav>
+<!-- Book Hero Section -->
+<header class="flex flex-col items-center pt-6 pb-8 px-6">
+<div class="relative w-56 aspect-[2/3] group">
+<img alt="Book Cover" class="w-full h-full object-cover rounded shadow-2xl" data-alt="Modern book cover with vibrant orange and blue abstract art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCay8dcmAGwyAuKUwWewnQ4Ro_JsitLCMkz16uI65_v9Phy_6EoJAK_bUITue1XXlh6pS58sS13Wx8Ybucz0jbxNYB57Xl5WwHoVY9rkQPxhiAzhAdqJBJY31Plm2GRg6fkL2DMhj5o5U7m9VTOmKID-N6fomDdPZqxwuckBxrfZzm9OmcGBeM2I1RbhVHNv_mL2rje5oivTDlNqRt4Ovtv8v9A4DexeMZIm661biAp25LacGufO8MIgX5eKw7TVLlrsWu9UdbjS4"/>
+<div class="absolute inset-0 rounded ring-1 ring-inset ring-black/5"></div>
+</div>
+<div class="mt-8 text-center space-y-2">
+<h1 class="text-2xl font-bold tracking-tight">Karnali Blues</h1>
+<h2 class="text-xl font-medium text-slate-600 dark:text-slate-400">कर्नाली ब्लुज</h2>
+<div class="pt-1">
+<a class="text-primary font-semibold hover:underline decoration-2 underline-offset-4" href="#">Buddhisagar</a>
+</div>
+<div class="flex items-center justify-center gap-1 mt-2">
+<div class="flex text-primary">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm text-slate-300 dark:text-slate-600">star</span>
+</div>
+<span class="text-xs text-slate-500 font-medium">(4.2 • 1.2k reviews)</span>
+</div>
+<div class="text-2xl font-bold text-slate-900 dark:text-white mt-2">
+                $18.99 <span class="text-sm font-normal text-slate-400 line-through ml-2">$24.00</span>
+</div>
+</div>
+</header>
+<!-- Action Buttons -->
+<section class="px-6 flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 border-2 border-primary text-primary font-bold py-3 rounded-xl hover:bg-primary/5 transition-colors">
+<span class="material-icons text-lg">menu_book</span>
+            Read Sample
+        </button>
+<button class="flex-[1.5] flex items-center justify-center gap-2 bg-primary text-white font-bold py-3 rounded-xl shadow-lg shadow-primary/25 active:scale-[0.98] transition-all">
+<span class="material-icons text-lg">shopping_cart</span>
+            Add to Cart
+        </button>
+</section>
+<!-- Quick Info -->
+<section class="mt-8 px-6 grid grid-cols-3 gap-4 border-y border-primary/10 py-4">
+<div class="text-center">
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Pages</p>
+<p class="text-sm font-semibold">416</p>
+</div>
+<div class="text-center border-x border-primary/10">
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Language</p>
+<p class="text-sm font-semibold">Nepali</p>
+</div>
+<div class="text-center">
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Format</p>
+<p class="text-sm font-semibold">Paperback</p>
+</div>
+</section>
+<!-- Synopsis Section -->
+<section class="mt-8 px-6">
+<h3 class="text-lg font-bold mb-3">Synopsis</h3>
+<div class="relative">
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                Karnali Blues is a masterpiece of contemporary Nepali literature. It is a story of a son's love for his father, told through a series of flashbacks as the son sits by his dying father's bedside. Set in the remote regions of Western Nepal, it captures the rugged beauty and harsh reality of life in the Karnali region...
+            </p>
+<button class="mt-2 text-primary font-bold text-sm flex items-center">
+                Read More <span class="material-icons text-xs ml-1">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Author Section -->
+<section class="mt-10 px-6">
+<div class="bg-white dark:bg-slate-800/50 p-4 rounded-2xl border border-primary/10">
+<div class="flex items-center gap-4">
+<img alt="Author" class="w-14 h-14 rounded-full object-cover border-2 border-primary/20" data-alt="Portrait of a middle-aged male author with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHyKC1QVEeMUMkesYAqgsZZ2hlL8BPslC_Y_z9riazT-sOtaXdJoEYl6HiMwjHFFIscDYUF6a4GkhhdtsY3Tnj1rjSGbZ5qYOjSn6tFfOTvk82-iHJ57kl7zN9VAeOpTJXCkk2JUnJNWfjOoUUA-27EFWwi0OEVGiB406qQxj3iQdMO3WbtaPBG4a765gotsmk1NPdDynvOaT5hgV1IuoGDE-3SQIuB07ntf-dDfbIqnJGnmNlwR_ueEvEDD4S0aR-eb168tkqcAU"/>
+<div>
+<h4 class="font-bold">About the Author</h4>
+<p class="text-sm text-primary font-medium">Buddhisagar</p>
+</div>
+</div>
+<p class="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-snug">
+                Buddhisagar is one of Nepal's most acclaimed modern novelists. Born in Kailali, his writing often reflects the soulful essence of rural Nepal.
+            </p>
+</div>
+</section>
+<!-- Related Books -->
+<section class="mt-10 mb-12">
+<div class="px-6 flex justify-between items-center mb-4">
+<h3 class="text-lg font-bold">Related Books</h3>
+<button class="text-primary text-sm font-semibold">View All</button>
+</div>
+<div class="flex overflow-x-auto gap-4 px-6 hide-scrollbar pb-4">
+<!-- Book Card 1 -->
+<div class="flex-shrink-0 w-32">
+<div class="aspect-[2/3] rounded-lg shadow-md mb-2 overflow-hidden bg-slate-200">
+<img alt="Book" class="w-full h-full object-cover" data-alt="Vertical book cover featuring dark textures and golden typography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd81Eby1GXN8rBKhob773WT8ABePGlQAJfQx_iQQIYU25tAb6Z3BFUYn5kX99gaAS_RCPiI8lPpNmZfEuwTMRqEBL9GjSRTP-38xoqW0fktYRsDLfImR8FeBYEWFwIiy4D7i4hFXsOQZyGbUO_VoWbpDbLCHxFU-dJWcTf7hqPFe2nanDPIzgtmyj13JCrfTySB1HG_VUFVCCQAZFDO-NFHEFvHyjTlxxTnjmSn6JhkG0NNaJZpu-vYgyeUGIbyrXREOWEeJ5vQEY"/>
+</div>
+<p class="text-xs font-bold truncate">Seto Dharti</p>
+<p class="text-[10px] text-slate-500 mb-1">Amar Neupane</p>
+<p class="text-xs font-bold text-primary">$15.50</p>
+</div>
+<!-- Book Card 2 -->
+<div class="flex-shrink-0 w-32">
+<div class="aspect-[2/3] rounded-lg shadow-md mb-2 overflow-hidden bg-slate-200">
+<img alt="Book" class="w-full h-full object-cover" data-alt="Minimalist book cover with orange and white geometric shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLHlbfiJkegIY001fBXFw5unVL_meleT2UQGdzWI5KWeQ15g3fLFUCHAKR5VHoW1qI3fmViO71ZRjIKkQaZ_OFokxtL-jenJLMDqEDsbh5VnhxwydfjouhcIRTG8vaX2q5kykym8ooUjzCxrBAleOtMfNRUPfOPZhtVZM2FytFicNArrMxTsXZluxOrTlw7oUgUNaJTCbrVULP6WI0zSANR3edTmgkDarPazc9RBAgvViFQPJ13zYsq_D5-gyp_mOJP-flW9UrWwk"/>
+</div>
+<p class="text-xs font-bold truncate">Palpasa Cafe</p>
+<p class="text-[10px] text-slate-500 mb-1">Narayan Wagle</p>
+<p class="text-xs font-bold text-primary">$17.00</p>
+</div>
+<!-- Book Card 3 -->
+<div class="flex-shrink-0 w-32">
+<div class="aspect-[2/3] rounded-lg shadow-md mb-2 overflow-hidden bg-slate-200">
+<img alt="Book" class="w-full h-full object-cover" data-alt="Old library style book cover with leather texture and classic font" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPd_ftc2EBsyQi8Avricyz_6oxYyFSmU3s12dqcgD5h5GLHmuJVgryjPonhipDMIOlwPJza9TsuVggOy_PN78aE9uYUQioKThXlQxP8jN45T80vd1WfRFwneUSraztBH0h-hkcta-7cKOXUcOrC82mQ0wOjDwbZMK_yC9DgCB7PsVkdaSI0uEeMSmQDd0v065rm6mm26aM2joQoG-M-GlgbaMcGQn4TNxaqgUkpaKDyUj8QkY1eOJl7UcSi1DXvuxEa4yFxOWDbEs"/>
+</div>
+<p class="text-xs font-bold truncate">Muna Madan</p>
+<p class="text-[10px] text-slate-500 mb-1">L.P. Devkota</p>
+<p class="text-xs font-bold text-primary">$12.99</p>
+</div>
+<!-- Book Card 4 -->
+<div class="flex-shrink-0 w-32">
+<div class="aspect-[2/3] rounded-lg shadow-md mb-2 overflow-hidden bg-slate-200">
+<img alt="Book" class="w-full h-full object-cover" data-alt="Modern fiction book cover with abstract colorful painting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZwcRdOYIDcff8OzO2dimHhzPkzhORMLeXC5t74Z6WYxhae7c221-UFbpOo0d6ndnerZnr4SifXndJTThfej1iUwA-d5nu6TfWJJ-NX9f1QJWx5hWS27mrJK5l896sg01XgE5KhdCcuiKcHKVomdiiFi3EB7As9WkSJLEd_NNznYR8k18fgN2xkuYTAeWXiNtLKiDhhSFpRfYnfJUuWc5ykNNtCJH2-_6oH3RUYmZNrEEyxaGw-kEz8_v1Phbmd659Mj06fB5ucpI"/>
+</div>
+<p class="text-xs font-bold truncate">Sirishko Phool</p>
+<p class="text-[10px] text-slate-500 mb-1">Parijat</p>
+<p class="text-xs font-bold text-primary">$14.50</p>
+</div>
+</div>
+</section>
+<!-- Sticky Bottom Bar -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-white/95 dark:bg-background-dark/95 backdrop-blur-lg border-t border-primary/10 flex items-center justify-between gap-4 z-50">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Total</span>
+<span class="text-xl font-bold text-slate-900 dark:text-white">$18.99</span>
+</div>
+<button class="bg-primary hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-primary/30 flex items-center gap-2 transition-transform active:scale-95">
+            Checkout Now
+            <span class="material-icons text-sm">arrow_forward</span>
+</button>
+</div>
+</body></html>

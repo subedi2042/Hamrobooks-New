@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Wishlist - Thuprai Bookstore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec7f13",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-100 min-h-screen">
+<!-- iOS Status Bar Placeholder -->
+<div class="h-11 w-full bg-white dark:bg-background-dark sticky top-0 z-50 flex items-center justify-between px-6">
+<span class="text-sm font-semibold">9:41</span>
+<div class="flex items-center space-x-1.5">
+<span class="material-icons-outlined text-sm">signal_cellular_alt</span>
+<span class="material-icons-outlined text-sm">wifi</span>
+<span class="material-icons-outlined text-sm rotate-90">battery_full</span>
+</div>
+</div>
+<!-- Header Navigation -->
+<header class="bg-white dark:bg-background-dark border-b border-slate-200 dark:border-primary/10 sticky top-11 z-40">
+<div class="px-4 py-3 flex items-center justify-between">
+<button class="p-1 -ml-1">
+<span class="material-icons-outlined text-primary">chevron_left</span>
+</button>
+<h1 class="text-lg font-bold">My Wishlist</h1>
+<button class="text-primary text-sm font-medium">Edit</button>
+</div>
+</header>
+<main class="max-w-md mx-auto pb-24">
+<!-- Wishlist Content -->
+<div class="space-y-4 p-4">
+<!-- Wishlist Item 1 -->
+<div class="bg-white dark:bg-slate-800/50 rounded-xl p-3 flex gap-4 shadow-sm border border-slate-100 dark:border-primary/5">
+<div class="w-24 h-36 flex-shrink-0 bg-slate-100 rounded overflow-hidden">
+<img alt="Muna Madan" class="w-full h-full object-cover" data-alt="Classic Nepali book cover with traditional illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAek7deQoQURvShIwT8lhy7oIpCruW50L_XPmtmz-qVahDDYcxzZ9TMYq-b3QwYopq7QZ18kTZL8gLCHXEbUuOV-raWRUfxYJo1GVN3CRaSQLvgMLIDjoZbdi8tHjTJXYmDlOWAIe5dqtYrQvgQaN_gIv-uoz0SCyqjEo2xdQKCumMJGGlcQxF-YaRfmE6Dqq4TZzr7OuYo95KLr5lZunDuTNda7DBepHDAiNIy7NVjrNrzGSkEwonPeisCWJynyeKldFU4wkz2CjU"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="relative">
+<button class="absolute -top-1 -right-1 p-1 text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-icons-outlined text-xl">delete</span>
+</button>
+<h2 class="text-base font-bold leading-tight pr-8">मुनामदन</h2>
+<h3 class="text-sm text-slate-500 dark:text-slate-400 italic">Muna Madan</h3>
+<p class="text-primary font-bold mt-2">$14.99</p>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-2 rounded-lg text-sm flex items-center justify-center gap-2 transition-all">
+<span class="material-icons-outlined text-sm">shopping_cart</span>
+                        Move to Cart
+                    </button>
+</div>
+</div>
+<!-- Wishlist Item 2 -->
+<div class="bg-white dark:bg-slate-800/50 rounded-xl p-3 flex gap-4 shadow-sm border border-slate-100 dark:border-primary/5">
+<div class="w-24 h-36 flex-shrink-0 bg-slate-100 rounded overflow-hidden">
+<img alt="Palpasa Cafe" class="w-full h-full object-cover" data-alt="Contemporary Nepali novel cover with abstract art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5tEbdEV6pLczDSj1WnnmECSCTcdQcYFu0ZudStAhlIvDV-rpnV-_GyZxvoiPbURVNRTXWQb5p15fTgLIug0XbA0n9_ilm537gFhQKd3fIxIkMnXMC4Cr7o1WWLdXSHzxQCK43VM5aDjHXhc6X0o3XKB-pUjZYzd6QwViO7ZNwlN65_WfrC2a8zHgu9w2gRMG_MTF0Jy_TIt9O-jmmwQVjOxMpcaB1ItR1Dcsij6zj_abQR6wwlT4AsOjRs-URGF-YZ_HGqhWfz3M"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="relative">
+<button class="absolute -top-1 -right-1 p-1 text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-icons-outlined text-xl">delete</span>
+</button>
+<h2 class="text-base font-bold leading-tight pr-8">पल्पसा क्याफे</h2>
+<h3 class="text-sm text-slate-500 dark:text-slate-400 italic">Palpasa Cafe</h3>
+<p class="text-primary font-bold mt-2">$18.50</p>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-2 rounded-lg text-sm flex items-center justify-center gap-2 transition-all">
+<span class="material-icons-outlined text-sm">shopping_cart</span>
+                        Move to Cart
+                    </button>
+</div>
+</div>
+<!-- Wishlist Item 3 -->
+<div class="bg-white dark:bg-slate-800/50 rounded-xl p-3 flex gap-4 shadow-sm border border-slate-100 dark:border-primary/5 opacity-80">
+<div class="w-24 h-36 flex-shrink-0 bg-slate-100 rounded overflow-hidden relative">
+<img alt="Seto Dharti" class="w-full h-full object-cover grayscale" data-alt="Monochrome image of a Nepali literature book" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9txB_fcDnb9gq2_wumj_OPJ2mmCSB6_7KvB1psaiqTJXrtH5Xx8zQ-QsqGioT61oJ1tD4rh3sHn-SAEnrMAzdExDjKEBWr_Ek9CymmbChCcfMyz06GEh1rSEUZncpqu7PrNbNKQV-jdzlbc8kJ-E3mj9hbRWlIZrLc58eJohgV5FQ-4x_xkY-ZeWJvmuixkwF7Y7YTjHOV86ry5I7XjnYb3HYOJ1U3TzvJ_UgWM50NEVlMfXcKqAfmIgU-P6IrJ3T34ghgslSb1o"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<span class="text-[10px] text-white font-bold bg-black/60 px-2 py-1 rounded">OUT OF STOCK</span>
+</div>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="relative">
+<button class="absolute -top-1 -right-1 p-1 text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-icons-outlined text-xl">delete</span>
+</button>
+<h2 class="text-base font-bold leading-tight pr-8">सेतो धरती</h2>
+<h3 class="text-sm text-slate-500 dark:text-slate-400 italic">Seto Dharti</h3>
+<p class="text-slate-400 line-through text-xs mt-1">$12.00</p>
+</div>
+<button class="w-full bg-slate-200 dark:bg-slate-700 text-slate-500 font-semibold py-2 rounded-lg text-sm cursor-not-allowed" disabled="">
+                        Notify Me
+                    </button>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, shown via logic if needed) -->
+<!-- 
+        <div class="flex flex-col items-center justify-center px-10 py-20 text-center">
+            <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                <span class="material-icons-outlined text-primary text-5xl">favorite_border</span>
+            </div>
+            <h2 class="text-xl font-bold mb-2">Your wishlist is empty</h2>
+            <p class="text-slate-500 dark:text-slate-400 mb-8">Start adding your favorite Nepali books to save them for later!</p>
+            <button class="w-full max-w-xs bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-primary/20">
+                Browse Books
+            </button>
+        </div>
+        -->
+<!-- Summary & Recommendation Section -->
+<div class="mt-8 px-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-lg">Recommended for You</h3>
+<a class="text-primary text-xs font-semibold" href="#">View All</a>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+<div class="min-w-[120px] space-y-2">
+<div class="h-40 bg-slate-200 rounded-lg overflow-hidden">
+<img alt="Book" class="w-full h-full object-cover" data-alt="Small book cover preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSb9Fo79cC3p8Vo2hBNCO0Fe0kf4Xs9bgXfNuwABsjkYUpn8nofa2oe7zzXwtDyEjkRLRX335ZvmBvDHj7iI1qTMFdS3CDNMjYF27CpB0ggHcOXigEY43d0uOBAPAXKCxAncg3Yc1t3tWg0Gn8nfNTCYKQ0QOIi6xXYgKBXBJhGDAUPRIn6XsqiDUSlM1VON_ihidS4OcvGAhqhcpV1lRuBl5fN048Mdu9rfV5o1eIczp0xI0Gxeuv1BlvqOXWqW22uKjb6VRx5nY"/>
+</div>
+<p class="text-xs font-bold line-clamp-1">करोडौँ कस्तूरी</p>
+<p class="text-xs text-primary font-semibold">$15.99</p>
+</div>
+<div class="min-w-[120px] space-y-2">
+<div class="h-40 bg-slate-200 rounded-lg overflow-hidden">
+<img alt="Book" class="w-full h-full object-cover" data-alt="Small book cover preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA38yvGCvXNNHMk9JxT-QzC2DcsAh4LFKT63O9MltR7ZJFLDFd170ZrTfLagfonyC10bUbNV5iritHC_vuHeDdOYWhHSQKRr2iBxLlw6-SbZCl0NqOlsDEeGipmL4BSPs3b-jEl5Ggxz3XRbl0URnluKBq30g-M4gD6EH1Y4vb1f8GPjnmuZHSLe6bv8Iu7NeJPNZzh7ft53RImSVmOca3fGfLgm6PHb_-OYLzEYSfkut7QBbtp0EknaHdo_WVbuFww6o93PMYQCsE"/>
+</div>
+<p class="text-xs font-bold line-clamp-1">बसाइ</p>
+<p class="text-xs text-primary font-semibold">$10.50</p>
+</div>
+<div class="min-w-[120px] space-y-2">
+<div class="h-40 bg-slate-200 rounded-lg overflow-hidden">
+<img alt="Book" class="w-full h-full object-cover" data-alt="Small book cover preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxdByE-ysY7AQgj6m6jZgLmq7WaHtYnX0_fHkexFL8ALa9FCRM-ZLZcfcRIC5wAIskol6o9PNgKOg5jq4MolHjwBF0gJTIRTxAUY24P_MYC2pMXxjLkKY6f8_glH6oeRQUNDgwFsRLs6T_AYWyU0NMJsv5iGrDMn7e-Vapd6o0SFWMMbaiwSm4tCq73lD59nzIaElkd0c11F2QejS_pG8pq-9tO0wy_IoS13hIgCQspi-qMhsARA1Gq9FFdBBFfQEfUTSBCIUUZQM"/>
+</div>
+<p class="text-xs font-bold line-clamp-1">प्रीति-परिकल्पना</p>
+<p class="text-xs text-primary font-semibold">$13.25</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Tab Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-t border-slate-200 dark:border-primary/10 px-6 pb-6 pt-2 z-50">
+<div class="flex justify-between items-center max-w-md mx-auto">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons-outlined">search</span>
+<span class="text-[10px] font-medium">Search</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-icons-outlined">favorite</span>
+<span class="text-[10px] font-medium">Wishlist</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 relative">
+<span class="material-icons-outlined">shopping_bag</span>
+<span class="text-[10px] font-medium">Cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</nav>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

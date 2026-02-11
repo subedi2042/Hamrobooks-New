@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Search Filters - Thuprai</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec7f13",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #71717a; /* Mimic the background behind the overlay */
+        }
+        .bottom-sheet-container {
+            height: 92vh;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+        }
+        /* Custom range slider styling */
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #ec7f13;
+            border: 4px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<!-- Mock App Background (Dimmed Search Results) -->
+<div class="fixed inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
+<!-- Bottom Sheet Wrapper -->
+<div class="fixed inset-x-0 bottom-0 z-10 flex flex-col items-center">
+<!-- Bottom Sheet Content -->
+<div class="bottom-sheet-container w-full max-w-md bg-white dark:bg-background-dark shadow-2xl flex flex-col overflow-hidden relative">
+<!-- iOS Grabber -->
+<div class="flex justify-center pt-3 pb-1">
+<div class="w-10 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+</div>
+<!-- Header -->
+<header class="px-5 py-4 flex items-center justify-between border-b border-gray-100 dark:border-gray-800">
+<button class="text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined text-2xl">close</span>
+</button>
+<h1 class="text-lg font-bold text-gray-900 dark:text-white">Filters</h1>
+<button class="text-primary font-semibold text-sm tracking-wide">
+                    Clear All
+                </button>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- Language Section -->
+<section class="p-6 border-b border-gray-100 dark:border-gray-800">
+<h2 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">Language</h2>
+<div class="grid grid-cols-3 gap-3">
+<button class="py-3 px-2 rounded-xl border-2 border-primary bg-primary/10 text-primary font-semibold text-sm text-center">
+                            Nepali
+                        </button>
+<button class="py-3 px-2 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm text-center">
+                            English
+                        </button>
+<button class="py-3 px-2 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm text-center">
+                            Bilingual
+                        </button>
+</div>
+</section>
+<!-- Genre Section -->
+<section class="p-6 border-b border-gray-100 dark:border-gray-800">
+<h2 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">Genre</h2>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full border border-primary bg-primary text-white text-sm font-medium">
+                            Poetry
+                        </button>
+<button class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium">
+                            Fiction
+                        </button>
+<button class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium">
+                            History
+                        </button>
+<button class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium">
+                            Biography
+                        </button>
+<button class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium">
+                            Politics
+                        </button>
+<button class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium">
+                            Philosophy
+                        </button>
+<button class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium">
+                            Religion
+                        </button>
+</div>
+</section>
+<!-- Price Range Section -->
+<section class="p-6 border-b border-gray-100 dark:border-gray-800">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Price Range (USD)</h2>
+<span class="text-sm font-bold text-primary">$15 — $65</span>
+</div>
+<div class="relative h-6 flex items-center">
+<div class="absolute w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+<div class="absolute left-[15%] right-[35%] h-1.5 bg-primary rounded-full"></div>
+<input class="absolute w-full h-1.5 appearance-none bg-transparent pointer-events-none" max="100" min="0" type="range" value="15"/>
+<input class="absolute w-full h-1.5 appearance-none bg-transparent pointer-events-none" max="100" min="0" type="range" value="65"/>
+</div>
+<div class="flex justify-between mt-4 text-xs font-medium text-gray-400">
+<span>$0</span>
+<span>$100+</span>
+</div>
+</section>
+<!-- Author Section -->
+<section class="p-6 pb-32">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Author</h2>
+<button class="text-primary text-xs font-bold uppercase">Search</button>
+</div>
+<div class="space-y-4">
+<label class="flex items-center justify-between group">
+<span class="text-gray-700 dark:text-gray-300 font-medium">Laxmi Prasad Devkota</span>
+<div class="w-6 h-6 rounded border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center transition-colors group-hover:border-primary">
+<span class="material-icons-outlined text-sm text-primary hidden">check</span>
+</div>
+</label>
+<label class="flex items-center justify-between group">
+<span class="text-gray-700 dark:text-gray-300 font-medium">Parijat</span>
+<div class="w-6 h-6 rounded border-2 border-primary bg-primary flex items-center justify-center">
+<span class="material-icons-outlined text-sm text-white">check</span>
+</div>
+</label>
+<label class="flex items-center justify-between group">
+<span class="text-gray-700 dark:text-gray-300 font-medium">Diamond Shumsher</span>
+<div class="w-6 h-6 rounded border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center">
+<span class="material-icons-outlined text-sm text-primary hidden">check</span>
+</div>
+</label>
+<label class="flex items-center justify-between group">
+<span class="text-gray-700 dark:text-gray-300 font-medium">B.P. Koirala</span>
+<div class="w-6 h-6 rounded border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center">
+<span class="material-icons-outlined text-sm text-primary hidden">check</span>
+</div>
+</label>
+</div>
+</section>
+</div>
+<!-- Footer / Apply Button -->
+<div class="absolute bottom-0 inset-x-0 p-6 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-t border-gray-100 dark:border-gray-800 pb-10">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
+                    Apply Filters (142 Results)
+                </button>
+</div>
+</div>
+</div>
+</body></html>

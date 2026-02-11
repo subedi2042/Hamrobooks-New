@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Thuprai Inspired Bookstore</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF9900",
+                        "slate-dark": "#334155",
+                        "bg-light": "#FFFFFF",
+                        "bg-secondary": "#F8FAFC",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.625rem",
+                        "xl": "0.875rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="selection:bg-primary/30 text-slate-dark bg-bg-light">
+    <div class="h-12 w-full bg-bg-light sticky top-0 z-50"></div>
+    <header class="sticky top-12 z-50 bg-bg-light/90 backdrop-blur-md px-4 py-3 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2">
+                <img src="/images/Hamrobooks-logo.png" alt="HamroBooks Logo" class="h-10 w-auto"
+                    onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')">
+                <div class="hidden flex flex-col">
+                    <span class="text-xl font-black text-[#1a1a5a]">Hamro<span class="text-primary">Books</span></span>
+                </div>
+            </div>
+            <div class="relative flex-1">
+                <span
+                    class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+                <input
+                    class="w-full bg-bg-secondary border border-slate-200 rounded-xl py-2.5 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none placeholder:text-slate-400"
+                    placeholder="Search books, authors, ISBN... (खोज्नुहोस्)" type="text" />
+            </div>
+            <button class="relative p-2 rounded-full text-slate-dark hover:bg-slate-100 transition-colors">
+                <span class="material-icons">shopping_cart</span>
+                <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary rounded-full ring-2 ring-white"></span>
+            </button>
+        </div>
+    </header>
+    <main class="pb-24">
+        <section class="px-4 py-5">
+            <div class="relative h-52 rounded-2xl overflow-hidden group shadow-lg">
+                <img class="w-full h-full object-cover" alt="Traditional Nepali architecture and books background"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL39EycD7R3ERH8pvVB1kojXX42VS09SkEyzyedKOut4wJcPKYGk1M4DIZULLpMZuxYZ_nH_dgkkTHD0RoMkbZpk-YhP3pFLHErG-7I6wl4u2gUriW2tJCPe64KfT4ud5I1ge377cE7j-JG_PIh3NCKzd56e-ESNi2qE_uKq-zZQrSTCdsjpJ3Pb-MFKgITuB20tyIqDBML8lkkIvTjyLO4EmmPqX8CMqQ-N3ccst8PAY-VmbUdmXIDhYqWZZEXGjlffmfVzqFEXs" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent flex flex-col justify-center px-6">
+                    <span class="text-primary font-bold text-[10px] tracking-[0.2em] uppercase mb-1">FREE SHIPPING
+                        THROUGHOUT USA</span>
+                    <h2 class="text-2xl font-extrabold text-white mb-2 leading-tight">Authentic Literature <br /><span
+                            class="text-primary">Books in USA & Shipped from USA</span></h2>
+                    <p class="text-slate-200 text-xs mb-5 max-w-[220px] leading-relaxed">All books are stocked in the
+                        USA for fast delivery. Enjoy free shipping on all orders nationwide.</p>
+                    <button
+                        class="bg-primary hover:bg-[#e68a00] text-white text-xs font-bold px-6 py-2.5 rounded-full w-fit shadow-lg shadow-primary/20 transition-all active:scale-95">
+                        EXPLORE COLLECTION
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="py-2">
+            <div class="flex items-center justify-between px-4 mb-3">
+                <h3 class="font-bold text-lg text-slate-dark">Popular Genres</h3>
+                <span class="text-primary text-xs font-bold uppercase tracking-wider">View All</span>
+            </div>
+            <div class="flex overflow-x-auto hide-scrollbar gap-2.5 px-4">
+                <button
+                    class="flex-shrink-0 bg-primary text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md shadow-primary/10">All
+                    Genres</button>
+                <button
+                    class="flex-shrink-0 bg-bg-secondary text-slate-600 px-5 py-2 rounded-full text-sm font-medium border border-slate-200 hover:border-primary/30">Classics</button>
+                <button
+                    class="flex-shrink-0 bg-bg-secondary text-slate-600 px-5 py-2 rounded-full text-sm font-medium border border-slate-200 hover:border-primary/30">Fiction</button>
+                <button
+                    class="flex-shrink-0 bg-bg-secondary text-slate-600 px-5 py-2 rounded-full text-sm font-medium border border-slate-200 hover:border-primary/30">Poetry</button>
+                <button
+                    class="flex-shrink-0 bg-bg-secondary text-slate-600 px-5 py-2 rounded-full text-sm font-medium border border-slate-200 hover:border-primary/30">History</button>
+            </div>
+        </section>
+        <section class="py-8 bg-bg-secondary mt-6">
+            <div class="px-4 mb-5">
+                <h3 class="font-bold text-lg text-slate-dark">Featured Authors</h3>
+                <p class="text-slate-400 text-xs mt-0.5">Legendary voices of Nepali literature</p>
+            </div>
+            <div class="flex overflow-x-auto hide-scrollbar gap-6 px-4">
+                <div class="flex flex-col items-center gap-3 flex-shrink-0">
+                    <div
+                        class="w-20 h-20 rounded-full ring-2 ring-primary ring-offset-4 ring-offset-bg-secondary overflow-hidden shadow-xl">
+                        <img class="w-full h-full object-cover" alt="Portrait of a male Nepali author"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIZLzCfiQMWSsvu5_eFw2Dl0NqpvLVPgdOAsp6IK7DoQ94mdG2x7JwGHUn7rVdX9wxJL51pKNYRIhNe0NifCnl-V5yHIy1MNijrhY7W-eNv6MN2SGvTFhGYrcbYyOuYGkMh8Ajh3Jd896kcSZxHZEOHAPhYFwHrRG4SwQwVY_vQpM1I4a3MV4BjWyDp-yLUHjoyou9g7em69dkUHO6QKykKFp_8XTVgbC9KpZ9WURTUbV05pGThEJbVXf-OMrobV9Tq_zyXboyWPI" />
+                    </div>
+                    <span class="text-xs font-bold text-slate-dark">L.P. Devkota</span>
+                </div>
+                <div class="flex flex-col items-center gap-3 flex-shrink-0">
+                    <div class="w-20 h-20 rounded-full ring-2 ring-transparent overflow-hidden shadow-md">
+                        <img class="w-full h-full object-cover" alt="Portrait of a female Nepali author"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqx5r-2eyFKjhbamLcgxmZmNpZONIsJsGxHzJ0JsQDQgFGf3lAiDbk8TIM8D7VB17dfCiQHrhMMMwtDXGQofqr-5kyX7OMddKExm994_aABA_umz-6IwxAZkPT0DSxPig4s6madBw6jc7VaoEirgT4aHWInNd-T_bQnJ_4yaSp7IzkFM9WEqurA7oLiIY6pNq8ST8d63KjBwr8VULEQLw_qQnhEQFZxlVgZJ54p_Nf9H3uUEFy2niaYKL_lWNbezqZL8Kx-HqHDaE" />
+                    </div>
+                    <span class="text-xs font-bold text-slate-dark">Parijat</span>
+                </div>
+                <div class="flex flex-col items-center gap-3 flex-shrink-0">
+                    <div class="w-20 h-20 rounded-full ring-2 ring-transparent overflow-hidden shadow-md">
+                        <img class="w-full h-full object-cover" alt="Portrait of a modern Nepali writer"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVGaT3qYx4E01N3T5MHy2OrieXpO9rOWT3wZWQGgb7h4tEoKBtyt76ICpe3TtcSURwRcYyRVyUUXQZuTGMsoZFOrbOOR0a9kp1mdMXzyzdR6RdrQAeolG3pTtAH5K0_R7C96LkStbEAFF52a6uYOLiJe_MMG-om4nUKwBaDqUXCP0oZD_R1__zhVSy22clyp2K1k3Br9-6xvvsz0Zp3DiMaTe_VIG4gvUgn3R19gBc3j_p9L6GmWhWndDbB6RJV2bC2Gr1fawOT_A" />
+                    </div>
+                    <span class="text-xs font-bold text-slate-dark">B.P. Koirala</span>
+                </div>
+                <div class="flex flex-col items-center gap-3 flex-shrink-0">
+                    <div class="w-20 h-20 rounded-full ring-2 ring-transparent overflow-hidden shadow-md">
+                        <img class="w-full h-full object-cover" alt="Portrait of a Nepali poetess"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD3MTnPK2lNSN0QaG7axgD_9mKdDSotrVD1Bo_FmuvpLHMFmnZnO7hZ_vLch3e2RdsyUoBHS1s_Ee70llRuCzP1sK7vzIfN-PeH3Z3ynPteVWcSlIP-VSysUJ2zLQEoyS_qbCiFe2QR0ukOKJyhZOPCwkiVFJK8EXGYHJttHTgQO6a5vA_6tBHLvb8mcQufVQ_Gsal_fI1gLLTxI4bdVLuwte12dDfoXITwrtiREh8Qa9pKH3j7jQmkiYijU-OvxmIsvWGcENBbbE" />
+                    </div>
+                    <span class="text-xs font-bold text-slate-dark">Jhamak Ghimire</span>
+                </div>
+            </div>
+        </section>
+        <section class="px-4 py-8">
+            <div class="flex items-center justify-between mb-5">
+                <h3 class="font-bold text-lg text-slate-dark">New Arrivals</h3>
+                <div class="flex items-center gap-2 text-primary">
+                    <span class="text-xs font-bold">SORT BY</span>
+                    <span class="material-icons text-xl">tune</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-x-4 gap-y-8">
+                <div class="flex flex-col">
+                    <div class="relative aspect-[2/3] bg-slate-100 rounded-xl overflow-hidden shadow-sm group">
+                        <img class="w-full h-full object-cover" alt="Book cover with artistic mountain illustration"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR_Jczou_n6jlIMQH0vSeA28W4CjJQA0MDoafmJ8QeGcBfyAniDCqYNFZVl_oFPndZtZdpPz_jEaVlrDe5-6g7GQHhtujLInCSqtpG4wrjzioA9j2hINkPsWrPAFBFu2XAjJM5GKG9NYyfkbPst-Rs6XPqlZCmKB7B5vI5Yb0wzwFBjWET4SVzQltvKjIRLAxJkV5bz6zdHNajJeIjqjui_vACmw8MZS4G48vj-oWihj0tGpOtTxx0RyLKkIvys-ofA4btOJa_o2U" />
+                        <button
+                            class="absolute top-2 right-2 bg-white/95 p-2 rounded-full shadow-md text-slate-400 hover:text-red-500">
+                            <span class="material-icons text-sm">favorite_border</span>
+                        </button>
+                        <div
+                            class="absolute bottom-0 left-0 right-0 p-2 transform translate-y-full group-hover:translate-y-0 transition-transform">
+                            <button
+                                class="w-full bg-primary text-white py-2 rounded-lg text-xs font-bold shadow-lg">QUICK
+                                ADD</button>
+                        </div>
+                    </div>
+                    <div class="pt-3">
+                        <h4 class="font-bold text-sm text-slate-dark leading-tight line-clamp-1">Muna Madan</h4>
+                        <p class="text-slate-400 text-[11px] mt-0.5">Laxmi Prasad Devkota</p>
+                        <div class="mt-2 flex items-center justify-between">
+                            <span class="text-slate-dark font-extrabold">$18.99</span>
+                            <button
+                                class="bg-primary/10 hover:bg-primary text-primary hover:text-white p-1.5 rounded-lg transition-colors">
+                                <span class="material-icons text-lg">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="relative aspect-[2/3] bg-slate-100 rounded-xl overflow-hidden shadow-sm group">
+                        <img class="w-full h-full object-cover" alt="Old aesthetic book cover design"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp9JhisDMQClE6Q_W5hl4d8YwG143kWEMHoIWJSkzOiGTuoKV_oI5OXMWWr0wjxOLH1ufJSBKriFyWPdfFM_LvrpT22D_HEdUXJK8SY7Z5BOE_dC78mB2iS5QnIJVRKqf8fv_7V1gaI2e4c1WUYYCwMg_mr4S2lGuSuCgsaAv8J9s6f4rI_WHE6tjA5B0GNR4IlhVSJJX1fzgX62FlwKiGg1v82fh4C73a2AYIqDqGUpRNcESrlhdBVJs4jg9Akh6RntBkMo82FPQ" />
+                        <button class="absolute top-2 right-2 bg-white/95 p-2 rounded-full shadow-md text-red-500">
+                            <span class="material-icons text-sm">favorite</span>
+                        </button>
+                        <div
+                            class="absolute bottom-0 left-0 right-0 p-2 transform translate-y-full group-hover:translate-y-0 transition-transform">
+                            <button
+                                class="w-full bg-primary text-white py-2 rounded-lg text-xs font-bold shadow-lg">QUICK
+                                ADD</button>
+                        </div>
+                    </div>
+                    <div class="pt-3">
+                        <h4 class="font-bold text-sm text-slate-dark leading-tight line-clamp-1">Shirish Ko Phool</h4>
+                        <p class="text-slate-400 text-[11px] mt-0.5">Parijat</p>
+                        <div class="mt-2 flex items-center justify-between">
+                            <span class="text-slate-dark font-extrabold">$22.50</span>
+                            <button
+                                class="bg-primary/10 hover:bg-primary text-primary hover:text-white p-1.5 rounded-lg transition-colors">
+                                <span class="material-icons text-lg">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="relative aspect-[2/3] bg-slate-100 rounded-xl overflow-hidden shadow-sm group">
+                        <img class="w-full h-full object-cover" alt="Modern Nepali novel cover with abstract art"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVYa7lKOuRS7EGzay481BZw52HiiH7TctvATtLrE2dcrb9sKDiu3xS5FH4M2XOHjBvVAywrrpAx-WRdGAssqUZLrogVz7e2dA8-Rjrc-r2MKcBbmh5jeTkdOBEbvIDywtnr4d5BD6-DpMv7dnELYjbA5aIvBKjAFPtKPvJGs0ECjAvGfdU8eZlV2j-1GP0bJ1YyYVweW0ZFb5_mNmuSWpEdMAjVtY4fTI9l2iqztyXEjGXqMnX1WEspTJX2IPXCtu7JkbYtmTcfjk" />
+                        <button
+                            class="absolute top-2 right-2 bg-white/95 p-2 rounded-full shadow-md text-slate-400 hover:text-red-500">
+                            <span class="material-icons text-sm">favorite_border</span>
+                        </button>
+                    </div>
+                    <div class="pt-3">
+                        <h4 class="font-bold text-sm text-slate-dark leading-tight line-clamp-1">Seto Dharti</h4>
+                        <p class="text-slate-400 text-[11px] mt-0.5">Amar Neupane</p>
+                        <div class="mt-2 flex items-center justify-between">
+                            <span class="text-slate-dark font-extrabold">$16.00</span>
+                            <button
+                                class="bg-primary/10 hover:bg-primary text-primary hover:text-white p-1.5 rounded-lg transition-colors">
+                                <span class="material-icons text-lg">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="relative aspect-[2/3] bg-slate-100 rounded-xl overflow-hidden shadow-sm group">
+                        <img class="w-full h-full object-cover" alt="Classic poetry book design with calligraphy"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEQhtvw2iAxnQe7qCBgP41NZmzmy3Yh7g-DN-_WbESAfWwOxxOdr7_FgQuLvXQxcLdoyniobUchLjjArUfj9xcldRLaFzubygIbVgM6rwbnP7kKAjLX9e1t3BHuOh9O8ur2GAqBxknUg_VFc69kHS4TYDf1TlcmzjneTvyt_qBMI7RXtnuaKKu_gqOgUourTYdQ4zjA4fTPNxmxmmT1K9s0Ev-J61K0KKOW7LWeeY9S51aOjJxgFhncTvpbEFzqeK3lVpjk81Jr2A" />
+                        <button
+                            class="absolute top-2 right-2 bg-white/95 p-2 rounded-full shadow-md text-slate-400 hover:text-red-500">
+                            <span class="material-icons text-sm">favorite_border</span>
+                        </button>
+                    </div>
+                    <div class="pt-3">
+                        <h4 class="font-bold text-sm text-slate-dark leading-tight line-clamp-1">Palpasa Cafe</h4>
+                        <p class="text-slate-400 text-[11px] mt-0.5">Narayan Wagle</p>
+                        <div class="mt-2 flex items-center justify-between">
+                            <span class="text-slate-dark font-extrabold">$19.95</span>
+                            <button
+                                class="bg-primary/10 hover:bg-primary text-primary hover:text-white p-1.5 rounded-lg transition-colors">
+                                <span class="material-icons text-lg">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <nav class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-2xl border-t border-slate-100 pb-8 pt-2 z-50">
+        <div class="max-w-md mx-auto flex justify-around items-center">
+            <a class="flex flex-col items-center gap-1 text-primary" href="#">
+                <span class="material-icons text-[26px]">home</span>
+                <span class="text-[10px] font-bold">Home</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600" href="#">
+                <span class="material-icons text-[26px]">dashboard</span>
+                <span class="text-[10px] font-medium">Categories</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600" href="#">
+                <span class="material-icons text-[26px]">local_library</span>
+                <span class="text-[10px] font-medium">Shelf</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600" href="#">
+                <span class="material-icons text-[26px]">account_circle</span>
+                <span class="text-[10px] font-medium">Account</span>
+            </a>
+        </div>
+    </nav>
+
+</body>
+
+</html>
