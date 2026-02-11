@@ -61,14 +61,14 @@ export default function Home() {
                             key={activeBanner.id}
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="relative min-h-[340px] md:h-[320px] rounded-[2rem] md:rounded-[3.5rem] overflow-hidden group shadow-2xl border border-slate-200"
+                            className="relative min-h-[380px] md:h-[400px] rounded-[2rem] md:rounded-[3.5rem] overflow-hidden group shadow-2xl border border-slate-200"
                         >
                             <img
                                 className="w-full h-full absolute inset-0 object-cover transform group-hover:scale-105 transition-transform duration-[2s]"
                                 alt={activeBanner.title}
                                 src={activeBanner.image}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent flex flex-col justify-start px-6 md:px-20 py-8 md:py-8">
+                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent flex flex-col justify-start px-6 md:px-20 py-10 md:py-16">
                                 <motion.span
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
@@ -79,7 +79,7 @@ export default function Home() {
                                 <motion.h2
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="text-xl md:text-3xl font-black text-white mb-2 md:mb-4 leading-tight tracking-tighter"
+                                    className="text-lg md:text-2xl font-black text-white mb-2 md:mb-4 leading-tight tracking-tighter"
                                 >
                                     {activeBanner.title} <br />
                                     <span className="text-primary italic">{activeBanner.subtitle}</span>
@@ -105,7 +105,7 @@ export default function Home() {
                                 >
                                     {activeBanner.description}
                                 </motion.p>
-                                <Link href="#featured-books" className="mt-auto">
+                                <Link href="#featured-books" className="mt-4 md:mt-8 mb-4 md:mb-0">
                                     <motion.button
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
@@ -124,7 +124,7 @@ export default function Home() {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="relative min-h-[340px] md:h-[350px] rounded-[2rem] md:rounded-[3.5rem] bg-[#1a1a5a] overflow-hidden group shadow-2xl border border-slate-200 flex flex-col justify-start px-6 md:px-20 py-8 md:py-12"
+                            className="relative min-h-[380px] md:h-[400px] rounded-[2rem] md:rounded-[3.5rem] bg-[#1a1a5a] overflow-hidden group shadow-2xl border border-slate-200 flex flex-col justify-start px-6 md:px-20 py-10 md:py-16"
                         >
                             <div className="absolute inset-0 opacity-20 pointer-events-none">
                                 <img
@@ -144,7 +144,7 @@ export default function Home() {
                                 <motion.h2
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="text-xl md:text-3xl font-black text-white mb-2 md:mb-6 leading-tight tracking-tighter"
+                                    className="text-lg md:text-2xl font-black text-white mb-3 md:mb-6 leading-none tracking-tighter"
                                 >
                                     Authentic <span className="text-primary italic">Nepali Literature</span>
                                 </motion.h2>
@@ -152,17 +152,17 @@ export default function Home() {
                                 <motion.div
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="mb-4 md:mb-6 space-y-2 bg-white/5 backdrop-blur-md p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border border-white/10 w-fit shadow-2xl"
+                                    className="mb-4 md:mb-6 space-y-1 bg-white/5 backdrop-blur-md p-3 md:p-5 rounded-[1.25rem] md:rounded-[1.75rem] border border-white/10 w-fit shadow-2xl"
                                 >
-                                    <p className="text-white text-sm md:text-base font-bold tracking-tight leading-tight">
+                                    <p className="text-white text-xs md:text-sm font-bold tracking-tight leading-tight">
                                         "Bringing Nepali stories home, <br className="md:hidden" /> wherever home is."
                                     </p>
-                                    <p className="text-primary text-[10px] md:text-sm font-bold">
+                                    <p className="text-primary text-[8px] md:text-[10px] font-bold">
                                         "नेपाली कथाहरूलाई घर ल्याउँदै, जहाँ पनि घर होस्।"
                                     </p>
                                 </motion.div>
 
-                                <Link href="#featured-books" className="mt-auto">
+                                <Link href="#featured-books" className="mt-4 md:mt-8 mb-4 md:mb-0">
                                     <motion.button
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
@@ -292,7 +292,7 @@ export default function Home() {
                             <motion.div
                                 whileHover={{ scale: 1.01 }}
                                 whileTap={{ scale: 0.99 }}
-                                className="relative h-64 md:h-[500px] rounded-[3rem] md:rounded-[4.5rem] overflow-hidden group shadow-3xl cursor-pointer border border-white"
+                                className="relative min-h-[380px] md:h-[400px] rounded-[3rem] md:rounded-[4.5rem] overflow-hidden group shadow-3xl cursor-pointer border border-white"
                             >
                                 <img
                                     src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1000&auto=format&fit=crop"
