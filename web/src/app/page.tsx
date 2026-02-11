@@ -61,14 +61,14 @@ export default function Home() {
                             key={activeBanner.id}
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="relative h-64 md:h-[450px] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden group shadow-2xl border border-slate-200"
+                            className="relative min-h-[350px] md:h-[550px] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden group shadow-2xl border border-slate-200"
                         >
                             <img
-                                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2s]"
+                                className="w-full h-full absolute inset-0 object-cover transform group-hover:scale-105 transition-transform duration-[2s]"
                                 alt={activeBanner.title}
                                 src={activeBanner.image}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent flex flex-col justify-center px-8 md:px-20">
+                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent flex flex-col justify-center px-8 md:px-20 py-10">
                                 <motion.span
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
@@ -79,27 +79,29 @@ export default function Home() {
                                 <motion.h2
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="text-3xl md:text-6xl font-black text-white mb-3 md:mb-6 leading-none tracking-tighter"
+                                    className="text-3xl md:text-6xl font-black text-white mb-4 md:mb-8 leading-none tracking-tighter"
                                 >
                                     {activeBanner.title} <br />
                                     <span className="text-primary italic">{activeBanner.subtitle}</span>
                                 </motion.h2>
+
                                 <motion.div
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="mb-8 md:mb-10 space-y-2"
+                                    className="mb-8 md:mb-10 space-y-3 bg-white/5 backdrop-blur-sm p-4 md:p-6 rounded-3xl border border-white/10 w-fit"
                                 >
-                                    <p className="text-white text-sm md:text-xl font-medium italic tracking-tight opacity-90">
-                                        "Bringing Nepali stories home, wherever home is."
+                                    <p className="text-white text-sm md:text-2xl font-black tracking-tight leading-tight">
+                                        "Bringing Nepali stories home, <br className="md:hidden" /> wherever home is."
                                     </p>
                                     <p className="text-primary text-xs md:text-lg font-bold">
                                         "नेपाली कथाहरूलाई घर ल्याउँदै, जहाँ पनि घर होस्।"
                                     </p>
                                 </motion.div>
+
                                 <motion.p
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="text-slate-300 text-[11px] md:text-sm mb-8 md:mb-12 max-w-[240px] md:max-w-md leading-relaxed font-medium"
+                                    className="text-slate-300 text-[11px] md:text-sm mb-8 md:mb-12 max-w-[240px] md:max-w-md leading-relaxed font-medium line-clamp-2 md:line-clamp-none"
                                 >
                                     {activeBanner.description}
                                 </motion.p>
@@ -110,6 +112,63 @@ export default function Home() {
                                 >
                                     {activeBanner.buttonText}
                                 </motion.button>
+                            </div>
+                        </motion.div>
+                    </section>
+                )}
+
+                {!searchQuery && !activeBanner && (
+                    <section className="px-4 py-6 md:py-10">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.98 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="relative min-h-[400px] md:h-[600px] rounded-[2.5rem] md:rounded-[3.5rem] bg-[#1a1a5a] overflow-hidden group shadow-2xl border border-slate-200 flex flex-col justify-center px-8 md:px-20 py-10"
+                        >
+                            <div className="absolute inset-0 opacity-20 pointer-events-none">
+                                <img
+                                    src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2000"
+                                    className="w-full h-full object-cover grayscale"
+                                    alt="Background"
+                                />
+                            </div>
+                            <div className="relative z-10">
+                                <motion.span
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="text-primary font-black text-[9px] md:text-[11px] tracking-[0.2em] uppercase mb-2 md:mb-4 antialiased"
+                                >
+                                    Our Mission
+                                </motion.span>
+                                <motion.h2
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="text-3xl md:text-7xl font-black text-white mb-6 md:mb-10 leading-none tracking-tighter"
+                                >
+                                    Authentic <span className="text-primary italic">Nepali Literature</span>
+                                </motion.h2>
+
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="mb-8 md:mb-12 space-y-4 bg-white/5 backdrop-blur-md p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/10 w-fit shadow-2xl"
+                                >
+                                    <p className="text-white text-lg md:text-3xl font-black tracking-tight leading-tight">
+                                        "Bringing Nepali stories home, <br className="md:hidden" /> wherever home is."
+                                    </p>
+                                    <p className="text-primary text-sm md:text-xl font-bold">
+                                        "नेपाली कथाहरूलाई घर ल्याउँदै, जहाँ पनि घर होस्।"
+                                    </p>
+                                </motion.div>
+
+                                <Link href="/">
+                                    <motion.button
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="bg-primary hover:bg-[#e68a00] text-white text-[10px] md:text-xs font-black tracking-widest px-8 md:px-12 py-3.5 md:py-5 rounded-2xl md:rounded-3xl w-fit shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase"
+                                    >
+                                        Explore Collection
+                                    </motion.button>
+                                </Link>
                             </div>
                         </motion.div>
                     </section>
