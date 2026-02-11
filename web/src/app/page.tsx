@@ -79,7 +79,7 @@ export default function Home() {
                                 <motion.h2
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="text-3xl md:text-6xl font-black text-white mb-4 md:mb-8 leading-none tracking-tighter"
+                                    className="text-2xl md:text-3xl font-black text-white mb-2 md:mb-4 leading-none tracking-tighter"
                                 >
                                     {activeBanner.title} <br />
                                     <span className="text-primary italic">{activeBanner.subtitle}</span>
@@ -105,13 +105,15 @@ export default function Home() {
                                 >
                                     {activeBanner.description}
                                 </motion.p>
-                                <motion.button
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="bg-primary hover:bg-[#e68a00] text-white text-[9px] md:text-[10px] font-black tracking-widest px-6 md:px-10 py-2.5 md:py-3.5 rounded-xl md:rounded-2xl w-fit shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase mt-1 md:mt-2"
-                                >
-                                    {activeBanner.buttonText}
-                                </motion.button>
+                                <Link href="#featured-books">
+                                    <motion.button
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="bg-primary hover:bg-[#e68a00] text-white text-[9px] md:text-[10px] font-black tracking-widest px-6 md:px-10 py-2.5 md:py-3.5 rounded-xl md:rounded-2xl w-fit shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase mt-auto"
+                                    >
+                                        {activeBanner.buttonText}
+                                    </motion.button>
+                                </Link>
                             </div>
                         </motion.div>
                     </section>
@@ -122,7 +124,7 @@ export default function Home() {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="relative min-h-[250px] md:h-[350px] rounded-[2.5rem] md:rounded-[3.5rem] bg-[#1a1a5a] overflow-hidden group shadow-2xl border border-slate-200 flex flex-col justify-center px-8 md:px-20 py-6 md:py-8"
+                            className="relative min-h-[250px] md:h-[350px] rounded-[2.5rem] md:rounded-[3.5rem] bg-[#1a1a5a] overflow-hidden group shadow-2xl border border-slate-200 flex flex-col justify-start px-8 md:px-20 py-10 md:py-12"
                         >
                             <div className="absolute inset-0 opacity-20 pointer-events-none">
                                 <img
@@ -135,14 +137,14 @@ export default function Home() {
                                 <motion.span
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="text-primary font-black text-[9px] md:text-[11px] tracking-[0.2em] uppercase mb-2 md:mb-4 antialiased"
+                                    className="text-primary font-black text-[9px] md:text-[11px] tracking-[0.2em] uppercase mb-1 md:mb-2 antialiased"
                                 >
                                     Our Mission
                                 </motion.span>
                                 <motion.h2
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="text-3xl md:text-7xl font-black text-white mb-6 md:mb-10 leading-none tracking-tighter"
+                                    className="text-2xl md:text-4xl font-black text-white mb-3 md:mb-6 leading-none tracking-tighter"
                                 >
                                     Authentic <span className="text-primary italic">Nepali Literature</span>
                                 </motion.h2>
@@ -150,21 +152,21 @@ export default function Home() {
                                 <motion.div
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="mb-8 md:mb-12 space-y-3 bg-white/5 backdrop-blur-md p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border border-white/10 w-fit shadow-2xl"
+                                    className="mb-4 md:mb-6 space-y-2 bg-white/5 backdrop-blur-md p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border border-white/10 w-fit shadow-2xl"
                                 >
-                                    <p className="text-white text-lg md:text-2xl font-bold tracking-tight leading-tight">
+                                    <p className="text-white text-sm md:text-base font-bold tracking-tight leading-tight">
                                         "Bringing Nepali stories home, <br className="md:hidden" /> wherever home is."
                                     </p>
-                                    <p className="text-primary text-sm md:text-lg font-bold">
+                                    <p className="text-primary text-[10px] md:text-sm font-bold">
                                         "नेपाली कथाहरूलाई घर ल्याउँदै, जहाँ पनि घर होस्।"
                                     </p>
                                 </motion.div>
 
-                                <Link href="/">
+                                <Link href="#featured-books">
                                     <motion.button
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        className="bg-primary hover:bg-[#e68a00] text-white text-[10px] md:text-xs font-black tracking-widest px-8 md:px-12 py-3.5 md:py-5 rounded-2xl md:rounded-3xl w-fit shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase"
+                                        className="bg-primary hover:bg-[#e68a00] text-white text-[10px] md:text-xs font-black tracking-widest px-8 md:px-12 py-3 md:py-4 rounded-xl md:rounded-2xl w-fit shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase mt-auto"
                                     >
                                         Explore Collection
                                     </motion.button>
@@ -200,7 +202,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className="px-4 py-8 md:py-16">
+                <section id="featured-books" className="px-4 py-8 md:py-16 scroll-mt-20">
                     <div className="flex items-center justify-between mb-8 md:mb-12">
                         <div className="flex flex-col gap-1">
                             <h3 className="font-black text-xl md:text-4xl text-[#1a1a5a] tracking-tighter">
