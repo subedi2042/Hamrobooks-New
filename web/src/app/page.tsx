@@ -84,6 +84,18 @@ export default function Home() {
                                     {activeBanner.title} <br />
                                     <span className="text-primary italic">{activeBanner.subtitle}</span>
                                 </motion.h2>
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="mb-8 md:mb-10 space-y-2"
+                                >
+                                    <p className="text-white text-sm md:text-xl font-medium italic tracking-tight opacity-90">
+                                        "Bringing Nepali stories home, wherever home is."
+                                    </p>
+                                    <p className="text-primary text-xs md:text-lg font-bold">
+                                        "नेपाली कथाहरूलाई घर ल्याउँदै, जहाँ पनि घर होस्।"
+                                    </p>
+                                </motion.div>
                                 <motion.p
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
@@ -160,6 +172,27 @@ export default function Home() {
                         </div>
                     )}
                 </section>
+
+                {!searchQuery && (
+                    <section className="px-4 py-12 md:py-24 text-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="max-w-4xl mx-auto space-y-6 md:space-y-8"
+                        >
+                            <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+                            <h2 className="text-2xl md:text-5xl font-black text-[#1a1a5a] tracking-tighter leading-tight">
+                                Across miles and memories, <br />
+                                <span className="text-primary italic">Nepali stories find their way to you.</span>
+                            </h2>
+                            <p className="text-xl md:text-3xl font-bold text-slate-400">
+                                "दूरी र सम्झनाहरू पार गर्दै, नेपाली कथाहरू तपाईंको नजिक आइपुग्छन्।"
+                            </p>
+                            <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+                        </motion.div>
+                    </section>
+                )}
 
                 {!searchQuery && (
                     <section className="py-12 md:py-24 bg-slate-50/50 mt-12 md:mt-24 rounded-[3rem] md:rounded-[5rem] mx-4 border border-slate-100">

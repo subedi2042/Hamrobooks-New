@@ -56,6 +56,14 @@ export default function OrderSuccessPage() {
                     <p className="text-slate-500 text-lg font-medium max-w-md">
                         Your authentic Nepali literature is on its way. We've sent a confirmation email to your inbox.
                     </p>
+                    <div className="mt-6 flex flex-col items-center gap-1">
+                        <p className="text-slate-400 text-sm font-bold italic opacity-70 leading-relaxed">
+                            "Across miles and memories, <br /> Nepali stories find their way to you."
+                        </p>
+                        <p className="text-primary text-xs font-bold opacity-80">
+                            "दूरी र सम्झनाहरू पार गर्दै, नेपाली कथाहरू तपाईंको नजिक आइपुग्छन्।"
+                        </p>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
