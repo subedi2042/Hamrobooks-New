@@ -61,14 +61,14 @@ export default function Home() {
                             key={activeBanner.id}
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="relative min-h-[350px] md:h-[550px] md:max-w-[50%] mx-auto rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden group shadow-2xl border border-slate-200"
+                            className="relative min-h-[220px] md:h-[320px] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden group shadow-2xl border border-slate-200"
                         >
                             <img
                                 className="w-full h-full absolute inset-0 object-cover transform group-hover:scale-105 transition-transform duration-[2s]"
                                 alt={activeBanner.title}
                                 src={activeBanner.image}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent flex flex-col justify-center px-8 md:px-12 py-10">
+                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent flex flex-col justify-center px-8 md:px-20 py-6 md:py-8">
                                 <motion.span
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
@@ -108,7 +108,7 @@ export default function Home() {
                                 <motion.button
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="bg-primary hover:bg-[#e68a00] text-white text-[10px] md:text-xs font-black tracking-widest px-8 md:px-12 py-3.5 md:py-5 rounded-2xl md:rounded-3xl w-fit shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase"
+                                    className="bg-primary hover:bg-[#e68a00] text-white text-[9px] md:text-[10px] font-black tracking-widest px-6 md:px-10 py-2.5 md:py-3.5 rounded-xl md:rounded-2xl w-fit shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase mt-1 md:mt-2"
                                 >
                                     {activeBanner.buttonText}
                                 </motion.button>
@@ -122,7 +122,7 @@ export default function Home() {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="relative min-h-[400px] md:h-[600px] md:max-w-[50%] mx-auto rounded-[2.5rem] md:rounded-[3.5rem] bg-[#1a1a5a] overflow-hidden group shadow-2xl border border-slate-200 flex flex-col justify-center px-8 md:px-12 py-10"
+                            className="relative min-h-[250px] md:h-[350px] rounded-[2.5rem] md:rounded-[3.5rem] bg-[#1a1a5a] overflow-hidden group shadow-2xl border border-slate-200 flex flex-col justify-center px-8 md:px-20 py-6 md:py-8"
                         >
                             <div className="absolute inset-0 opacity-20 pointer-events-none">
                                 <img
