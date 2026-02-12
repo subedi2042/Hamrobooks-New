@@ -1,5 +1,14 @@
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, deleteDoc, doc, writeBatch } from "firebase/firestore";
 import { db } from "./firebase";
+import { books as CSV_BOOKS } from "@/data/books";
+
+function stripHtml(html: string) {
+    if (!html) return "";
+    return html.replace(/<[^>]*>?/gm, "")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&")
+        .trim();
+}
 
 const BANNERS = [
     {
@@ -25,9 +34,47 @@ const PROMOS = [
     { code: "HAMROBOOKS10", discount: "10%", usage: 89, status: "Active" },
 ];
 
-export async function seedDatabase() {
+export async function clearCollection(collectionName: string) {
+    const snapshot = await getDocs(collection(db, collectionName));
+    const batch = writeBatch(db);
+    snapshot.docs.forEach((d) => {
+        batch.delete(d.ref);
+    });
+    await batch.commit();
+    console.log(`Cleared ${collectionName} collection`);
+}
+
+export async function seedDatabase(forceRefresh = false) {
+    // Books
+    const bookSnapshot = await getDocs(collection(db, "books"));
+    if (bookSnapshot.empty || forceRefresh) {
+        if (forceRefresh) await clearCollection("books");
+        console.log(`Seeding ${CSV_BOOKS.length} books...`);
+        // Batch upload books (max 500 per batch)
+        let count = 0;
+        let batch = writeBatch(db);
+
+        for (const book of CSV_BOOKS) {
+            const bookRef = doc(collection(db, "books"));
+            batch.set(bookRef, {
+                ...book,
+                synopsis: stripHtml(book.synopsis || ""),
+                createdAt: new Date().toISOString()
+            });
+            count++;
+
+            if (count % 400 === 0) {
+                await batch.commit();
+                batch = writeBatch(db);
+            }
+        }
+        await batch.commit();
+        console.log("Books seeded!");
+    }
+
     const bannerSnapshot = await getDocs(collection(db, "banners"));
-    if (bannerSnapshot.empty) {
+    if (bannerSnapshot.empty || forceRefresh) {
+        if (forceRefresh) await clearCollection("banners");
         for (const banner of BANNERS) {
             await addDoc(collection(db, "banners"), banner);
         }
@@ -35,7 +82,8 @@ export async function seedDatabase() {
     }
 
     const collectionSnapshot = await getDocs(collection(db, "collections"));
-    if (collectionSnapshot.empty) {
+    if (collectionSnapshot.empty || forceRefresh) {
+        if (forceRefresh) await clearCollection("collections");
         for (const col of COLLECTIONS) {
             await addDoc(collection(db, "collections"), col);
         }
@@ -43,10 +91,12 @@ export async function seedDatabase() {
     }
 
     const promoSnapshot = await getDocs(collection(db, "promos"));
-    if (promoSnapshot.empty) {
+    if (promoSnapshot.empty || forceRefresh) {
+        if (forceRefresh) await clearCollection("promos");
         for (const promo of PROMOS) {
             await addDoc(collection(db, "promos"), promo);
         }
         console.log("Promos seeded!");
     }
 }
+

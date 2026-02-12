@@ -1,26 +1,52 @@
 "use client";
 
 import React, { use, useState, useEffect } from "react";
-import { books } from "@/data/books";
+import { books as staticBooks, Book } from "@/data/books";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import BookCard from "@/components/BookCard";
 import AddedToCartModal from "@/components/AddedToCartModal";
 import CartDrawer from "@/components/CartDrawer";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 export default function BookDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
     const { addToCart, totalItems } = useCart();
+    const { toggleWishlist, isInWishlist } = useWishlist();
     const router = useRouter();
     const [isAddedModalOpen, setIsAddedModalOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
+    const [book, setBook] = useState<Book | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setMounted(true);
-    }, []);
+        const fetchBook = async () => {
+            setIsLoading(true);
+            try {
+                const docRef = doc(db, "books", id);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setBook({ id: docSnap.id, ...docSnap.data() } as Book);
+                } else {
+                    const found = staticBooks.find(b => b.id === id);
+                    if (found) setBook(found);
+                }
+            } catch (error) {
+                console.error("Error fetching book:", error);
+                const found = staticBooks.find(b => b.id === id);
+                if (found) setBook(found);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchBook();
+    }, [id]);
 
     const handleAddToCart = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -30,13 +56,16 @@ export default function BookDetailPage({ params }: { params: Promise<{ id: strin
         }
     };
 
-    const book = books.find((b) => b.id === id);
     const bookImages = book?.images && book.images.length > 0 ? book.images : [book?.image || ""];
-    const [activeImage, setActiveImage] = useState(bookImages[0]);
+    const [activeImage, setActiveImage] = useState("");
 
     useEffect(() => {
         if (bookImages.length > 0) setActiveImage(bookImages[0]);
-    }, [book]);
+    }, [book, bookImages.length]);
+
+    if (isLoading) {
+        return <div className="min-h-screen flex items-center justify-center font-black text-slate-400 uppercase tracking-widest">Loading details...</div>;
+    }
 
     if (!book) {
         return (
@@ -49,7 +78,8 @@ export default function BookDetailPage({ params }: { params: Promise<{ id: strin
         );
     }
 
-    const relatedBooks = books.filter((b) => b.id !== id).slice(0, 4);
+    const relatedBooks = staticBooks.filter((b: Book) => b.id !== id).slice(0, 4);
+    const bookTitle = book.title;
 
     return (
         <div className="bg-bg-light min-h-screen pb-32 selection:bg-primary/20">
@@ -78,133 +108,167 @@ export default function BookDetailPage({ params }: { params: Promise<{ id: strin
                             </span>
                         )}
                     </button>
-                    <button className="w-10 h-10 flex items-center justify-center rounded-2xl bg-slate-50 text-slate-700 active:scale-90 transition-all border border-slate-100">
-                        <span className="material-icons text-xl">favorite_border</span>
+                    <button
+                        onClick={() => book && toggleWishlist(book)}
+                        className={`w-10 h-10 flex items-center justify-center rounded-2xl border transition-all active:scale-90 ${book && isInWishlist(book.id)
+                            ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
+                            : "bg-slate-50 text-slate-700 border-slate-100"
+                            }`}
+                    >
+                        <span className="material-icons text-xl">{book && isInWishlist(book.id) ? "favorite" : "favorite_border"}</span>
                     </button>
                 </div>
             </nav>
 
-            <header className="flex flex-col items-center pt-6 pb-8 px-6">
-                <div className="w-full max-w-sm space-y-4">
-                    <motion.div
-                        key={activeImage}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="relative aspect-[2/3] group shadow-2xl rounded-2xl overflow-hidden border border-slate-200"
-                    >
-                        <img alt={book.title} className="w-full h-full object-cover" src={activeImage} />
-                    </motion.div>
+            <header className="max-w-6xl mx-auto pt-6 pb-12 px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    {/* Left Column: Images */}
+                    <div className="space-y-6 sticky top-24">
+                        <motion.div
+                            key={activeImage}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="relative aspect-[2/3] group shadow-2xl rounded-3xl overflow-hidden border border-slate-200 bg-white"
+                        >
+                            <img alt={book.title} className="w-full h-full object-cover" src={activeImage} />
+                        </motion.div>
 
-                    {bookImages.length > 1 && (
-                        <div className="flex justify-center gap-2 overflow-x-auto py-2 hide-scrollbar">
-                            {bookImages.map((img, idx) => (
-                                <button
-                                    key={idx}
-                                    onClick={() => setActiveImage(img)}
-                                    title={`View image ${idx + 1}`}
-                                    className={`relative w-16 h-20 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${activeImage === img ? "border-primary scale-105 shadow-md" : "border-transparent opacity-60 hover:opacity-100"
-                                        }`}
-                                >
-                                    <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                </div>
-
-                <div className="mt-8 text-center space-y-2">
-                    <h1 className="text-2xl font-bold tracking-tight text-slate-900">{book.title}</h1>
-                    {book.nepaliTitle && (
-                        <h2 className="text-xl font-medium text-slate-600">{book.nepaliTitle}</h2>
-                    )}
-                    <div className="pt-1">
-                        <span className="text-primary font-semibold">{book.author}</span>
-                    </div>
-
-                    <div className="flex items-center justify-center gap-1 mt-2">
-                        <div className="flex text-primary">
-                            {[...Array(5)].map((_, i) => (
-                                <span key={i} className="material-icons text-sm">
-                                    {i < Math.floor(book.rating || 0) ? "star" : "star_outline"}
-                                </span>
-                            ))}
-                        </div>
-                        <span className="text-xs text-slate-500 font-medium">
-                            ({book.rating || "N/A"} • {book.reviews || "0"} reviews)
-                        </span>
-                    </div>
-
-                    <div className="text-2xl font-bold text-slate-900 mt-2">
-                        ${book.price.toFixed(2)}
-                        {book.originalPrice && (
-                            <span className="text-sm font-normal text-slate-400 line-through ml-2">
-                                ${book.originalPrice.toFixed(2)}
-                            </span>
+                        {bookImages.length > 1 && (
+                            <div className="flex justify-center gap-3 overflow-x-auto py-2 hide-scrollbar">
+                                {bookImages.map((img, idx) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => setActiveImage(img)}
+                                        title={`View image ${idx + 1}`}
+                                        className={`relative w-20 h-28 rounded-xl overflow-hidden border-2 transition-all flex-shrink-0 ${activeImage === img ? "border-primary scale-105 shadow-md" : "border-slate-100 opacity-60 hover:opacity-100"
+                                            }`}
+                                    >
+                                        <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
+                                    </button>
+                                ))}
+                            </div>
                         )}
+                    </div>
+
+                    {/* Right Column: Details */}
+                    <div className="space-y-8">
+                        <div className="space-y-4 text-left">
+                            <div className="space-y-1">
+                                <h1 className="text-4xl md:text-5xl font-black tracking-tight text-[#1a1a5a] leading-tight">{book.title}</h1>
+                                {book.nepaliTitle && (
+                                    <h2 className="text-2xl font-medium text-slate-500 font-hindi">{book.nepaliTitle}</h2>
+                                )}
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                                <span className="text-lg text-primary font-black uppercase tracking-widest">{book.author}</span>
+                                <span className="text-slate-300">|</span>
+                                <span className="text-slate-500 font-bold uppercase tracking-widest text-xs">{book.genre}</span>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                                <div className="flex text-amber-400">
+                                    {[...Array(5)].map((_, i) => (
+                                        <span key={i} className="material-icons text-lg">
+                                            {i < Math.floor(book.rating || 5) ? "star" : "star_outline"}
+                                        </span>
+                                    ))}
+                                </div>
+                                <span className="text-sm text-slate-500 font-bold">
+                                    {book.rating || "5.0"} ({book.reviews || "12"} reviews)
+                                </span>
+                            </div>
+
+                            <div className="flex items-baseline gap-4 mt-6">
+                                <span className="text-4xl font-black text-[#1a1a5a]">${book.price.toFixed(2)}</span>
+                                {book.originalPrice && (
+                                    <span className="text-xl text-slate-400 line-through">
+                                        ${book.originalPrice.toFixed(2)}
+                                    </span>
+                                )}
+                                {book.inventory && book.inventory > 0 ? (
+                                    <span className="bg-green-100 text-green-700 text-[10px] font-black px-2 py-1 rounded uppercase tracking-widest">In Stock</span>
+                                ) : (
+                                    <span className="bg-amber-100 text-amber-700 text-[10px] font-black px-2 py-1 rounded uppercase tracking-widest">Pre-Order</span>
+                                )}
+                            </div>
+
+                            {(!book.inventory || book.inventory <= 0) && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="bg-amber-50 border border-amber-200 p-4 rounded-2xl flex items-start gap-3"
+                                >
+                                    <span className="material-icons text-amber-500">info</span>
+                                    <p className="text-sm font-bold text-amber-800 leading-snug">
+                                        The book(s) you have selected is out of stock but you can order it as a <span className="underline">Pre-Order</span> and we will ship it once it arrives.
+                                    </p>
+                                </motion.div>
+                            )}
+                        </div>
+
+                        {/* Action Buttons */}
+                        <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button
+                                onClick={handleAddToCart}
+                                className="flex-[2] flex items-center justify-center gap-3 bg-primary hover:bg-orange-600 text-white font-black py-5 rounded-[2rem] shadow-xl shadow-primary/20 active:scale-[0.98] transition-all uppercase tracking-widest text-sm"
+                            >
+                                <span className="material-icons">{(!book.inventory || book.inventory <= 0) ? "event_repeat" : "shopping_cart"}</span>
+                                {(!book.inventory || book.inventory <= 0) ? "Pre-Order Now" : "Add to Cart"}
+                            </button>
+                            <button
+                                onClick={() => toggleWishlist(book)}
+                                className={`flex-1 flex items-center justify-center gap-2 border-2 font-black py-5 rounded-[2rem] transition-all uppercase tracking-widest text-xs ${isInWishlist(book.id)
+                                    ? "bg-primary border-primary text-white shadow-lg shadow-primary/20"
+                                    : "border-primary text-primary hover:bg-primary/5"
+                                    }`}
+                            >
+                                <span className="material-icons">{isInWishlist(book.id) ? "favorite" : "favorite_border"}</span>
+                                {isInWishlist(book.id) ? "In Wishlist" : "Wishlist"}
+                            </button>
+                        </div>
+
+                        {/* Quick Specs Grid */}
+                        <div className="grid grid-cols-3 gap-6 py-8 border-y border-slate-100">
+                            <div className="space-y-1">
+                                <p className="text-[10px] uppercase tracking-widest text-slate-400 font-black">Pages</p>
+                                <p className="text-base font-black text-slate-800">{book.pages || "240"}</p>
+                            </div>
+                            <div className="space-y-1 text-center border-x border-slate-100">
+                                <p className="text-[10px] uppercase tracking-widest text-slate-400 font-black">Language</p>
+                                <p className="text-base font-black text-slate-800">{book.language || "Nepali"}</p>
+                            </div>
+                            <div className="space-y-1 text-right">
+                                <p className="text-[10px] uppercase tracking-widest text-slate-400 font-black">Format</p>
+                                <p className="text-base font-black text-slate-800">{book.format || "Paperback"}</p>
+                            </div>
+                        </div>
+
+                        {/* Synopsis */}
+                        <div className="space-y-4">
+                            <h3 className="text-lg font-black uppercase tracking-widest text-[#1a1a5a]">Synopsis</h3>
+                            <div className="text-slate-600 leading-relaxed font-medium text-lg prose prose-slate max-w-none">
+                                {book.synopsis?.replace(/<[^>]*>?/gm, "") || "Description coming soon..."}
+                            </div>
+                        </div>
+
+                        {/* Author Short */}
+                        <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex items-center gap-5">
+                            <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-white shadow-md">
+                                <img
+                                    alt={book.author}
+                                    className="w-full h-full object-cover"
+                                    src={book.authorImage || `https://ui-avatars.com/api/?name=${book.author}&background=1a1a5a&color=fff`}
+                                />
+                            </div>
+                            <div>
+                                <p className="text-[10px] uppercase tracking-widest text-slate-400 font-black mb-1">About the Author</p>
+                                <h4 className="font-black text-[#1a1a5a]">{book.author}</h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </header>
-
-            {/* Action Buttons */}
-            <section className="px-6 flex gap-3">
-                <button className="flex-1 flex items-center justify-center gap-2 border-2 border-primary text-primary font-bold py-3 rounded-xl hover:bg-primary/5 transition-colors">
-                    <span className="material-icons text-lg">menu_book</span>
-                    Read Sample
-                </button>
-                <button
-                    onClick={handleAddToCart}
-                    className="flex-[1.5] flex items-center justify-center gap-2 bg-primary hover:bg-orange-600 text-white font-bold py-3 rounded-xl shadow-lg shadow-primary/25 active:scale-[0.98] transition-all"
-                >
-                    <span className="material-icons text-lg">shopping_cart</span>
-                    Add to Cart
-                </button>
-            </section>
-
-            {/* Quick Info */}
-            <section className="mt-8 px-6 grid grid-cols-3 gap-4 border-y border-primary/10 py-4">
-                <div className="text-center">
-                    <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Pages</p>
-                    <p className="text-sm font-semibold text-slate-900">{book.pages || "???"}</p>
-                </div>
-                <div className="text-center border-x border-primary/10">
-                    <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Language</p>
-                    <p className="text-sm font-semibold text-slate-900">{book.language || "Nepali"}</p>
-                </div>
-                <div className="text-center">
-                    <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Format</p>
-                    <p className="text-sm font-semibold text-slate-900">{book.format || "Paperback"}</p>
-                </div>
-            </section>
-
-            {/* Synopsis Section */}
-            <section className="mt-8 px-6">
-                <h3 className="text-lg font-bold mb-3 text-slate-900">Synopsis</h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                    {book.synopsis || "Description coming soon..."}
-                </p>
-            </section>
-
-            {/* Author Section */}
-            <section className="mt-10 px-6">
-                <div className="bg-white p-4 rounded-2xl border border-primary/10 shadow-sm">
-                    <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary/20">
-                            <img
-                                alt={book.author}
-                                className="w-full h-full object-cover"
-                                src={book.authorImage || `https://ui-avatars.com/api/?name=${book.author}`}
-                            />
-                        </div>
-                        <div>
-                            <h4 className="font-bold text-slate-900">About the Author</h4>
-                            <p className="text-sm text-primary font-medium">{book.author}</p>
-                        </div>
-                    </div>
-                    <p className="mt-3 text-sm text-slate-500 leading-snug">
-                        {book.authorBio || `${book.author} is a prominent voice in Nepali literature.`}
-                    </p>
-                </div>
-            </section>
 
             {/* Related Books */}
             <section className="mt-10 mb-12">
@@ -229,7 +293,7 @@ export default function BookDetailPage({ params }: { params: Promise<{ id: strin
                     onClick={handleAddToCart}
                     className="bg-primary hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-primary/30 flex items-center gap-2 transition-transform active:scale-95"
                 >
-                    Buy Now
+                    {(!book.inventory || book.inventory <= 0) ? "Pre-Order" : "Buy Now"}
                     <span className="material-icons text-sm">arrow_forward</span>
                 </button>
             </div>

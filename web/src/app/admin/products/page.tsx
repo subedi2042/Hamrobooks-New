@@ -1,22 +1,60 @@
 "use client";
 
-import React, { useState } from "react";
-import { books, Book } from "@/data/books";
+import React, { useState, useEffect } from "react";
+import { books as staticBooks, Book } from "@/data/books";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { collection, getDocs, deleteDoc, doc, onSnapshot, query, orderBy } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 export default function InventoryPage() {
     const [searchQuery, setSearchQuery] = useState("");
     const [isImporting, setIsImporting] = useState(false);
+    const [books, setBooks] = useState<Book[]>(staticBooks);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        // Real-time listener for books collection
+        const q = query(collection(db, "books"), orderBy("createdAt", "desc"));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            const firestoreBooks = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            } as Book));
+
+            if (firestoreBooks.length > 0) {
+                setBooks(firestoreBooks);
+            } else {
+                setBooks(staticBooks);
+            }
+            setIsLoading(false);
+        }, (error) => {
+            console.error("Firestore error:", error);
+            setIsLoading(false);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    const handleDelete = async (id: string, title: string) => {
+        if (!window.confirm(`Are you sure you want to delete "${title}"?`)) return;
+
+        try {
+            await deleteDoc(doc(db, "books", id));
+            alert("Book deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting book:", error);
+            alert("Failed to delete book. It might not exist in the database.");
+        }
+    };
 
     const handleCSVUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
         setIsImporting(true);
-        // Simulate parsing and importing
         setTimeout(() => {
-            alert("CSV Detected: Successfully imported 125 new titles into the inventory!");
+            alert("Bulk Import: Please use the Sync Database option in Settings to upload the new CSV data to Firestore.");
             setIsImporting(false);
         }, 2000);
     };
@@ -103,7 +141,16 @@ export default function InventoryPage() {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-50">
-                            {filteredBooks.map((book) => (
+                            {isLoading ? (
+                                <tr>
+                                    <td colSpan={7} className="px-6 py-20 text-center text-slate-400 font-black uppercase tracking-[0.2em] text-xs">
+                                        <div className="flex flex-col items-center gap-4">
+                                            <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+                                            Synchronizing with Cloud...
+                                        </div>
+                                    </td>
+                                </tr>
+                            ) : filteredBooks.map((book) => (
                                 <tr key={book.id} className="hover:bg-slate-50/50 transition-colors">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-3">
@@ -124,22 +171,28 @@ export default function InventoryPage() {
                                     </td>
                                     <td className="px-6 py-4 text-sm font-bold text-slate-900">${book.price.toFixed(2)}</td>
                                     <td className="px-6 py-4 text-sm font-medium text-slate-600">
-                                        {/* Mock stock data */}
-                                        <span className={Math.random() > 0.8 ? "text-orange-600 font-bold" : ""}>
-                                            {Math.floor(Math.random() * 50) + 1} units
+                                        <span className={(!book.inventory || book.inventory <= 0) ? "text-orange-600 font-bold" : "text-slate-600"}>
+                                            {book.inventory !== undefined ? `${book.inventory} units` : "0 units"}
                                         </span>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <span className="px-3 py-1 bg-green-50 text-green-600 rounded-full text-[10px] font-black uppercase tracking-widest">
-                                            Active
+                                        <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${(book.inventory && book.inventory > 0)
+                                                ? "bg-green-50 text-green-600"
+                                                : "bg-amber-50 text-amber-600"
+                                            }`}>
+                                            {(book.inventory && book.inventory > 0) ? "Active" : "Pre-Order"}
                                         </span>
                                     </td>
                                     <td className="px-6 py-4 text-right">
                                         <div className="flex items-center justify-end gap-2 text-slate-900 text-base">
-                                            <button className="p-2 text-slate-400 hover:text-primary transition-colors">
+                                            <Link href={`/admin/products/${book.id}/edit`} className="p-2 text-slate-400 hover:text-primary transition-colors">
                                                 <span className="material-icons">edit</span>
-                                            </button>
-                                            <button className="p-2 text-slate-400 hover:text-red-500 transition-colors">
+                                            </Link>
+                                            <button
+                                                onClick={() => handleDelete(book.id, book.title)}
+                                                className="p-2 text-slate-400 hover:text-red-500 transition-colors"
+                                                title="Delete Book"
+                                            >
                                                 <span className="material-icons">delete</span>
                                             </button>
                                         </div>
@@ -159,7 +212,7 @@ export default function InventoryPage() {
 
                 <div className="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
                     <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">
-                        Showing {filteredBooks.length} of {books.length} Products
+                        {isLoading ? "Fetching data..." : `Showing ${filteredBooks.length} of ${books.length} Products`}
                     </p>
                     <div className="flex gap-2">
                         <button className="p-2 bg-white border border-slate-200 rounded-lg text-slate-400 hover:text-slate-600 transition-colors" disabled>

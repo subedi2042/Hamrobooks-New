@@ -7,12 +7,13 @@ import { seedDatabase } from "@/lib/seed";
 export default function AdminSettingsPage() {
     const [isSeeding, setIsSeeding] = useState(false);
     const [seedStatus, setSeedStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [forceRefresh, setForceRefresh] = useState(false);
 
     const handleSeed = async () => {
         setIsSeeding(true);
         setSeedStatus("loading");
         try {
-            await seedDatabase();
+            await seedDatabase(forceRefresh);
             setSeedStatus("success");
             setTimeout(() => setSeedStatus("idle"), 3000);
         } catch (error) {
@@ -133,25 +134,38 @@ export default function AdminSettingsPage() {
                             <div className="space-y-1">
                                 <p className="text-sm font-black text-slate-900">Initialize Cloud Firestore</p>
                                 <p className="text-[10px] text-slate-500 font-medium max-w-sm">
-                                    Populate your cloud database with the default set of Hero Banners, Promo Codes, and Featured Collections. This only adds data if the collections are currently empty.
+                                    Populate your cloud database with the default set of Hero Banners, Promo Codes, Featured Collections, and the latest Book Registry.
                                 </p>
+                                <div className="flex items-center gap-2 mt-2">
+                                    <input
+                                        type="checkbox"
+                                        id="force-refresh"
+                                        className="w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary"
+                                        checked={forceRefresh}
+                                        onChange={(e) => setForceRefresh(e.target.checked)}
+                                    />
+                                    <label htmlFor="force-refresh" className="text-[10px] font-black text-slate-600 uppercase tracking-widest cursor-pointer">
+                                        Force Clear Previous Data
+                                    </label>
+                                </div>
                             </div>
                             <button
                                 onClick={handleSeed}
                                 disabled={isSeeding}
                                 className={`px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all flex items-center gap-2 ${seedStatus === "success"
-                                        ? "bg-green-500 text-white"
-                                        : seedStatus === "error"
-                                            ? "bg-red-500 text-white"
-                                            : "bg-[#1a1a5a] text-white hover:bg-[#2a2a7a] active:scale-95 disabled:opacity-50"
+                                    ? "bg-green-500 text-white"
+                                    : seedStatus === "error"
+                                        ? "bg-red-500 text-white"
+                                        : "bg-[#1a1a5a] text-white hover:bg-[#2a2a7a] active:scale-95 disabled:opacity-50"
                                     }`}
                             >
                                 <span className="material-icons text-sm">
                                     {seedStatus === "loading" ? "sync" : seedStatus === "success" ? "check_circle" : (seedStatus === "error" ? "error" : "database")}
                                 </span>
-                                {seedStatus === "loading" ? "Seeding..." : seedStatus === "success" ? "Seeded!" : (seedStatus === "error" ? "Error" : "Seed Database")}
+                                {seedStatus === "loading" ? "Seeding..." : seedStatus === "success" ? "Seeded!" : (seedStatus === "error" ? "Error" : "Sync Database")}
                             </button>
                         </div>
+
                     </section>
                 </div>
 

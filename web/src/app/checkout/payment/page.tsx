@@ -7,12 +7,20 @@ import { usePromos } from "@/context/PromoContext";
 import { useAuth } from "@/context/AuthContext";
 import CheckoutSteps from "@/components/CheckoutSteps";
 import { motion } from "framer-motion";
-import { collection, addDoc, doc, updateDoc, increment } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { notifyAdmin } from "@/lib/notifications";
 
 export default function PaymentPage() {
     const router = useRouter();
-    const { cart, paymentInfo, setPaymentInfo, totalPrice, clearCart, shippingInfo, appliedDiscount, setAppliedDiscount } = useCart();
+    const {
+        cart,
+        paymentInfo,
+        setPaymentInfo,
+        totalPrice,
+        clearCart,
+        shippingInfo,
+        appliedDiscount,
+        setAppliedDiscount
+    } = useCart();
     const { promoCodes } = usePromos();
     const { user } = useAuth();
 
@@ -39,7 +47,6 @@ export default function PaymentPage() {
             return;
         }
 
-        // Check scheduling
         const now = new Date();
         if (promo.startDate && new Date(promo.startDate) > now) {
             setPromoError("This promotion has not started yet.");
@@ -50,7 +57,6 @@ export default function PaymentPage() {
             return;
         }
 
-        // Calculate discount
         let discountAmount = 0;
         if (promo.discount.includes("%")) {
             const percentage = parseFloat(promo.discount.replace("%", ""));
@@ -65,19 +71,36 @@ export default function PaymentPage() {
 
     const handlePlaceOrder = async (e?: React.FormEvent) => {
         if (e) e.preventDefault();
-
         setIsSubmitting(true);
 
-        // Simulate a small delay for premium feel
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        try {
+            // Simulate potential failure for demo purposes if card is "fail"
+            if (paymentInfo.cardNumber.includes("fail")) {
+                throw new Error("Payment declined by processor. Insufficient funds or fraud alert.");
+            }
 
-        // Generate a mock order ID
-        const mockOrderId = `HB-${Math.floor(100000 + Math.random() * 900000)}`;
+            // Simulate a small delay for premium feel
+            await new Promise(resolve => setTimeout(resolve, 1500));
 
-        // Clear state and proceed
-        setAppliedDiscount(null);
-        router.push(`/checkout/success?orderId=${mockOrderId}`);
-        setIsSubmitting(false);
+            // Generate a mock order ID
+            const mockOrderId = `HB-${Math.floor(100000 + Math.random() * 900000)}`;
+
+            // Clear state and proceed
+            setAppliedDiscount(null);
+            router.push(`/checkout/success?orderId=${mockOrderId}`);
+            clearCart();
+        } catch (error: any) {
+            console.error("Checkout Failure:", error);
+            await notifyAdmin('CHECKOUT_FAILURE', {
+                error: error.message,
+                user: user?.email || 'Guest Session',
+                cart: cart.map(item => ({ id: item.id, title: item.title, qty: item.quantity })),
+                shippingInfo
+            });
+            alert(`Order Failed: ${error.message}. The administrator has been notified to assist you.`);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const taxAmount = totalPrice * 0.08;
@@ -143,7 +166,7 @@ export default function PaymentPage() {
                                             </div>
                                             <div className="space-y-1.5">
                                                 <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">Card Number</label>
-                                                <input required name="cardNumber" value={paymentInfo.cardNumber} onChange={handleChange} className="w-full bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm font-medium" placeholder="0000 0000 0000 0000" />
+                                                <input required name="cardNumber" value={paymentInfo.cardNumber} onChange={handleChange} className="w-full bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm font-medium" placeholder="0000 0000 0000 0000 ('fail' to test)" />
                                             </div>
                                             <div className="grid grid-cols-2 gap-4">
                                                 <input required name="expiryDate" value={paymentInfo.expiryDate} onChange={handleChange} className="bg-white border border-slate-200 rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-sm font-medium text-center" placeholder="MM / YY" />
@@ -174,7 +197,6 @@ export default function PaymentPage() {
                             <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/50 p-8">
                                 <h3 className="text-xl font-black text-[#1a1a5a] mb-6 tracking-tight">Payment Summary</h3>
 
-                                {/* Discount Code Input */}
                                 <div className="mb-6 space-y-2">
                                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Discount Code</label>
                                     <div className="flex gap-2">

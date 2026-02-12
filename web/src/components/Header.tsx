@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 import CartDrawer from "./CartDrawer";
 
 interface HeaderProps {
@@ -12,6 +13,7 @@ interface HeaderProps {
 
 export default function Header({ onSearch }: HeaderProps) {
     const { totalItems } = useCart();
+    const { wishlistCount } = useWishlist();
     const [logoError, setLogoError] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -103,6 +105,19 @@ export default function Header({ onSearch }: HeaderProps) {
                                     <span className="material-icons text-xl md:text-2xl group-hover:text-primary transition-colors">person_outline</span>
                                 </Link>
 
+                                {/* Wishlist Button */}
+                                <Link
+                                    href="/wishlist"
+                                    className="relative p-3 rounded-full bg-slate-50 text-slate-dark hover:bg-white hover:shadow-md transition-all active:scale-95 border border-slate-100 group"
+                                >
+                                    <span className="material-icons text-xl md:text-2xl group-hover:text-primary transition-colors">favorite_border</span>
+                                    {mounted && wishlistCount > 0 && (
+                                        <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[9px] flex items-center justify-center font-black rounded-full ring-2 ring-white shadow-lg animate-in zoom-in">
+                                            {wishlistCount}
+                                        </span>
+                                    )}
+                                </Link>
+
                                 {/* Cart Button */}
                                 <button
                                     onClick={() => setIsCartOpen(true)}
@@ -156,6 +171,7 @@ export default function Header({ onSearch }: HeaderProps) {
                                     { name: "Discover Books", href: "/discover", icon: "explore" },
                                     { name: "Success Stories", href: "/authors-success", icon: "auto_stories" },
                                     { name: "Reader Reviews", href: "/reviews", icon: "rate_review" },
+                                    { name: "Your Wishlist", href: "/wishlist", icon: "favorite_border" },
                                     { name: "Your Account", href: "/account", icon: "person" }
                                 ].map((link) => (
                                     <Link

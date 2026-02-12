@@ -2,6 +2,8 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { Book } from "@/data/books";
+import { db } from "@/lib/firebase";
+import { doc, setDoc, deleteDoc, serverTimestamp } from "firebase/firestore";
 
 interface CartItem extends Book {
     quantity: number;
@@ -71,9 +73,40 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         }
     }, []);
 
-    // Save cart to localStorage on change
+    // Save cart to localStorage on change and sync to Firestore for abandoned cart tracking
     useEffect(() => {
         localStorage.setItem("hamrobooks-cart", JSON.stringify(cart));
+
+        const syncCartToFirestore = async () => {
+            let sessionId = localStorage.getItem("hamrobooks-session-id");
+            if (!sessionId) {
+                sessionId = `sess_${Math.random().toString(36).substr(2, 9)}`;
+                localStorage.setItem("hamrobooks-session-id", sessionId);
+            }
+
+            if (cart.length > 0) {
+                try {
+                    await setDoc(doc(db, "abandoned_carts", sessionId), {
+                        cart: cart.map(item => ({ id: item.id, title: item.title, qty: item.quantity, price: item.price })),
+                        lastUpdated: serverTimestamp(),
+                        totalPrice: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+                        status: 'active'
+                    }, { merge: true });
+                } catch (error) {
+                    console.error("Failed to sync cart to Firestore:", error);
+                }
+            } else {
+                // If cart is empty (e.g. after successful checkout), remove abandoned cart record
+                try {
+                    await deleteDoc(doc(db, "abandoned_carts", sessionId));
+                } catch (error) {
+                    console.error("Failed to delete abandoned cart record:", error);
+                }
+            }
+        };
+
+        const timeoutId = setTimeout(syncCartToFirestore, 2000); // Debounce sync
+        return () => clearTimeout(timeoutId);
     }, [cart]);
 
     const addToCart = (book: Book) => {

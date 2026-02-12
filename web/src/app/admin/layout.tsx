@@ -37,6 +37,7 @@ export default function AdminLayout({
         { name: "Reviews Hub", href: "/admin/reviews", icon: "rate_review" },
         { name: "Promotions", href: "/admin/promotions", icon: "campaign" },
         { name: "Customers", href: "/admin/customers", icon: "people" },
+        { name: "Notifications", href: "/admin/notifications", icon: "notifications_active" },
         { name: "Settings", href: "/admin/settings", icon: "settings" },
     ];
 
@@ -124,10 +125,10 @@ export default function AdminLayout({
                         </h1>
                     </div>
                     <div className="flex items-center gap-4">
-                        <button className="p-2 text-slate-400 hover:text-slate-600 relative">
+                        <Link href="/admin/notifications" className="p-2 text-slate-400 hover:text-slate-600 relative active:scale-95 transition-all">
                             <span className="material-icons">notifications</span>
                             <span className="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full ring-2 ring-white"></span>
-                        </button>
+                        </Link>
                         <div className="flex items-center gap-3 pl-4 border-l border-slate-100">
                             <div className="text-right hidden sm:block">
                                 <p className="text-xs font-black text-slate-900 leading-none">{adminUser?.name}</p>

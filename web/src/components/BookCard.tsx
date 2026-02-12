@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Book } from "@/data/books";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 import { motion } from "framer-motion";
 
 interface BookCardProps {
@@ -14,6 +15,8 @@ interface BookCardProps {
 
 export default function BookCard({ book, compact = false }: BookCardProps) {
     const { addToCart } = useCart();
+    const { toggleWishlist, isInWishlist } = useWishlist();
+    const isFavorite = isInWishlist(book.id);
     const displayImage = book.images && book.images.length > 0 ? book.images[0] : book.image;
 
     if (compact) {
@@ -55,9 +58,22 @@ export default function BookCard({ book, compact = false }: BookCardProps) {
                         </div>
                     )}
                 </Link>
-                <button className="absolute top-2 right-2 bg-white/95 p-2 rounded-full shadow-md text-slate-400 hover:text-red-500 transition-colors">
-                    <span className="material-icons text-sm">favorite_border</span>
+                <button
+                    onClick={(e) => {
+                        e.preventDefault();
+                        toggleWishlist(book);
+                    }}
+                    className={`absolute top-2 right-2 p-2 rounded-full shadow-md transition-all z-10 ${isFavorite ? "bg-primary text-white" : "bg-white/95 text-slate-400 hover:text-red-500"
+                        }`}
+                >
+                    <span className="material-icons text-sm">{isFavorite ? "favorite" : "favorite_border"}</span>
                 </button>
+                {(!book.inventory || book.inventory <= 0) && (
+                    <div className="absolute top-2 left-2 bg-amber-500 text-white px-2 py-1 rounded-lg shadow-md flex items-center gap-1 scale-[0.85] origin-top-left z-10">
+                        <span className="material-icons text-[10px]">event_repeat</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest">Pre-Order</span>
+                    </div>
+                )}
                 <div className="absolute bottom-0 left-0 right-0 p-2 transform translate-y-full group-hover:translate-y-0 transition-transform bg-gradient-to-t from-black/60 to-transparent">
                     <button
                         onClick={() => addToCart(book)}
@@ -86,6 +102,6 @@ export default function BookCard({ book, compact = false }: BookCardProps) {
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 export default function NewProductPage() {
     const router = useRouter();
@@ -46,16 +48,30 @@ export default function NewProductPage() {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (formData.images.length === 0) {
             alert("Please add at least one book image.");
             return;
         }
-        // In a real app, we would send this to an API
-        console.log("Saving Book:", formData);
-        alert("Book successfully added to catalog with " + formData.images.length + " images!");
-        router.push("/admin/products");
+
+        try {
+            const productsRef = collection(db, "books");
+            await addDoc(productsRef, {
+                ...formData,
+                price: parseFloat(formData.price),
+                originalPrice: formData.originalPrice ? parseFloat(formData.originalPrice) : null,
+                pages: parseInt(formData.pages) || null,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            });
+
+            alert("Book successfully added to catalog!");
+            router.push("/admin/products");
+        } catch (error) {
+            console.error("Error adding book:", error);
+            alert("Error saving book. Please try again.");
+        }
     };
 
     return (

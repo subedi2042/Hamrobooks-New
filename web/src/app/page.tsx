@@ -1,23 +1,39 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
-import { books } from "@/data/books";
+import { books as staticBooks, Book } from "@/data/books";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import BookCard from "@/components/BookCard";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import BottomNav from "@/components/BottomNav";
 import { useBanners } from "@/context/BannerContext";
+import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 export default function Home() {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedGenre, setSelectedGenre] = useState("All Genres");
+    const [books, setBooks] = useState<Book[]>(staticBooks);
     const { banners } = useBanners();
+
+    useEffect(() => {
+        const q = query(collection(db, "books"), orderBy("createdAt", "desc"));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            const firestoreBooks = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            } as Book));
+            if (firestoreBooks.length > 0) setBooks(firestoreBooks);
+        });
+        return () => unsubscribe();
+    }, []);
 
     const activeBanner = banners.find((b: any) => b.status === "Active") || banners[0];
 
-    const genres = ["All Genres", "Classics", "Fiction", "Poetry", "History"];
+    const genres = ["All Genres", "Classics", "Fiction", "Poetry", "History", "Stories", "Short Stories"];
 
     const filteredBooks = useMemo(() => {
         return books.filter((book) => {
@@ -25,10 +41,10 @@ export default function Home() {
                 book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 book.author.toLowerCase().includes(searchQuery.toLowerCase());
             const matchesGenre =
-                selectedGenre === "All Genres" || book.genre === selectedGenre;
+                selectedGenre === "All Genres" || book.genre.includes(selectedGenre);
             return matchesSearch && matchesGenre;
         });
-    }, [searchQuery, selectedGenre]);
+    }, [searchQuery, selectedGenre, books]);
 
     const authors = [
         {
@@ -51,7 +67,7 @@ export default function Home() {
     ];
 
     return (
-        <div className="min-h-screen bg-bg-light selection:bg-primary/30 pb-24">
+        <div className="min-h-screen bg-bg-light selection:bg-primary/30 flex flex-col">
             <Header onSearch={setSearchQuery} />
 
             <main className="max-w-7xl mx-auto">
@@ -324,6 +340,7 @@ export default function Home() {
                 )}
             </main>
 
+            <Footer />
             <BottomNav />
         </div>
     );
